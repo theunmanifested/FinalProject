@@ -27,7 +27,7 @@ public class Badge {
 	
 	// FIXME check corresponding UserBadge entity/table or if Even Needed. Check Json Ignore
 	@JsonIgnore
-	@OneToMany(mappedBy= "badgeId")
+	@OneToMany(mappedBy= "badge")
 	private List<UserBadge> userBadges;
 
 	

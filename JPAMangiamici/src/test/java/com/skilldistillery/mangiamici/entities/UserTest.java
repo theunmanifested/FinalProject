@@ -23,15 +23,18 @@ class UserTest {
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("MangiamiciPU");
 	}
+	
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		emf.close();
 	}
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
 		user = em.find(User.class, 1);
 	}
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
@@ -42,7 +45,7 @@ class UserTest {
 	void test() {
 		assertNotNull(user);
 		assertEquals(1, user.getId());
-		assertEquals("test", user.getUsername());
+		assertEquals("admin", user.getUsername());
 	}
 
 }

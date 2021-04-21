@@ -19,13 +19,11 @@ public class FavoriteRestaurant {
 	@EmbeddedId
 	private UserRestaurantId id;
 	
-	// FIXME Verify. New use of composite key entity mappings
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	@MapsId(value="userId")
 	private User user;
 	
-	// FIXME Verify. New use of composite key entity mappings
 	@ManyToOne
 	@JoinColumn(name="restaurant_id")
 	@MapsId(value="restaurantId")
@@ -36,7 +34,6 @@ public class FavoriteRestaurant {
     private LocalDateTime createdDate;
 	
 	private String notes;
-
 	
 	// no-arg Constructor
 	public FavoriteRestaurant() {
