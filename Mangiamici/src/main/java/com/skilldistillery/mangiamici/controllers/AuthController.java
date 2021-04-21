@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skilldistillery.mangiamici.entities.User;
 import com.skilldistillery.mangiamici.services.AuthService;
 
-@CrossOrigin({"*", "http://localhost:4210"})
+@CrossOrigin({"*", "http://localhost:4290"})
 @RestController
 public class AuthController {
 	
