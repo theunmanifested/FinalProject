@@ -10,6 +10,7 @@
 
 		<!-- entities -->
 		<class>com.skilldistillery.mangiamici.entities.Badge</class>
+		<class>com.skilldistillery.mangiamici.entities.FavoriteRestaurant</class>
 		<class>com.skilldistillery.mangiamici.entities.Friend</class>
 		<class>com.skilldistillery.mangiamici.entities.Location</class>
 		<class>com.skilldistillery.mangiamici.entities.Restaurant</class>
