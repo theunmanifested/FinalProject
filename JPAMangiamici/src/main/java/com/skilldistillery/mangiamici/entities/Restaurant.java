@@ -52,6 +52,9 @@ public class Restaurant {
 	
 	@Column(name="menu_url")
 	private String menuUrl;
+	
+	@OneToMany(mappedBy="restaurant")
+	private List<FavoriteRestaurant> favoriteRestaurants; 
 
 	// no-arg Constructor
 	
