@@ -207,6 +207,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `event_date` DATETIME NULL DEFAULT NULL,
   `post_text` VARCHAR(1000) NULL DEFAULT NULL,
   `restaurant_id` INT(11) NULL DEFAULT NULL,
+  `flagged` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_post_user1_idx` (`user_id` ASC),
   INDEX `fk_post_restaurant1_idx` (`restaurant_id` ASC),
@@ -239,6 +240,7 @@ CREATE TABLE IF NOT EXISTS `review` (
   `created_date` DATETIME NULL DEFAULT NULL,
   `updated_date` DATETIME NULL DEFAULT NULL,
   `is_public` TINYINT(4) NULL DEFAULT NULL,
+  `flagged` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_review_user1_idx` (`user_id` ASC),
   INDEX `fk_review_restaurant1_idx` (`restaurant_id` ASC),
@@ -270,6 +272,7 @@ CREATE TABLE IF NOT EXISTS `review_comment` (
   `updated_date` DATETIME NULL DEFAULT NULL,
   `enabled` TINYINT(4) NULL DEFAULT NULL,
   `is_public` TINYINT(4) NULL DEFAULT NULL,
+  `flagged` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_review_comment_review1_idx` (`review_id` ASC),
   INDEX `fk_review_comment_user1_idx` (`user_id` ASC),
@@ -435,8 +438,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mmdb`;
-INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`) VALUES (1, 4, '2021-04-01 00:00:00', '2021-04-01 00:00:00', '2021-04-05 22:00:00', 'Anybody down for a late night meal at BokBoks? I heard good things', 1);
-INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`) VALUES (2, 5, '2021-04-01 00:00:00', '2021-04-01 00:00:00', NULL, 'Im craving Korean fried chicken...you guys know the place, hit me up...', NULL);
+INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`, `flagged`) VALUES (1, 4, '2021-04-01 00:00:00', '2021-04-01 00:00:00', '2021-04-05 22:00:00', 'Anybody down for a late night meal at BokBoks? I heard good things', 1, NULL);
+INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`, `flagged`) VALUES (2, 5, '2021-04-01 00:00:00', '2021-04-01 00:00:00', NULL, 'Im craving Korean fried chicken...you guys know the place, hit me up...', NULL, NULL);
 
 COMMIT;
 
@@ -446,7 +449,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mmdb`;
-INSERT INTO `review` (`id`, `user_id`, `restaurant_id`, `review_text`, `rating`, `enabled`, `created_date`, `updated_date`, `is_public`) VALUES (1, 5, 1, 'Best fried chicken I\'ve found in Denver so far...and its Korean style! Try the spicy, it\'s worth it.', 5, true, '2021-04-01 00:00:00', '2021-04-01 00:00:00', false);
+INSERT INTO `review` (`id`, `user_id`, `restaurant_id`, `review_text`, `rating`, `enabled`, `created_date`, `updated_date`, `is_public`, `flagged`) VALUES (1, 5, 1, 'Best fried chicken I\'ve found in Denver so far...and its Korean style! Try the spicy, it\'s worth it.', 5, true, '2021-04-01 00:00:00', '2021-04-01 00:00:00', false, NULL);
 
 COMMIT;
 
@@ -456,7 +459,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mmdb`;
-INSERT INTO `review_comment` (`id`, `review_id`, `user_id`, `comment_text`, `created_date`, `updated_date`, `enabled`, `is_public`) VALUES (1, 1, 4, 'Heck yeah, I\'m headed there this weekend...thanks!', '2021-04-01 00:00:00', '2021-04-01 00:00:00', 1, false);
+INSERT INTO `review_comment` (`id`, `review_id`, `user_id`, `comment_text`, `created_date`, `updated_date`, `enabled`, `is_public`, `flagged`) VALUES (1, 1, 4, 'Heck yeah, I\'m headed there this weekend...thanks!', '2021-04-01 00:00:00', '2021-04-01 00:00:00', 1, false, NULL);
 
 COMMIT;
 
