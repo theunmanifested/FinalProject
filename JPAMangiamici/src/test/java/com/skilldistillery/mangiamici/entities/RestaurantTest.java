@@ -12,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class PostTest {
+class RestaurantTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Post post;	
+	private Restaurant post;	
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -30,7 +30,7 @@ class PostTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		post = em.find(Post.class, 1);
+		post = em.find(Restaurant.class, 1);
 	}
 	@AfterEach
 	void tearDown() throws Exception {
@@ -41,7 +41,7 @@ class PostTest {
 	@Test
 	void test() {
 		assertNotNull(post);
-		assertEquals(1, post.getId());
+		assertEquals("123-456-7890", post.getPhone());
 	
 	}
 
