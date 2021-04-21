@@ -26,9 +26,9 @@ public class Review {
 //	private int userId;
 //
 //	// FIXME check corresponding UserBadge entity/table or if Even Needed
-//	@ManyToOne()
-//	@JoinColumn(name = "restaurant_id")
-//	private int restaurantId;
+	@ManyToOne()
+	@JoinColumn(name = "restaurant_id")
+	private Restaurant restaurant;
 //	
 //	@Column(name="review_text")
 //	private String reviewText;

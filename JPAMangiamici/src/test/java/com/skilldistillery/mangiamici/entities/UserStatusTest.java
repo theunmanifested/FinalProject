@@ -12,16 +12,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class PostTest {
+class UserStatusTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Post post;	
+	private UserStatus user;	
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("MangiamiciPU");
 	}
+	
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		emf.close();
@@ -30,19 +31,20 @@ class PostTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		post = em.find(Post.class, 1);
+		user = em.find(UserStatus.class, 1);
 	}
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		post = null;
+		user = null;
 	}
 
 	@Test
 	void test() {
-		assertNotNull(post);
-		assertEquals(1, post.getId());
-	
+		assertNotNull(user);
+		assertEquals(1, user.getId());
+		assertEquals("hungry", user.getName());
 	}
 
 }
