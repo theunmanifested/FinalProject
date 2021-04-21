@@ -32,7 +32,7 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		user = em.find(User.class, 4);
 	}
 	
 	@AfterEach
@@ -44,8 +44,27 @@ class UserTest {
 	@Test
 	void test() {
 		assertNotNull(user);
-		assertEquals(1, user.getId());
-		assertEquals("admin", user.getUsername());
+		assertEquals(4, user.getId());
+		assertEquals("pizzathehut", user.getUsername());
 	}
+	
+	@Test
+	void testGettingPostTextStartingInUserEntity() {
+		assertNotNull(user);
+		assertEquals("Anybody down for a late night meal at BokBoks? "
+				+ "I heard good things", user.getPosts().get(0).getPostText());
+	}
+		
+		@Test
+		void testGettingRoleOfUserEntity() {
+			assertNotNull(user);
+			assertEquals("standard", user.getRole());
+	}
+		
+		@Test
+		void testGettingStatusOfUserEntity() {
+			assertNotNull(user);
+			assertEquals(1, user.getStatusId());
+		}
 
 }

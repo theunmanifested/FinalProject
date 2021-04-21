@@ -1,12 +1,16 @@
 package com.skilldistillery.mangiamici.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -46,10 +50,31 @@ public class User {
 	@Column(name="about_me")
 	private String aboutMe;
 	
+	@Column(name="user_status_id")
+	private int statusId;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="user")
+	private List<Post> posts;
 
 	public User() {
 		super();
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	public int getId() {
@@ -59,6 +84,14 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public int getStatusId() {
+		return statusId;
+	}
+
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
+	}
 
 	public String getUsername() {
 		return username;
@@ -67,8 +100,6 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	
 
 	public String getPassword() {
 		return password;
