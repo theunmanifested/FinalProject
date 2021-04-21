@@ -7,21 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 @Entity
 public class Friend {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@ManyToOne
+	@JoinColumn(name="restaurant_id")
+	@MapsId(value="restaurantId")
+	private User otherUser;
 	
-	// FIXME check corresponding User entity/table or if Even Needed
-	@Column(name="other_user_id")
-	private int otherUserId;
-	
-	// FIXME check corresponding User entity/table or if Even Needed
-	@Column(name="user_id")
-	private int UserId;
+	@ManyToOne
+	@JoinColumn(name="restaurant_id")
+	@MapsId(value="restaurantId")
+	private User user;
 	
 	@Column(name = "date_requested")
     private LocalDateTime dateRequested;
@@ -29,40 +30,9 @@ public class Friend {
     @Column(name = "date_approved")
     private LocalDateTime dateApproved;
 
-    
     // no-arg Constructor
 	public Friend() {
 		super();
-	}
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	public int getOtherUserId() {
-		return otherUserId;
-	}
-
-
-	public void setOtherUserId(int otherUserId) {
-		this.otherUserId = otherUserId;
-	}
-
-
-	public int getUserId() {
-		return UserId;
-	}
-
-
-	public void setUserId(int userId) {
-		UserId = userId;
 	}
 
 
@@ -84,10 +54,5 @@ public class Friend {
 	public void setDateApproved(LocalDateTime dateApproved) {
 		this.dateApproved = dateApproved;
 	}
-	
-	
     
-    
-    
-	
 }

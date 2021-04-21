@@ -98,12 +98,12 @@ public class Post {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "Post [id=" + id + ", user=" + user + ", updatedDate=" + updatedDate + ", eventDate=" + eventDate
-				+ ", postText=" + postText + "]";
-	}
+//
+//	@Override
+//	public String toString() {
+//		return "Post [id=" + id + ", user=" + user + ", updatedDate=" + updatedDate + ", eventDate=" + eventDate
+//				+ ", postText=" + postText + "]";
+//	}
     
 //    @ManyToOne
 //	@JoinColumn(name="restaurant_id")
