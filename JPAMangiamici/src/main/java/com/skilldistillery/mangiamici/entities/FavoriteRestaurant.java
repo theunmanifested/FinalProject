@@ -19,12 +19,13 @@ public class FavoriteRestaurant {
 	@EmbeddedId
 	private UserRestaurantId id;
 	
-	
+	// FIXME Verify. New use of composite key entity mappings
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	@MapsId(value="userId")
 	private User user;
 	
+	// FIXME Verify. New use of composite key entity mappings
 	@ManyToOne
 	@JoinColumn(name="restaurant_id")
 	@MapsId(value="restaurantId")
@@ -35,6 +36,58 @@ public class FavoriteRestaurant {
     private LocalDateTime createdDate;
 	
 	private String notes;
+
+	
+	// no-arg Constructor
+	public FavoriteRestaurant() {
+		super();
+	}
+
+	public UserRestaurantId getId() {
+		return id;
+	}
+
+	public void setId(UserRestaurantId id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	@Override
+	public String toString() {
+		return "FavoriteRestaurant [id=" + id + ", user=" + user + ", restaurant=" + restaurant + ", createdDate="
+				+ createdDate + ", notes=" + notes + "]";
+	}
 	
 	
 }
