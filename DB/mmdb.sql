@@ -353,6 +353,26 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- Data for table `badge`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `badge` (`id`, `name`, `description`, `img_url`) VALUES (1, 'Future Foodie', 'post your first review and get one like', 'https://cdn4.vectorstock.com/i/thumb-large/51/33/bronze-medal-with-red-ribbon-vector-23835133.jpg');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `location`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (1, 39.7452, 104.9922, '1550 Blake St', 'Denver', 'CO', '80202', '17203796567', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `user_status`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -374,8 +394,89 @@ USE `mmdb`;
 INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (1, NULL, 'admin', 'admin', 1, 'admin', 'Jane', 'Doe', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
 INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (2, NULL, 'moderator', 'moderator', 1, 'moderator', 'John', 'Smith', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
 INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (3, NULL, 'bokbok', 'bokbok', 1, 'restaurant-owner', 'Elizabeth', 'Hurley', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
-INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (4, NULL, 'pizzathehut', 'pizzathehut', 1, 'standard', 'Elon', 'Musk', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
-INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (5, NULL, 'foodtruckfinder', 'foodtruckfinder', 1, 'standard', 'Kate', 'McKinnon', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (4, NULL, 'pizzathehut', 'pizzathehut', 1, 'standard', 'Elon', 'Musk', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', true, 'Describe yourself here!', '2021-04-01 00:00:00', 1);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (5, NULL, 'foodtruckfinder', 'foodtruckfinder', 1, 'standard', 'Kate', 'McKinnon', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', true, 'Describe yourself here!', '2021-04-01 00:00:00', 5);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `restaurant`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `restaurant` (`id`, `user_id`, `location_id`, `phone`, `email`, `website_url`, `enabled`, `categories`, `img_url`, `name`, `description`, `menu_url`, `military_discount`, `firstresponder_discount`, `senior_discount`) VALUES (1, 3, 1, '123-456-7890', 'feedback@bokbok.com', 'bokbok.com', 1, 'fried chicken, comfort food', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9hwMNAkYk8d5LfcVe-uSI0gG5sbMwGAzm5g&usqp=CAU', 'Bok Bok Korean Fried Chicken', 'Real Korean fried chicken, real good!', 'https://www.seamless.com/food/bok_bok_chicken/menu', true, true, true);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `favorite_restaurant`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `favorite_restaurant` (`user_id`, `restaurant_id`, `created_date`, `notes`) VALUES (5, 1, '2021-04-01 00:00:00', 'Ate here with the squad and everyone loved it...best fried chicken spot so far.');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `friend`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `friend` (`other_user_id`, `user_id`, `approved`, `date_requested`, `date_approved`) VALUES (5, 4, true, '2021-04-01 00:00:00', '2021-04-01 00:00:00');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `post`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`) VALUES (1, 4, '2021-04-01 00:00:00', '2021-04-01 00:00:00', '2021-04-05 22:00:00', 'Anybody down for a late night meal at BokBoks? I heard good things', 1);
+INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`) VALUES (2, 5, '2021-04-01 00:00:00', '2021-04-01 00:00:00', NULL, 'Im craving Korean fried chicken...you guys know the place, hit me up...', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `review`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `review` (`id`, `user_id`, `restaurant_id`, `review_text`, `rating`, `enabled`, `created_date`, `updated_date`, `is_public`) VALUES (1, 5, 1, 'Best fried chicken I\'ve found in Denver so far...and its Korean style! Try the spicy, it\'s worth it.', 5, true, '2021-04-01 00:00:00', '2021-04-01 00:00:00', false);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `review_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `review_comment` (`id`, `review_id`, `user_id`, `comment_text`, `created_date`, `updated_date`, `enabled`, `is_public`) VALUES (1, 1, 4, 'Heck yeah, I\'m headed there this weekend...thanks!', '2021-04-01 00:00:00', '2021-04-01 00:00:00', 1, false);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `review_like`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `review_like` (`id`, `user_id`, `review_id`, `liked`, `enabled`) VALUES (1, 4, 1, true, true);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `user_badge`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `user_badge` (`id`, `user_id`, `badge_id`, `date_received`) VALUES (1, 5, 1, '2021-04-01 00:00:00');
 
 COMMIT;
 
