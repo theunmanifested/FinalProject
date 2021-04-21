@@ -1,23 +1,16 @@
 package com.skilldistillery.mangiamici.controllers;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.mangiamici.services.UserService;
+import com.skilldistillery.mangiamici.services.ReviewCommentService;
 
 @CrossOrigin({ "*", "http://localhost:4290" })
 @RequestMapping("api")
 @RestController
-public class UserController {
+public class ReviewCommentController {
 
-	private UserService	userSvc;
-		
-	@GetMapping("ping")
-	public String ping() {
-		return "pong";
-	}
-	
+	private ReviewCommentService reviewCommentSvc;
 	
 }
