@@ -9,7 +9,14 @@
     </provider>
 
 		<!-- entities -->
+		<class>com.skilldistillery.mangiamici.entities.Badge</class>
+		<class>com.skilldistillery.mangiamici.entities.Friend</class>
+		<class>com.skilldistillery.mangiamici.entities.Location</class>
+		<class>com.skilldistillery.mangiamici.entities.Restaurant</class>
+		<class>com.skilldistillery.mangiamici.entities.Review</class>
+		<class>com.skilldistillery.mangiamici.entities.ReviewLike</class>
 		<class>com.skilldistillery.mangiamici.entities.User</class>
+		<class>com.skilldistillery.mangiamici.entities.UserBadge</class>
 
 		<!-- entities -->
 
