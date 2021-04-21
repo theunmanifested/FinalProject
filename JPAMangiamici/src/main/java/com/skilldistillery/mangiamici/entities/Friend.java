@@ -3,25 +3,26 @@ package com.skilldistillery.mangiamici.entities;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
 @Entity
 public class Friend {
-
+	
+	@EmbeddedId
+	private FriendId id;
+	
 	@ManyToOne
-	@JoinColumn(name="restaurant_id")
-	@MapsId(value="restaurantId")
+	@JoinColumn(name="other_user_id")
+	@MapsId(value="otherUserId")
 	private User otherUser;
 	
 	@ManyToOne
-	@JoinColumn(name="restaurant_id")
-	@MapsId(value="restaurantId")
+	@JoinColumn(name="user_id")
+	@MapsId(value="userId")
 	private User user;
 	
 	@Column(name = "date_requested")
@@ -33,6 +34,36 @@ public class Friend {
     // no-arg Constructor
 	public Friend() {
 		super();
+	}
+
+
+	public FriendId getId() {
+		return id;
+	}
+
+
+	public void setId(FriendId id) {
+		this.id = id;
+	}
+
+
+	public User getOtherUser() {
+		return otherUser;
+	}
+
+
+	public void setOtherUser(User otherUser) {
+		this.otherUser = otherUser;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 

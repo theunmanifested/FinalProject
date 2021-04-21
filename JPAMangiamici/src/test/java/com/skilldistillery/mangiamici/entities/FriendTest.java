@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class Friend {
+class FriendTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
@@ -30,7 +30,8 @@ class Friend {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		post = em.createQuery("select f from Friend f where f.otherUserId.id = 5 and f.UserId.id = 4", Friend.class).getSingleResult();
+//		post = em.createQuery("select f from Friend f where f.otherUserId.id = 5 and f.UserId.id = 4", Friend.class).getSingleResult();
+		post = em.find(Friend.class, new FriendId(4,5));
 	}
 	@AfterEach
 	void tearDown() throws Exception {
