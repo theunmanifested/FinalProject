@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `first_name` VARCHAR(100) NULL DEFAULT NULL,
   `last_name` VARCHAR(100) NULL DEFAULT NULL,
   `created_date` DATETIME NULL DEFAULT NULL,
-  `img_url` VARCHAR(5000) NULL DEFAULT NULL,
+  `img_url` VARCHAR(5000) NULL DEFAULT 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png',
   `promo_opt` TINYINT(4) NULL DEFAULT NULL,
   `about_me` TEXT NULL DEFAULT NULL,
   `updated_date` DATETIME NULL DEFAULT NULL,
@@ -362,6 +362,20 @@ INSERT INTO `user_status` (`id`, `name`) VALUES (2, 'stuffed');
 INSERT INTO `user_status` (`id`, `name`) VALUES (3, 'looking for something quick');
 INSERT INTO `user_status` (`id`, `name`) VALUES (4, 'in the mood for fine dining');
 INSERT INTO `user_status` (`id`, `name`) VALUES (5, 'hunting for something new');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mmdb`;
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (1, NULL, 'admin', 'admin', 1, 'admin', 'Jane', 'Doe', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (2, NULL, 'moderator', 'moderator', 1, 'moderator', 'John', 'Smith', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (3, NULL, 'bokbok', 'bokbok', 1, 'restaurant-owner', 'Elizabeth', 'Hurley', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (4, NULL, 'pizzathehut', 'pizzathehut', 1, 'standard', 'Elon', 'Musk', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (5, NULL, 'foodtruckfinder', 'foodtruckfinder', 1, 'standard', 'Kate', 'McKinnon', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
 
 COMMIT;
 
