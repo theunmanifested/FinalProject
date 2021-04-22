@@ -8,5 +8,7 @@ import com.skilldistillery.mangiamici.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	public User findByUsername(String username);
+	
 	public List<User> findByEnabledTrue();
+	
 }
