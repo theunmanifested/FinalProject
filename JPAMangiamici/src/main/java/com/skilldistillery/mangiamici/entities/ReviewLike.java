@@ -26,7 +26,7 @@ public class ReviewLike {
 //	
 	private boolean liked;
 	
-	private boolean enabled;
+	private Boolean enabled = true;
 
 	public int getId() {
 		return id;

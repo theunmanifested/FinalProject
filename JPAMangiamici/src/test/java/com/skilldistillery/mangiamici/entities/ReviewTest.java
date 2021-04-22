@@ -44,5 +44,9 @@ class ReviewTest {
 		assertNotNull(post);
 		assertEquals("Best fried chicken I've found in Denver so far...and its Korean style! Try the spicy, it's worth it.", post.getReviewText());
 		assertEquals("fried chicken, comfort food", post.getRestaurant().getCategories());
+		
+		Review post2 = em.find(Review.class, 2);
+		assertNotNull(post2.getUser());
+		assertEquals("Kobe", post2.getUser().getUsername());
 	}
 }

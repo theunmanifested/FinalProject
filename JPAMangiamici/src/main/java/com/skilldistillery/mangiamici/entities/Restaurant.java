@@ -20,17 +20,14 @@ public class Restaurant {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	// FIXME TEST and Verify corresponding User entity/table
 	@OneToOne
 	@JoinColumn(name="user_id")
 	private User user;
-	
-	// FIXME TEST and Verify corresponding Location entity/table	
+		
 	@OneToOne
 	@JoinColumn(name="location_id")
 	private Location location;
 	
-	// FIXME TEST and Verify corresponding Review entity/table
 	@JsonIgnore
 	@OneToMany(mappedBy="restaurant")
 	private List<Review> reviews;
@@ -42,7 +39,7 @@ public class Restaurant {
 	@Column(name="website_url")
 	private String websiteUrl;
 	
-	private boolean enabled;
+	private Boolean enabled = true;
 	
 	private String categories;
 	
@@ -61,7 +58,6 @@ public class Restaurant {
 	private List<FavoriteRestaurant> favoriteRestaurants; 
 
 	// no-arg Constructor
-	
 	public Restaurant() {
 		super();
 	}
@@ -122,11 +118,11 @@ public class Restaurant {
 		this.favoriteRestaurants = favoriteRestaurants;
 	}
 
-	public boolean isEnabled() {
+	public Boolean isEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(boolean enabled) {
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 
