@@ -23,8 +23,6 @@ public class Post {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-
-	
     @Column(name = "updated_date")
     @UpdateTimestamp
     private LocalDateTime updatedDate;
@@ -79,6 +77,14 @@ public class Post {
 		this.postText = postText;
 	}
 
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,6 +107,12 @@ public class Post {
 		return true;
 	}
 
-    
-    
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", user=" + user + ", updatedDate=" + updatedDate + ", eventDate=" + eventDate
+				+ ", postText=" + postText + ", restaurant=" + restaurant + "]";
+	}
+	
+	
+
 }
