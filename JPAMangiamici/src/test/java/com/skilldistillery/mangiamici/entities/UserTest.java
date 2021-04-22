@@ -64,7 +64,7 @@ class UserTest {
 		@Test
 		void testGettingStatusOfUserEntity() {
 			assertNotNull(user);
-			assertEquals(1, user.getStatusId());
+			assertEquals(1, user.getUserStatus().getId());
 		}
 
 }

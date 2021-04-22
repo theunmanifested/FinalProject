@@ -18,4 +18,5 @@ public class PostServiceImpl implements PostService {
 	public List<Post> index() {
 		return postRepo.findAll();
 	}
+
 }

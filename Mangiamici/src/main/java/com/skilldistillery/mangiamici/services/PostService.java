@@ -7,4 +7,5 @@ import com.skilldistillery.mangiamici.entities.Post;
 public interface PostService {
 
 	List<Post> index();
+	
 }

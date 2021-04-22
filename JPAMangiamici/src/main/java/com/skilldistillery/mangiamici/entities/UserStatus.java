@@ -22,13 +22,24 @@ public class UserStatus {
 	private String name;
 
 	// FIXME possible need or not of a list of users here.
-//	@JsonIgnore
-//	@OneToMany(mappedBy="")
-//	private List<User> users;
+	@JsonIgnore
+	@OneToMany(mappedBy = "userStatus")
+	private List<User> users;
 	
 	public UserStatus() {
 		super();
 	}
+	
+	//maybe not needed
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -51,6 +62,4 @@ public class UserStatus {
 		return "UserStatus [id=" + id + ", name=" + name + "]";
 	}
 	
-
-		
 }
