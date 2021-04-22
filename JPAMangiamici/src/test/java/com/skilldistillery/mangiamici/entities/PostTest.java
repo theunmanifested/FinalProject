@@ -42,6 +42,7 @@ class PostTest {
 	void test() {
 		assertNotNull(post);
 		assertEquals(1, post.getId());
+		assertEquals("Real Korean fried chicken, real good!", post.getRestaurant().getDescription());
 	
 	}
 

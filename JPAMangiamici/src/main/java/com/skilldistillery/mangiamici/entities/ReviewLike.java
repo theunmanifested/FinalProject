@@ -16,85 +16,82 @@ public class ReviewLike {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-//	// FIXME check corresponding User entity/table or if Even Needed
-//	@ManyToOne()
-//	@JoinColumn(name = "user_id")
-//	private int userId;
-//
-//	// FIXME check corresponding UserBadge entity/table or if Even Needed
-//	@ManyToOne()
-//	@JoinColumn(name = "review_id")
-//	private int reviewId;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@ManyToOne
+	@JoinColumn(name = "review_id")
+	private Review review;
 //	
-//	private boolean liked;
-//	
-//	private boolean enabled;
-//
-//	
-//	// no-arg Constructors
-//	public ReviewLike() {
-//		super();
-//	}
-//
-//
-//	public int getId() {
-//		return id;
-//	}
-//
-//
-//	public void setId(int id) {
-//		this.id = id;
-//	}
-//
-//
-//	public int getUserId() {
-//		return userId;
-//	}
-//
-//
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
-//
-//
-//	public int getReviewId() {
-//		return reviewId;
-//	}
-//
-//
-//	public void setReviewId(int reviewId) {
-//		this.reviewId = reviewId;
-//	}
-//
-//
-//	public boolean isLiked() {
-//		return liked;
-//	}
-//
-//
-//	public void setLiked(boolean liked) {
-//		this.liked = liked;
-//	}
-//
-//
-//	public boolean isEnabled() {
-//		return enabled;
-//	}
-//
-//
-//	public void setEnabled(boolean enabled) {
-//		this.enabled = enabled;
-//	}
-//
-//
-//	@Override
-//	public String toString() {
-//		return "ReviewLike [id=" + id + ", userId=" + userId + ", reviewId=" + reviewId + ", liked=" + liked
-//				+ ", enabled=" + enabled + "]";
-//	}
-//	
-//	
-//	
-//	
+	private boolean liked;
+	
+	private boolean enabled;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public boolean isLiked() {
+		return liked;
+	}
+
+	public void setLiked(boolean liked) {
+		this.liked = liked;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+
+	public Review getReview() {
+		return review;
+	}
+
+	public void setReview(Review review) {
+		this.review = review;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ReviewLike other = (ReviewLike) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
+	
+
 	
 }
