@@ -1,5 +1,11 @@
 package com.skilldistillery.mangiamici.services;
 
-public interface UserService {
+import java.util.List;
 
+import com.skilldistillery.mangiamici.entities.User;
+
+public interface UserService {
+	
+	List<User> index();
+	
 }
