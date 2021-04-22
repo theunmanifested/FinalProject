@@ -38,8 +38,6 @@ public class UserStatus {
 		this.users = users;
 	}
 
-
-
 	public int getId() {
 		return id;
 	}

@@ -2,6 +2,7 @@ package com.skilldistillery.mangiamici.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
@@ -46,9 +48,9 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals(4, user.getId());
 		assertEquals("pizzathehut", user.getUsername());
-		
+		assertTrue(user.getReviewComments().size() > 0);
 	}
-  
+
 	@Test
 	void testGettingPostTextStartingInUserEntity() {
 		assertNotNull(user);
@@ -61,11 +63,20 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("standard", user.getRole());
 	}
-		
-		@Test
-		void testGettingStatusOfUserEntity() {
-			assertNotNull(user);
-			assertEquals(1, user.getUserStatus().getId());
-		}
+
+	@Test
+	void testGettingStatusOfUserEntity() {
+		assertNotNull(user);
+		assertEquals(1, user.getUserStatus().getId());
+	}
+	
+	@Test
+	@DisplayName("User badge mapping")
+	void testX() {
+		User user2 = em.find(User.class, 5);
+		assertNotNull(user2);
+		assertEquals("McKinnon", user2.getLastName());
+//		assertTrue(user.getUserBadges().size() > 0);
+	}
 
 }
