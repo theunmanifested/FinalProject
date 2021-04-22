@@ -18,4 +18,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List<Restaurant> index() {		
 		return restaurantRepo.findAll();
 	}
+
+	@Override
+	public Restaurant show(String name) {
+		// TODO Auto-generated method stub
+		return restaurantRepo.findByName(name);
+	}
 }

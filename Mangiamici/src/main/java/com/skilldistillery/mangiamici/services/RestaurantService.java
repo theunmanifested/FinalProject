@@ -7,4 +7,6 @@ import com.skilldistillery.mangiamici.entities.Restaurant;
 public interface RestaurantService {
 
 	List<Restaurant> index();
+	
+	Restaurant show(String name);
 }

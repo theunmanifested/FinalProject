@@ -8,5 +8,5 @@ import com.skilldistillery.mangiamici.entities.Restaurant;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
 
-//	List<Restaurant> findByName(String name);
+	Restaurant findByName(String name);
 }

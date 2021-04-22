@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Restaurant {
 	
@@ -29,6 +31,7 @@ public class Restaurant {
 	private Location location;
 	
 	// FIXME TEST and Verify corresponding Review entity/table
+	@JsonIgnore
 	@OneToMany(mappedBy="restaurant")
 	private List<Review> reviews;
 	
@@ -53,6 +56,7 @@ public class Restaurant {
 	@Column(name="menu_url")
 	private String menuUrl;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="restaurant")
 	private List<FavoriteRestaurant> favoriteRestaurants; 
 
