@@ -1,0 +1,14 @@
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.margtop15 {
+  margin-top: 15px;
+}
+
+.addwidth {
+  width: 50%;
+  min-width: 140px;
+  max-width: 300px;
+}
