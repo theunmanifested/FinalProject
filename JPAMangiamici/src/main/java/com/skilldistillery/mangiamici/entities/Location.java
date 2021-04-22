@@ -14,6 +14,10 @@ public class Location {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	// FIXME check corresponding User entity/table or if Even Needed
+//	@OneToOne/@JoinColumn(name=location_id)
+	@OneToOne(mappedBy = "location")
+	private User user;
 
 	private String address;
 
@@ -45,13 +49,13 @@ public class Location {
 		this.id = id;
 	}
 
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public String getAddress() {
 		return address;
@@ -117,11 +121,13 @@ public class Location {
 		this.isPublic = isPublic;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Location [id=" + id + ", user=" + user + ", address=" + address + ", city=" + city + ", state=" + state
-//				+ ", zip=" + zip + ", latitude=" + latitude + ", longitude=" + longitude + ", phone=" + phone
-//				+ ", isPublic=" + isPublic + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Location [id=" + id + ", user=" + user + ", address=" + address + ", city=" + city + ", state=" + state
+				+ ", zip=" + zip + ", latitude=" + latitude + ", longitude=" + longitude + ", phone=" + phone
+				+ ", isPublic=" + isPublic + "]";
+	}
+
+
 
 }
