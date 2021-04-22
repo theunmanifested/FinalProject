@@ -19,11 +19,11 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-//	@ManyToOne
-//	@JoinColumn(name="user_id")
-//	private User user;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
-//
+
 	
 //    @Column(name = "updated_date")
 //    @UpdateTimestamp

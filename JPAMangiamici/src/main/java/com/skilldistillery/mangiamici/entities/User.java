@@ -8,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,10 +21,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+//	
 	private String username;
 	
-//	private Location location
+	@OneToOne
+	private Location location;
 	
 	private String password;
 	
@@ -50,8 +54,9 @@ public class User {
 	@Column(name="about_me")
 	private String aboutMe;
 	
-	@Column(name="user_status_id")
-	private int statusId;
+//	@ManyToOne
+//	@JoinColumn(name="user_status")
+//	private UserStatus userStatus;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="user")
@@ -61,117 +66,173 @@ public class User {
 		super();
 	}
 	
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
-
 	public int getId() {
 		return id;
 	}
 
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public int getStatusId() {
-		return statusId;
-	}
 
-	public void setStatusId(int statusId) {
-		this.statusId = statusId;
-	}
+
 
 	public String getUsername() {
 		return username;
 	}
 
+
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+
+
+	public Location getLocation() {
+		return location;
+	}
+
+
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+
 
 	public String getPassword() {
 		return password;
 	}
 
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
 
 	public Boolean getEnabled() {
 		return enabled;
 	}
 
+
+
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
+
+
 
 	public String getRole() {
 		return role;
 	}
 
+
+
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
 
 	public String getLastName() {
 		return lastName;
 	}
 
+
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+
 
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
 
+
+
 	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
+
+
 
 	public LocalDateTime getUpdatedDate() {
 		return updatedDate;
 	}
 
+
+
 	public void setUpdatedDate(LocalDateTime updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+
+
 
 	public String getImgUrl() {
 		return imgUrl;
 	}
 
+
+
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
+
+
 
 	public Boolean getPromoOpt() {
 		return promoOpt;
 	}
 
+
+
 	public void setPromoOpt(Boolean promoOpt) {
 		this.promoOpt = promoOpt;
 	}
+
+
 
 	public String getAboutMe() {
 		return aboutMe;
 	}
 
+
+
 	public void setAboutMe(String aboutMe) {
 		this.aboutMe = aboutMe;
 	}
+
+
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -194,14 +255,5 @@ public class User {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("User [id=").append(id).append(", username=").append(username).append("]");
-		return builder.toString();
-	}
-	
-	
 
 }
