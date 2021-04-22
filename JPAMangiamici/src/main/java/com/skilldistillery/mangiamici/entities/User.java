@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,7 +22,8 @@ public class User {
 	
 	private String username;
 	
-//	private Location location
+	@OneToOne
+	private Location location;
 	
 	private String password;
 	
@@ -51,7 +53,7 @@ public class User {
 	private String aboutMe;
 	
 	@Column(name="user_status_id")
-	private int statusId;
+	private Integer statusId;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="user")

@@ -19,25 +19,25 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-//	@ManyToOne
-//	@JoinColumn(name="user_id")
-//	private User user;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
-//
-	
-//    @Column(name = "updated_date")
-//    @UpdateTimestamp
-//    private LocalDateTime updatedDate;
-//    
-//    @Column(name="event_date")
-//    private LocalDateTime eventDate;
-//    
-//    @Column(name="post_text")
-//    private String postText;
 
-//    @ManyToOne
-//	@JoinColumn(name="restaurant_id")
-//    private Restaurant restaurant;
+	
+    @Column(name = "updated_date")
+    @UpdateTimestamp
+    private LocalDateTime updatedDate;
+    
+    @Column(name="event_date")
+    private LocalDateTime eventDate;
+    
+    @Column(name="post_text")
+    private String postText;
+
+    @ManyToOne
+	@JoinColumn(name="restaurant_id")
+    private Restaurant restaurant;
     
 	public int getId() {
 		return id;
@@ -47,37 +47,37 @@ public class Post {
 		this.id = id;
 	}
 
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
+	public User getUser() {
+		return user;
+	}
 
-//	public LocalDateTime getUpdatedDate() {
-//		return updatedDate;
-//	}
-//
-//	public void setUpdatedDate(LocalDateTime updatedDate) {
-//		this.updatedDate = updatedDate;
-//	}
-//
-//	public LocalDateTime getEventDate() {
-//		return eventDate;
-//	}
-//
-//	public void setEventDate(LocalDateTime eventDate) {
-//		this.eventDate = eventDate;
-//	}
-//
-//	public String getPostText() {
-//		return postText;
-//	}
-//
-//	public void setPostText(String postText) {
-//		this.postText = postText;
-//	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public LocalDateTime getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(LocalDateTime updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public LocalDateTime getEventDate() {
+		return eventDate;
+	}
+
+	public void setEventDate(LocalDateTime eventDate) {
+		this.eventDate = eventDate;
+	}
+
+	public String getPostText() {
+		return postText;
+	}
+
+	public void setPostText(String postText) {
+		this.postText = postText;
+	}
 
 	@Override
 	public int hashCode() {

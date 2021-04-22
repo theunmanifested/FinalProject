@@ -48,12 +48,12 @@ class UserTest {
 		assertEquals("pizzathehut", user.getUsername());
 	}
 	
-	@Test
-	void testGettingPostTextStartingInUserEntity() {
-		assertNotNull(user);
-		assertEquals("Anybody down for a late night meal at BokBoks? "
-				+ "I heard good things", user.getPosts().get(0).getPostText());
-	}
+//	@Test
+//	void testGettingPostTextStartingInUserEntity() {
+//		assertNotNull(user);
+//		assertEquals("Anybody down for a late night meal at BokBoks? "
+//				+ "I heard good things", user.getPosts().get(0).getPostText());
+//	}
 		
 		@Test
 		void testGettingRoleOfUserEntity() {
