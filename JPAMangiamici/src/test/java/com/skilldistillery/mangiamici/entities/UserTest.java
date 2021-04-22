@@ -48,7 +48,7 @@ class UserTest {
 		assertEquals("pizzathehut", user.getUsername());
 		
 	}
-
+  
 	@Test
 	void testGettingPostTextStartingInUserEntity() {
 		assertNotNull(user);
@@ -61,11 +61,11 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("standard", user.getRole());
 	}
-
-//		@Test
-//		void testGettingStatusOfUserEntity() {
-//			assertNotNull(user);
-//			assertEquals(1, user.getStatusId());
-//		}
+		
+		@Test
+		void testGettingStatusOfUserEntity() {
+			assertNotNull(user);
+			assertEquals(1, user.getUserStatus().getId());
+		}
 
 }
