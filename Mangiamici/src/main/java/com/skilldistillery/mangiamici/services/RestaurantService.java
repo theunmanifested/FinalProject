@@ -8,5 +8,13 @@ public interface RestaurantService {
 
 	List<Restaurant> index();
 	
-	Restaurant show(String name);
+	Restaurant showByName(String name);
+	
+	List<Restaurant> showByCat(String cat);
+	
+	Restaurant create(String username, Restaurant restaurant);
+	
+	Restaurant update(String username, int restaurantId, Restaurant restaurant);
+	
+	boolean destroy(String username, int restaurantId);
 }

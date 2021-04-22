@@ -9,4 +9,10 @@ import com.skilldistillery.mangiamici.entities.Restaurant;
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
 
 	Restaurant findByName(String name);
+	
+	List<Restaurant> findByCategoriesContainingIgnoreCase(String cat);
+	
+	Restaurant findByUser_UsernameAndId(String username, Integer restaurantId);
+	
+	
 }

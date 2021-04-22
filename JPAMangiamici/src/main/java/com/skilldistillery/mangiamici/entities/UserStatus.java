@@ -21,7 +21,6 @@ public class UserStatus {
 	
 	private String name;
 
-	// FIXME possible need or not of a list of users here.
 	@JsonIgnore
 	@OneToMany(mappedBy = "userStatus")
 	private List<User> users;
