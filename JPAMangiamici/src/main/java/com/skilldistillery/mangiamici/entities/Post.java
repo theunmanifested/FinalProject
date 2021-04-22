@@ -76,7 +76,7 @@ public class Post {
 	public void setPostText(String postText) {
 		this.postText = postText;
 	}
-	
+
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
@@ -106,5 +106,13 @@ public class Post {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", user=" + user + ", updatedDate=" + updatedDate + ", eventDate=" + eventDate
+				+ ", postText=" + postText + ", restaurant=" + restaurant + "]";
+	}
+	
+	
 
 }
