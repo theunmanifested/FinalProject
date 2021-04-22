@@ -54,9 +54,9 @@ public class User {
 	@Column(name="about_me")
 	private String aboutMe;
 	
-//	@ManyToOne
-//	@JoinColumn(name="user_status")
-//	private UserStatus userStatus;
+	@ManyToOne
+	@JoinColumn(name="user_status_id")
+	private UserStatus userStatus;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="user")
@@ -70,7 +70,15 @@ public class User {
 		return id;
 	}
 
+	
 
+	public UserStatus getUserStatus() {
+		return userStatus;
+	}
+
+	public void setUserStatus(UserStatus userStatus) {
+		this.userStatus = userStatus;
+	}
 
 	public void setId(int id) {
 		this.id = id;

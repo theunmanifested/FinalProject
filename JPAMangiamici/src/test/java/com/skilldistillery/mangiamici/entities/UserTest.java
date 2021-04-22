@@ -61,10 +61,10 @@ class UserTest {
 			assertEquals("standard", user.getRole());
 	}
 		
-//		@Test
-//		void testGettingStatusOfUserEntity() {
-//			assertNotNull(user);
-//			assertEquals(1, user.getStatusId());
-//		}
+		@Test
+		void testGettingStatusOfUserEntity() {
+			assertNotNull(user);
+			assertEquals(1, user.getUserStatus().getId());
+		}
 
 }
