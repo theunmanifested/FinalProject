@@ -31,7 +31,7 @@ public class Review {
 	@Column(name="review_text")
 	private String reviewText;
 	
-	private Boolean enabled;
+	private Boolean enabled = true;
 	
 	@Column(name = "created_date")
     @CreationTimestamp
@@ -42,7 +42,7 @@ public class Review {
     private LocalDateTime updatedDate;
     
     @Column(name="is_public")
-    private Boolean isPublic;
+    private Boolean isPublic = true;
 
     
     // no-arg Constructor

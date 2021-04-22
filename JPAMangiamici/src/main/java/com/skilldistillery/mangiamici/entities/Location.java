@@ -27,14 +27,14 @@ public class Location {
 
 	private String zip;
 
-	private double latitude;
+	private Double latitude;
 
-	private double longitude;
+	private Double longitude;
 
 	private String phone;
 
 	@Column(name = "is_public")
-	private boolean isPublic;
+	private Boolean isPublic = true; 
 
 	// no-arg Constructor
 	public Location() {

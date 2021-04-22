@@ -44,10 +44,10 @@ public class ReviewComment {
     @UpdateTimestamp
     private LocalDateTime updatedDate;
     
-    private boolean enabled;
+    private Boolean enabled = true;
     
     @Column(name="is_public")
-    private boolean isPublic;
+    private Boolean isPublic = true;
 
 	public ReviewComment() {
 		super();

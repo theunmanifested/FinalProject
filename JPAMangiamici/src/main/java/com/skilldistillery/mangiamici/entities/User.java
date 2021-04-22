@@ -29,7 +29,7 @@ public class User {
 
 	private String password;
 
-	private Boolean enabled;
+	private Boolean enabled = true;
 
 	private String role;
 
@@ -49,7 +49,7 @@ public class User {
 	private String imgUrl;
 
 	@Column(name = "promo_opt")
-	private Boolean promoOpt;
+	private Boolean promoOpt = true;
 
 	@Column(name = "about_me")
 	private String aboutMe;
