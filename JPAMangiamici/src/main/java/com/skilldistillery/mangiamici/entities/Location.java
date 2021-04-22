@@ -14,10 +14,6 @@ public class Location {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-//	// FIXME check corresponding User entity/table or if Even Needed
-//	// @OneToOne/@JoinColumn(name=location_id)
-//	@OneToOne(mappedBy = "location")
-//	private User user;
 //
 //	private String address;
 //

@@ -23,9 +23,9 @@ public class UserStatus {
 
 	// FIXME possible need or not of a list of users here.
 //	@JsonIgnore
-//	@OneToMany(mappedBy="")
+//	@OneToMany(mappedBy = "userStatus")
 //	private List<User> users;
-	
+//	
 	public UserStatus() {
 		super();
 	}
@@ -51,6 +51,4 @@ public class UserStatus {
 		return "UserStatus [id=" + id + ", name=" + name + "]";
 	}
 	
-
-		
 }
