@@ -1,10 +1,15 @@
 package com.skilldistillery.mangiamici.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="user_status")
@@ -33,8 +38,6 @@ public class UserStatus {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-
-
 
 	public int getId() {
 		return id;
