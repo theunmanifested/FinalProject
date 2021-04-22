@@ -20,12 +20,10 @@ public class Review {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	// FIXME check corresponding UserBadge entity/table or if Even Needed
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
-//	// FIXME check corresponding UserBadge entity/table or if Even Needed
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
@@ -33,7 +31,7 @@ public class Review {
 	@Column(name="review_text")
 	private String reviewText;
 	
-	private boolean enabled;
+	private Boolean enabled;
 	
 	@Column(name = "created_date")
     @CreationTimestamp
@@ -44,7 +42,7 @@ public class Review {
     private LocalDateTime updatedDate;
     
     @Column(name="is_public")
-    private boolean isPublic;
+    private Boolean isPublic;
 
     
     // no-arg Constructor
