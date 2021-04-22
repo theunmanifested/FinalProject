@@ -1,7 +1,6 @@
 package com.skilldistillery.mangiamici.controllers;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -70,5 +71,26 @@ public class RestaurantController {
 		}
 		return restaurant;
 	}
+	
+//  PUT restaurants/{restaurantId}
+	@PutMapping("restaurants/{restaurantId}")
+	public Restaurant update(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int restaurantId, @RequestBody Restaurant restaurant) {
+		restaurant = restaurantSvc.update(principal.getName(), restaurantId, restaurant); 
+		if (restaurant == null) {
+			res.setStatus(400);
+		}
+		return restaurant;
+	}
 
+//  DELETE restaurants/{restaurantId}
+	@DeleteMapping("restaurants/{restaurantId}")
+	public void destroy(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int restaurantId) {
+		if(restaurantSvc.destroy(principal.getName(),restaurantId)) {
+			res.setStatus(204);
+		} else {
+			res.setStatus(404);
+		}
+		
+	}
+	
 }
