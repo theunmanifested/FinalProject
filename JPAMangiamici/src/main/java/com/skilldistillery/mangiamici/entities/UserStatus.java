@@ -25,7 +25,7 @@ public class UserStatus {
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "userStatus")
 //	private List<User> users;
-//	
+	
 	public UserStatus() {
 		super();
 	}
