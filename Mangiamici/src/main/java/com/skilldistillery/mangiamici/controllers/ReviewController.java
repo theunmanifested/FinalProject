@@ -25,6 +25,8 @@ public class ReviewController {
 	
 	@GetMapping("pub/reviews/all")
 	public List<Review> allPublic(HttpServletRequest req, HttpServletResponse res) {
+		
+		System.out.println("XXXXXXXXXXXXX **************************");
 		List<Review> reviews = svc.findAllEnabledAndPublic();
 
 		if (reviews == null) {

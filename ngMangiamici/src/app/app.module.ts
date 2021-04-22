@@ -14,6 +14,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RestaurantDashboardComponent } from './components/restaurant-dashboard/restaurant-dashboard.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderSearchComponent } from './components/header-search/header-search.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +30,13 @@ import { RestaurantDashboardComponent } from './components/restaurant-dashboard/
     UserProfileComponent,
     RestaurantComponent,
     RegisterComponent,
-    RestaurantDashboardComponent
+    RestaurantDashboardComponent,
+    HeaderSearchComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
