@@ -16,7 +16,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 	@Autowired
 	private RestaurantRepository restaurantRepo;
 	
-//	private UserRepository userRepo;
+	private UserRepository userRepo;
 
 	@Override
 	public List<Restaurant> index() {		
@@ -29,18 +29,18 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	// FIXME Needing User Repository/Svc/Impl/Ctllr to have full CRUD ops
-//	@Override
-//	public Restaurant create(String name, Restaurant restaurant) {
-//		User user = userRepo.findByName(name);
-//		restaurant.setUser(user);
-//		restaurant = restaurantRepo.saveAndFlush(restaurant);
-//		return null; // return restaurant;
-//	}
+	@Override
+	public Restaurant create(String username, Restaurant restaurant) {
+		User user = userRepo.findByUsername(username);
+		restaurant.setUser(user);
+		restaurant = restaurantRepo.saveAndFlush(restaurant);
+		return restaurant;
+	}
 
 	@Override
-	public List<Restaurant> showByCat() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Restaurant> showByCat(String cat) {
+		
+		return restaurantRepo.findByCategoriesContainingIgnoreCase(cat);
 	}
 	
 

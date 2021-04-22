@@ -10,7 +10,7 @@ public interface RestaurantService {
 	
 	Restaurant showByName(String name);
 	
-	List<Restaurant> showByCat();
+	List<Restaurant> showByCat(String cat);
 	
-//	Restaurant create(String name, Restaurant restaurant);
+	Restaurant create(String username, Restaurant restaurant);
 }
