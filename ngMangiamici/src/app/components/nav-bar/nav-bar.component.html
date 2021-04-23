@@ -17,12 +17,13 @@
         </li> -->
       </ul>
       <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
-        <input class="form-control mr-sm-2" type="text" placeholder="Password" aria-label="Password">
+        <input class="form-control mr-sm-2" *ngIf="!loggedIn()" type="text" placeholder="Username" aria-label="Username" name="username" [(ngModel)]="user.username">
+        <input class="form-control mr-sm-2" *ngIf="!loggedIn()" type="password" placeholder="Password" aria-label="Password" name="password" [(ngModel)]="user.password">
         <div>
 
-          <button class="btn btn-outline-success my-2 my-sm-0 liltop" type="submit">&nbsp;&nbsp;Login&nbsp;&nbsp;</button><br>
-          <button class="btn btn-outline-success my-2 my-sm-0 lilbottom" type="submit">Sign Up</button>
+          <button *ngIf="!loggedIn()" (click)="login()" class="btn btn-outline-success my-2 my-sm-0 liltop" type="submit">&nbsp;&nbsp;Login&nbsp;&nbsp;</button><br>
+          <button *ngIf="!loggedIn()" class="btn btn-outline-success my-2 my-sm-0 lilbottom" type="submit">Sign Up</button>
+          <button *ngIf="loggedIn()" (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0 lilbottom" type="submit">Logout</button>
 
         </div>
       </form>
