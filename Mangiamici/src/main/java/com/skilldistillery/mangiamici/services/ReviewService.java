@@ -15,5 +15,5 @@ public interface ReviewService {
 
     public Review update(String username, int rId, Review review);
 
-    public boolean destroy(String username, int rId);
+    public Review destroy(String username, int rId);
 }
