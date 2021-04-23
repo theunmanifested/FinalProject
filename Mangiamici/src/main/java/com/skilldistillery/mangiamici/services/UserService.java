@@ -9,5 +9,5 @@ public interface UserService {
 	List<User> index();
 	User getByUsername(String username);
 	User update(String username, User user);
-	User destroy(String username, int uId);
+	User destroy(String username);
 }
