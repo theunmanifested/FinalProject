@@ -40,7 +40,7 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public Review show(String username, int rId) {
 
-		return reviewRepo.findByUser_UsernameAndId(username, rId);
+		return reviewRepo.findByUser_UsernameAndIdAndEnabledTrue(username, rId);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class ReviewServiceImpl implements ReviewService {
 			return null;
 		}
 		if (review.getUser() == null) {
-			User toAssign = userRepo.findByUsername(username);
+			User toAssign = userRepo.findByUsernameAndEnabledTrue(username);
 			if (toAssign == null)
 				return null;
 			review.setUser(toAssign);
@@ -62,7 +62,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public Review update(String username, int rId, Review review) {
-		Review toUpdate = reviewRepo.findByUser_UsernameAndId(username, rId);
+		Review toUpdate = reviewRepo.findByUser_UsernameAndIdAndEnabledTrue(username, rId);
 
 
 		if (review.getRestaurant() != null)
@@ -76,13 +76,14 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public boolean destroy(String username, int rId) {
+	public Review destroy(String username, int rId) {
 		
-		Review toDelete = reviewRepo.findByUser_UsernameAndId(username, rId);
+		Review toDelete = reviewRepo.findByUser_UsernameAndIdAndEnabledTrue(username, rId);
 		if(toDelete == null) {
-			return false;
+			return null;
 		}
-		reviewRepo.delete(toDelete);
-		return true;
+		toDelete.setEnabled(false);
+		
+		return reviewRepo.saveAndFlush(toDelete);
 	}
 }

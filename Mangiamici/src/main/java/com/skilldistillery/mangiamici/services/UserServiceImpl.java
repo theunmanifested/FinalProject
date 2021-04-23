@@ -19,5 +19,11 @@ public class UserServiceImpl implements UserService {
 		
 		return userRepo.findByEnabledTrue();
 	}
+
+	@Override
+	public User getByUsername(String username) {
+		// TODO Auto-generated method stub
+		return userRepo.findByUsernameAndEnabledTrue(username);
+	}
 	
 }

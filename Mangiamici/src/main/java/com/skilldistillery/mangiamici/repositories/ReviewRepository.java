@@ -10,5 +10,5 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
 	List<Review> findByEnabledTrueAndIsPublicTrue();
 	List<Review> findByEnabledTrueAndUser_Username(String name);
-	Review findByUser_UsernameAndId(String username, int rId);
+	Review findByUser_UsernameAndIdAndEnabledTrue(String username, int rId);
 }
