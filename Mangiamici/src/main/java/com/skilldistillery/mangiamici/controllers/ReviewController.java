@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -69,6 +70,22 @@ public class ReviewController {
 			res.setStatus(404);
 		}
 		return rev;
+	}
+	
+	@PutMapping("reviews/{id}")
+	public Review update(@PathVariable Integer id, @RequestBody Review review, Principal principal, HttpServletResponse resp, HttpServletRequest req) {
+		
+		System.out.println("Update **************************************************");
+		
+		review = svc.update(principal.getName(), id, review);
+		if(review != null) {
+			resp.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			url.append("/").append(review.getId());
+			resp.setHeader("Location", url.toString());
+		}
+		else { resp.setStatus(404); }
+		return review;
 	}
 	
 	@DeleteMapping("reviews/{rId}")
