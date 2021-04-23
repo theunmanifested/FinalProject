@@ -72,8 +72,6 @@ public class ReviewServiceImpl implements ReviewService {
 			toUpdate.setRestaurant(review.getRestaurant());
 		if (review.getReviewText() != null)
 			toUpdate.setReviewText(review.getReviewText());
-		
-		//TODO: update timestamp
 
 		return reviewRepo.saveAndFlush(toUpdate);
 	}
