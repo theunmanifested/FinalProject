@@ -27,9 +27,16 @@
 margtop10 {
   margin-top: 10px;
 }
+padtop10 {
+  padding-top: 10px;
+}
 
-svg {
+red {
   color:red;
+}
+
+noborder {
+  border-style: none;
 }
 
 /* .square {
