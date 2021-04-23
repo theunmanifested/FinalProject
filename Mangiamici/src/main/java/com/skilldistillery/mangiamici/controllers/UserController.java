@@ -63,16 +63,15 @@ public class UserController {
 		return user;
 	}
 	
-	@DeleteMapping("user/{uId}")
-	public void deleteRunForUser(@PathVariable Integer uId, Principal principal, HttpServletResponse resp) {
+	@DeleteMapping("user")
+	public void deleteRunForUser(Principal principal, HttpServletResponse resp) {
 		
-		if (userSvc.destroy(principal.getName(), uId) != null) {
+		if (userSvc.destroy(principal.getName()) != null) {
 			resp.setStatus(204);
 		}
 		else {
 			resp.setStatus(404);
 		}
 	}
-	
 	
 }

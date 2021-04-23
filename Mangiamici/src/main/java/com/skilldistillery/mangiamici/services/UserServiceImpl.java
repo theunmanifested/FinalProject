@@ -69,9 +69,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User destroy(String username, int uId) {
-		// TODO Auto-generated method stub
-		return null;
+	public User destroy(String username) {
+		
+		User toDelete = userRepo.findByUsernameAndEnabledTrue(username);
+		
+		if(toDelete == null) {
+			return null;
+		}
+		toDelete.setEnabled(false);
+		
+		return userRepo.saveAndFlush(toDelete);
 	}
 	
 }
