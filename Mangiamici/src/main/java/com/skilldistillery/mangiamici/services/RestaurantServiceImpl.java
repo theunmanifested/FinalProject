@@ -28,7 +28,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return restaurantRepo.findByName(name);
 	}
 
-	// FIXME Needing User Repository/Svc/Impl/Ctllr to have full CRUD ops
 	@Override
 	public Restaurant create(String username, Restaurant restaurant) {
 		User user = userRepo.findByUsername(username);
