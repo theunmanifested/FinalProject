@@ -64,7 +64,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public Review update(String username, int rId, Review review) {
 		Review toUpdate = reviewRepo.findByUser_UsernameAndIdAndEnabledTrue(username, rId);
 
-
+		if(toUpdate == null ) {
+			System.out.println("To Update does not exist or is not enabled.");
+			return null;
+		}
 		if (review.getRestaurant() != null)
 			toUpdate.setRestaurant(review.getRestaurant());
 		if (review.getReviewText() != null)
