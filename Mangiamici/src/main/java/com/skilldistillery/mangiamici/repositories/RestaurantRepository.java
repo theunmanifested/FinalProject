@@ -10,7 +10,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
 	Restaurant findByName(String name);
 	
-	List<Restaurant> findByCategoriesContainingIgnoreCase(String cat);
+	List<Restaurant> findByCategoriesContainingIgnoreCaseOrNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String cat, String cat1, String cat2);
 	
 	Restaurant findByUser_UsernameAndId(String username, Integer restaurantId);
 	
