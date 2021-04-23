@@ -45,19 +45,18 @@ public class RestaurantController {
 	}
 
 	// GET all restaurants based on Category
-	@GetMapping(path = "restaurants/bycat/{cat}")
-	public List<Restaurant> showByCat(HttpServletRequest req, HttpServletResponse res, @PathVariable String cat) {
-		List<Restaurant> restaurants = restaurantSvc.showByCat(cat);
-		
-		
+	@GetMapping(path = "restaurants/bysearch/{cat}")
+	public List<Restaurant> showBySearch(HttpServletRequest req, HttpServletResponse res, @PathVariable String cat) {
+		List<Restaurant> restaurants = restaurantSvc.showBySearch(cat);		
 			if (restaurants == null) {
 				res.setStatus(400);
 			} else {
 				res.setStatus(200);
-			}
-		
+			}		
 		return restaurants;
 	}
+	
+	
 
 	// POST restaurants
 	@PostMapping("restaurants")
