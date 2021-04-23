@@ -12,4 +12,7 @@ public interface PostService {
 	
 	Post update(String username, int postId, Post post);
 	
+	boolean destroy(String username, int postId);
+
+	
 }

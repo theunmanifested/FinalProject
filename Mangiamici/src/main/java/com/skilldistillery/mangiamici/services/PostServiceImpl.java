@@ -48,7 +48,7 @@ public class PostServiceImpl implements PostService {
 	public Post update(String username, int postId, Post post) {
 		Post managed = postRepo.findByUser_UsernameAndId(username, postId);
 		if (managed != null) {
-			managed.setUser(post.getUser());
+//			managed.setUser(post.getUser());
 			managed.setEventDate(post.getEventDate());
 			managed.setPostText(post.getPostText());
 			managed.setFlagged(post.getFlagged());
@@ -56,6 +56,17 @@ public class PostServiceImpl implements PostService {
 			return managed;			
 		}		
 		return null;
+	}
+
+	@Override
+	public boolean destroy(String username, int postId) {
+		boolean deleted = false;
+		Post p = postRepo.findByUser_UsernameAndId(username, postId);
+		if (p != null) {
+			postRepo.delete(p);
+			deleted = true;
+		}
+		return deleted;
 	}
 
 
