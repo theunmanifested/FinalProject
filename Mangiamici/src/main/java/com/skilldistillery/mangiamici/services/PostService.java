@@ -7,5 +7,9 @@ import com.skilldistillery.mangiamici.entities.Post;
 public interface PostService {
 
 	List<Post> index();
+		
+	Post create(String username, Post post);
+	
+	Post update(String username, int postId, Post post);
 	
 }

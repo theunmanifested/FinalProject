@@ -33,6 +33,8 @@ public class Post {
     @Column(name="post_text")
     private String postText;
 
+    private Boolean flagged = false;
+    
     @ManyToOne
 	@JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
@@ -85,6 +87,14 @@ public class Post {
 		this.restaurant = restaurant;
 	}
 
+	public Boolean getFlagged() {
+		return flagged;
+	}
+
+	public void setFlagged(Boolean flagged) {
+		this.flagged = flagged;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -110,8 +120,10 @@ public class Post {
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", user=" + user + ", updatedDate=" + updatedDate + ", eventDate=" + eventDate
-				+ ", postText=" + postText + ", restaurant=" + restaurant + "]";
+				+ ", postText=" + postText + ", flagged=" + flagged + ", restaurant=" + restaurant + "]";
 	}
+
+	
 	
 	
 

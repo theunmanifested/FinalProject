@@ -50,6 +50,15 @@ public class Restaurant {
 	
 	private String description;
 	
+	@Column(name="military_discount")
+	private Boolean militaryDiscount = false;
+	
+	@Column(name="firstresponder_discount")
+	private Boolean firstresponderDiscount = false;
+	
+	@Column(name="senior_discount")
+	private Boolean seniorDiscount = false;
+	
 	@Column(name="menu_url")
 	private String menuUrl;
 	
