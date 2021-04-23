@@ -234,4 +234,13 @@ public class User {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", location=" + location + ", password=" + password
+				+ ", enabled=" + enabled + ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", imgUrl=" + imgUrl + ", promoOpt="
+				+ promoOpt + ", aboutMe=" + aboutMe + ", userStatus=" + userStatus + "]";
+	}
+
+	
 }
