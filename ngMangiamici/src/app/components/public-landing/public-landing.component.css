@@ -28,6 +28,10 @@ margtop10 {
   margin-top: 10px;
 }
 
+svg {
+  color:red;
+}
+
 /* .square {
   background-color: gray;
   padding-top: 50%;
