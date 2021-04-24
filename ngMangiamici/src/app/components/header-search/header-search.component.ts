@@ -26,14 +26,21 @@ export class HeaderSearchComponent implements OnInit {
     if(this.searchActive === true) {
       this.searchActive = false;
     }
-    if(this.searchActive ===false) {
+    else if(this.searchActive ===false) {
       this.searchActive = true;
     }
   }
 
 
-  search() {
-    //this.searchResults = this.restaurantSvc.
+  search(term: string) {
+    this.restaurantSvc.search(term).subscribe(
+      data => {
+        this.searchResults = data;
+      },
+      err => {
+        console.log('Error loading todo list: ' + err);
+      }
+    );
   }
 
   ngOnInit(): void {
