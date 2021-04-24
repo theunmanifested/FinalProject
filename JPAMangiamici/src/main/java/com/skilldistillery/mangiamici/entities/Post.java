@@ -35,6 +35,8 @@ public class Post {
 
     private Boolean flagged = false;
     
+    private Boolean enabled = true;   
+    
     @ManyToOne
 	@JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
@@ -95,6 +97,14 @@ public class Post {
 		this.flagged = flagged;
 	}
 
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -120,8 +130,11 @@ public class Post {
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", user=" + user + ", updatedDate=" + updatedDate + ", eventDate=" + eventDate
-				+ ", postText=" + postText + ", flagged=" + flagged + ", restaurant=" + restaurant + "]";
+				+ ", postText=" + postText + ", flagged=" + flagged + ", enabled=" + enabled + ", restaurant="
+				+ restaurant + "]";
 	}
+
+	
 
 	
 	
