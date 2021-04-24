@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 public class Friend {
 	
@@ -18,13 +20,16 @@ public class Friend {
 	@ManyToOne
 	@JoinColumn(name="other_user_id")
 	@MapsId(value="otherUserId")
-	private User otherUser;
+	private User otherUser;								// the requested in the friend relationship
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	@MapsId(value="userId")
-	private User user;
+	private User user;									// the requester of the friend relationship
 	
+	private Boolean approved = false;
+	
+	@CreationTimestamp
 	@Column(name = "date_requested")
     private LocalDateTime dateRequested;
 	
@@ -35,6 +40,16 @@ public class Friend {
 	public Friend() {
 		super();
 	}
+
+
+	public Friend(User user, User otherUser) {  
+		super();
+		this.otherUser = otherUser;
+		this.user = user;
+		this.approved = false; // this constructor is used for friend requests.
+	}
+
+
 
 
 	public FriendId getId() {
@@ -66,6 +81,16 @@ public class Friend {
 		this.user = user;
 	}
 
+	
+	public Boolean getApproved() {
+		return approved;
+	}
+
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
+	}
+
 
 	public LocalDateTime getDateRequested() {
 		return dateRequested;
@@ -85,5 +110,14 @@ public class Friend {
 	public void setDateApproved(LocalDateTime dateApproved) {
 		this.dateApproved = dateApproved;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Friend [id=" + id + ", otherUser=" + otherUser + ", user=" + user + ", approved=" + approved
+				+ ", dateRequested=" + dateRequested + ", dateApproved=" + dateApproved + "]";
+	}
     
+	
+	
 }
