@@ -14,15 +14,22 @@
     <div *ngIf="getSearchActive()" class="container">
 
       <div class="card">
-        <div class="row" *ngFor="let result of searchResults">
+        <div *ngFor="let result of searchResults">
 
-            <div class="col">
+          <div class="row align-items-center padit">
+
+            <div class="col-md-2">
               <img class="smallpic" src={{result.imgUrl}}>
             </div>
 
-            <div class="col">
-              <h5 class="text-center">{{result.name}}:</h5>{{result.description}}
+            <div class="col-md-10">
+              <a [routerLink]="['/restaurants', result.id]"><h5 class="margleft15">{{result.name}}:</h5></a>
+
+              <p class="margleft15">{{result.description}}</p>
             </div>
+
+          </div>
+
         </div>
 
       </div>
