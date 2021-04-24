@@ -47,7 +47,11 @@ public class FriendController {
 		return friend;
 	}
 	
-	// _________________________________________________________  Copy paste no work done yet
+	/*
+	 * It doesn't matter who sent the request, 
+	 * 	the user related to the path variable, or the user related to the principal 
+	 * - both side will be checked for being the requester / requested in order to grab the friendship from the database.
+	 */
 	@PutMapping("friend/{username}")
 	public Friend update(@PathVariable String username, Principal principal, HttpServletResponse resp, HttpServletRequest req) {
 		
@@ -59,14 +63,19 @@ public class FriendController {
 		return friend;
 	}
 	
-//	@DeleteMapping("reviews/{rId}")
-//	public void deleteRunForUser(@PathVariable Integer rId, Principal principal, HttpServletResponse resp) {
-//		
-//		if (svc.destroy(principal.getName(), rId) != null) {
-//			resp.setStatus(204);
-//		}
-//		else {
-//			resp.setStatus(404);
-//		}
-//	}
+	/*
+	 * It doesn't matter who sent the request, 
+	 * 	the user related to the path variable, or the user related to the principal 
+	 * - both side will be checked for being the requester / requested in order to grab the friendship from the database.
+	 */
+	@DeleteMapping("friend/{username}")
+	public void delete(@PathVariable String username, Principal principal, HttpServletResponse resp) {
+		
+		if (friendSvc.destroy(principal.getName(), username) != null) {
+			resp.setStatus(204);
+		}
+		else {
+			resp.setStatus(404);
+		}
+	}
 }
