@@ -3,6 +3,7 @@ package com.skilldistillery.mangiamici.services;
 import java.util.List;
 
 import com.skilldistillery.mangiamici.entities.Friend;
+import com.skilldistillery.mangiamici.entities.User;
 
 public interface FriendService {
 

@@ -91,9 +91,15 @@ public class FriendServiceImpl implements FriendService {
 			if (toDelete == null)
 				return null;
 		}
-
+		
 		friendRepo.deleteById(toDelete.getId());
 
 		return friendRepo.saveAndFlush(toDelete);
+	}
+
+	@Override
+	public List<Friend> findAllFriendsForUser(String username) {
+		
+		return friendRepo.queryActiveFriendshipsForUser(username);
 	}
 }
