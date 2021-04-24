@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { catchError } from 'rxjs/operators';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,6 +28,8 @@ export class RestaurantService {
       })
     );
   }
+
+
 
   private getHttpOptions() {
     // Send credentials as Authorization header (this is spring security convention for basic auth)
