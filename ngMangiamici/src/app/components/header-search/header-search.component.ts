@@ -9,13 +9,28 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class HeaderSearchComponent implements OnInit {
 
+  searchActive: boolean = false;
+  searchTerm: string;
+  searchResults: Restaurant[] = [];
+
   constructor(
     private restaurantSvc: RestaurantService
   ) { }
 
-  searchTerm: string;
 
-  searchResults: Restaurant[] = [];
+  getSearchActive() {
+    return this.searchActive;
+  }
+
+  searchActiveToggle() {
+    if(this.searchActive === true) {
+      this.searchActive = false;
+    }
+    if(this.searchActive ===false) {
+      this.searchActive = true;
+    }
+  }
+
 
   search() {
     //this.searchResults = this.restaurantSvc.
