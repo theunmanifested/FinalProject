@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Restaurant } from 'src/app/models/restaurant';
+import { RestaurantService } from 'src/app/services/restaurant.service';
 
 @Component({
   selector: 'app-header-search',
@@ -7,7 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderSearchComponent implements OnInit {
 
-  constructor() { }
+  searchActive: boolean = false;
+  searchTerm: string;
+  searchResults: Restaurant[] = [];
+
+  constructor(
+    private restaurantSvc: RestaurantService
+  ) { }
+
+
+  getSearchActive() {
+    return this.searchActive;
+  }
+
+  searchActiveToggle() {
+    if(this.searchActive === true) {
+      this.searchActive = false;
+    }
+    if(this.searchActive ===false) {
+      this.searchActive = true;
+    }
+  }
+
+
+  search() {
+    //this.searchResults = this.restaurantSvc.
+  }
 
   ngOnInit(): void {
   }

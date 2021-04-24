@@ -73,19 +73,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   `location_id` INT(11) NULL DEFAULT NULL,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(200) NOT NULL,
-  `enabled` TINYINT(4) NULL DEFAULT NULL,
+  `enabled` TINYINT(4) NULL DEFAULT 1,
   `role` VARCHAR(45) NULL DEFAULT NULL,
   `first_name` VARCHAR(100) NULL DEFAULT NULL,
   `last_name` VARCHAR(100) NULL DEFAULT NULL,
   `created_date` DATETIME NULL DEFAULT NULL,
   `img_url` VARCHAR(5000) NULL DEFAULT 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png',
-  `promo_opt` TINYINT(4) NULL DEFAULT NULL,
+  `promo_opt` TINYINT(4) NULL DEFAULT 1,
   `about_me` TEXT NULL DEFAULT NULL,
   `updated_date` DATETIME NULL DEFAULT NULL,
   `user_status_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_location1_idx` (`location_id` ASC),
   INDEX `fk_user_user_status1_idx` (`user_status_id` ASC),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   CONSTRAINT `fk_user_location1`
     FOREIGN KEY (`location_id`)
     REFERENCES `location` (`id`)
@@ -113,15 +114,15 @@ CREATE TABLE IF NOT EXISTS `restaurant` (
   `phone` VARCHAR(45) NULL DEFAULT NULL,
   `email` VARCHAR(100) NULL DEFAULT NULL,
   `website_url` VARCHAR(5000) NULL DEFAULT NULL,
-  `enabled` TINYINT(4) NULL DEFAULT NULL,
+  `enabled` TINYINT(4) NULL DEFAULT 1,
   `categories` VARCHAR(200) NULL DEFAULT NULL,
   `img_url` VARCHAR(500) NULL DEFAULT NULL,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `description` TEXT NULL DEFAULT NULL,
   `menu_url` VARCHAR(5000) NULL DEFAULT NULL,
-  `military_discount` TINYINT NULL,
-  `firstresponder_discount` TINYINT NULL,
-  `senior_discount` TINYINT NULL,
+  `military_discount` TINYINT NULL DEFAULT 0,
+  `firstresponder_discount` TINYINT NULL DEFAULT 0,
+  `senior_discount` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_restaurant_user1_idx` (`user_id` ASC),
   INDEX `fk_restaurant_location1_idx` (`location_id` ASC),
@@ -207,7 +208,8 @@ CREATE TABLE IF NOT EXISTS `post` (
   `event_date` DATETIME NULL DEFAULT NULL,
   `post_text` VARCHAR(1000) NULL DEFAULT NULL,
   `restaurant_id` INT(11) NULL DEFAULT NULL,
-  `flagged` TINYINT NULL,
+  `flagged` TINYINT NULL DEFAULT 0,
+  `enabled` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_post_user1_idx` (`user_id` ASC),
   INDEX `fk_post_restaurant1_idx` (`restaurant_id` ASC),
@@ -361,6 +363,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `mmdb`;
 INSERT INTO `badge` (`id`, `name`, `description`, `img_url`) VALUES (1, 'Future Foodie', 'post your first review and get one like', 'https://cdn4.vectorstock.com/i/thumb-large/51/33/bronze-medal-with-red-ribbon-vector-23835133.jpg');
+INSERT INTO `badge` (`id`, `name`, `description`, `img_url`) VALUES (2, 'Regular Foodie', 'active enough to get noticed', 'https://cdn.pixabay.com/photo/2021/04/18/14/46/cupcake-6188629_960_720.png');
+INSERT INTO `badge` (`id`, `name`, `description`, `img_url`) VALUES (3, 'Expert Foodie', 'look at you being such an overachiever', 'https://cdn.pixabay.com/photo/2020/01/21/16/56/owl-4783407_960_720.png');
 
 COMMIT;
 
@@ -370,8 +374,21 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mmdb`;
-INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (1, 39.7452, 104.9922, '1550 Blake St', 'Denver', 'CO', '80202', '17203796567', 1);
-INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (2, 39.748120806778424, -104.99950396002949, '1431 Larimer St', 'Denver', 'CO', '80202', '3035559999', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (1, 39.7452, 104.9922, '1550 Blake St', 'Denver', 'CO', '80202', '3331986776', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (2, 39.7481, 104.9995, '1431 Larimer St', 'Denver', 'CO', '80202', '3037976476', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (3, 39.7532, 105.0019, '1889 16th St Mall', 'Denver', 'CO', '80202', '3337446455', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (4, 39.7561, 105.0091, '2364 15th St', 'Denver', 'CO', '80202', '3037434415', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (5, 39.7529, 105.0000, '1701 Wynkoop St', 'Denver', 'CO', '80202', '3038434615', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (6, NULL, NULL, '9220 Wigham St', 'Denver', 'CO', '80229', '', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (7, NULL, NULL, '9967 Clayton St', 'Denver', 'CO', '80229', '', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (8, NULL, NULL, '9025 W Jefferson Ave', 'Denver', 'CO', '80235', '', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (9, NULL, NULL, '9056 E Lehigh Ave', 'Denver', 'CO', '80237', '', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (10, NULL, NULL, '9811 E Jewell Ave', 'Denver', 'CO', '80210', '3037439415', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (11, NULL, NULL, '7351 E Warren Ave', 'Denver', 'CO', '80231', '', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (12, NULL, NULL, '6795 W 19th Pl', 'Lakewood', 'CO', '80214', '', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (13, NULL, NULL, '506 W Broadway Ave', 'Augusta', 'KS', '67010', '', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (14, NULL, NULL, '3060 S Hoyt Way', 'Lakewood', 'CO', '80227', '', 1);
+INSERT INTO `location` (`id`, `latitude`, `longitude`, `address`, `city`, `state`, `zip`, `phone`, `is_public`) VALUES (15, NULL, NULL, '1507 S Ingalls St', 'Lakewood', 'CO', '80232', '', 1);
 
 COMMIT;
 
@@ -395,12 +412,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mmdb`;
-INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (1, NULL, 'admin', '$2a$10$g/wF2jGxSYYjwwsSaaMXSeLDFKrA6aBQtXDNeDsyh4KP5Uun9cJfi', 1, 'admin', 'Jane', 'Doe', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', NULL);
-INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (2, NULL, 'moderator', '$2a$10$T25qupotmcFRE9FCbQmBeum36jVGxIQMMAdfwYvmFx/hhTiJb01be', 1, 'moderator', 'John', 'Smith', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', 1);
-INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (3, NULL, 'bokbok', '$2a$10$jC68KeZSSkpOY..6wqIsBuPKMgwCaYEU1xMbDDha2F80KOjT3s2ZK', 1, 'restaurant-owner', 'Elizabeth', 'Hurley', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', NULL, 'Describe yourself here!', '2021-04-01 00:00:00', 1);
-INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (4, NULL, 'pizzathehut', '$2a$10$uDc8X7JFkZx2P.RvFiLrUeLpffT8/R0sMAZYnmKN4bGmqWmvVnVrO', 1, 'standard', 'Elon', 'Musk', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', 1, 'Describe yourself here!', '2021-04-01 00:00:00', 1);
-INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (5, NULL, 'foodtruckfinder', '$2a$10$miggZDY69ugZqD9akkvzxesS5nTKv.ewoq/10aag/kObJ95/BIuFy', 1, 'standard', 'Kate', 'McKinnon', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', 1, 'Describe yourself here!', '2021-04-01 00:00:00', 5);
-INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (6, NULL, 'mrpasta', '$2a$10$oFM//ZVQ8ii5USwuZRqdmeLekGlbrtTtOwiRJt/wRLG577DMkxsyS', 1, 'restaurant-owner', 'Joe', 'Knuckles', '2021-04-11 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', 0, 'Describe yourself here!', '2021-04-12 00:00:00', 5);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (1, 6, 'admin', '$2a$10$g/wF2jGxSYYjwwsSaaMXSeLDFKrA6aBQtXDNeDsyh4KP5Uun9cJfi', 1, 'admin', 'Jane', 'Doe', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', TRUE, 'Describe yourself here!', '2021-04-01 00:00:00', 1);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (2, 7, 'OGFoodie', '$2a$10$T25qupotmcFRE9FCbQmBeum36jVGxIQMMAdfwYvmFx/hhTiJb01be', 1, 'moderator', 'John', 'Smith', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', TRUE, 'Describe yourself here!', '2021-04-01 00:00:00', 2);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (3, 8, 'bokbok', '$2a$10$jC68KeZSSkpOY..6wqIsBuPKMgwCaYEU1xMbDDha2F80KOjT3s2ZK', 1, 'restaurant-owner', 'Elizabeth', 'Hurley', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', TRUE, 'Describe yourself here!', '2021-04-01 00:00:00', 1);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (4, 9, 'pizzathehut', '$2a$10$uDc8X7JFkZx2P.RvFiLrUeLpffT8/R0sMAZYnmKN4bGmqWmvVnVrO', 1, 'standard', 'Elon', 'Musk', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', TRUE, 'Describe yourself here!', '2021-04-01 00:00:00', 1);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (5, 10, 'foodtruckfinder', '$2a$10$miggZDY69ugZqD9akkvzxesS5nTKv.ewoq/10aag/kObJ95/BIuFy', 1, 'standard', 'Kate', 'McKinnon', '2021-04-01 00:00:00', 'https://png.pngitem.com/pimgs/s/22-223968_default-profile-picture-circle-hd-png-download.png', TRUE, 'Describe yourself here!', '2021-04-01 00:00:00', 5);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (6, 11, 'foodster', '$2a$10$FLBe92td8eOEmus/78FHyeCn16h92x//UnXhazrqId.W.M38LAvvq', 1, 'restaurant-owner', 'Jake', 'Jackson', '2021-04-01 00:00:00', 'https://cdn.pixabay.com/photo/2017/06/26/02/47/man-2442565_960_720.jpg', TRUE, 'Describe yourself here!', '2021-04-02 00:00:00', 2);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (7, 12, 'bigbertha', '$2a$10$vm8cKLa8RuolqUvGfavYL.8xXnjNpNRqTmO9XZT9lNuxiwwvMgtrC', 1, 'standard', 'Billy', 'Schmidt', '2021-04-01 00:00:00', 'https://cdn.pixabay.com/photo/2017/08/09/13/35/model-2614569_960_720.jpg', TRUE, 'Describe yourself here!', '2021-04-02 00:00:00', 3);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (8, 13, 'iamrex', '$2a$10$q4owX0hIeqKy4oc1glQve.AJIClUYLG2HbzLeH6xGNPS0ju3UzklG', 1, 'restaurant-owner', 'James', 'Jameson', '2021-04-01 00:00:00', 'https://cdn.pixabay.com/photo/2017/08/01/08/29/woman-2563491_960_720.jpg', TRUE, 'Describe yourself here!', '2021-04-02 00:00:00', 4);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (9, 14, 'gogetfoodyou', '$2a$10$XdOeYB1Ty9Y7S42l5hITTuElJ34NlUGLVZ1vpDYV1joOWqU9m49de', 1, 'restaurant-owner', 'Kate', 'Katinson', '2021-04-01 00:00:00', 'https://cdn.pixabay.com/photo/2017/08/01/08/29/woman-2563491_960_720.jpg', TRUE, 'Describe yourself here!', '2021-04-02 00:00:00', 3);
+INSERT INTO `user` (`id`, `location_id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_date`, `img_url`, `promo_opt`, `about_me`, `updated_date`, `user_status_id`) VALUES (10, 15, 'iliketoeat', '$2a$10$/O64p2bNshl9e563h9sv7uLNdzvkxpDWcUMKuCgL4BSlXlHFEsL8G', 1, 'restaurant-owner', 'Jill', 'Dakota', '2021-04-01 00:00:00', 'https://cdn.pixabay.com/photo/2017/08/01/08/29/woman-2563491_960_720.jpg', TRUE, 'Describe yourself here!', '2021-04-02 00:00:00', 1);
 
 COMMIT;
 
@@ -410,8 +431,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mmdb`;
-INSERT INTO `restaurant` (`id`, `user_id`, `location_id`, `phone`, `email`, `website_url`, `enabled`, `categories`, `img_url`, `name`, `description`, `menu_url`, `military_discount`, `firstresponder_discount`, `senior_discount`) VALUES (1, 3, 1, '123-456-7890', 'feedback@bokbok.com', 'bokbok.com', 1, 'fried chicken, comfort food', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9hwMNAkYk8d5LfcVe-uSI0gG5sbMwGAzm5g&usqp=CAU', 'Bok Bok Korean Fried Chicken', 'Real Korean fried chicken, real good!', 'https://www.seamless.com/food/bok_bok_chicken/menu', true, true, true);
-INSERT INTO `restaurant` (`id`, `user_id`, `location_id`, `phone`, `email`, `website_url`, `enabled`, `categories`, `img_url`, `name`, `description`, `menu_url`, `military_discount`, `firstresponder_discount`, `senior_discount`) VALUES (2, 6, 2, '303-555-9999', 'gimmefood@riojanot.com', 'http://www.riojadenver.com/', 1, 'mediterranean, seafood', 'http://www.gearbox.design/rioja2/wp-content/uploads/2020/10/Brioche-Crusted-Skate-Wing-400.jpg', 'Rioja', 'Locally sourced, imaginative Mediterranean dishes & wines in a high-energy dining room', 'http://www.gearbox.design/rioja2/menus/dinner/', false, true, false);
+INSERT INTO `restaurant` (`id`, `user_id`, `location_id`, `phone`, `email`, `website_url`, `enabled`, `categories`, `img_url`, `name`, `description`, `menu_url`, `military_discount`, `firstresponder_discount`, `senior_discount`) VALUES (1, 3, 1, '1234567890', 'feedback@bokbok.com', 'bokbok.com', 1, 'fried chicken, comfort food', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9hwMNAkYk8d5LfcVe-uSI0gG5sbMwGAzm5g&usqp=CAU', 'Bok Bok Korean Fried Chicken', 'Real Korean fried chicken, real good!', 'https://www.seamless.com/food/bok_bok_chicken/menu', 1, 1, 1);
+INSERT INTO `restaurant` (`id`, `user_id`, `location_id`, `phone`, `email`, `website_url`, `enabled`, `categories`, `img_url`, `name`, `description`, `menu_url`, `military_discount`, `firstresponder_discount`, `senior_discount`) VALUES (2, 6, 2, '3035559999', 'gimmefood@riojanot.com', 'http://www.riojadenver.com/', 1, 'seafood, asian, mediterranean', 'http://www.gearbox.design/rioja2/wp-content/uploads/2020/10/Brioche-Crusted-Skate-Wing-400.jpg', 'Rioja', 'Locally sourced, imaginative Mediterranean dishes & wines in a high-energy dining room', 'http://www.gearbox.design/rioja2/menus/dinner/', 0, 1, 0);
+INSERT INTO `restaurant` (`id`, `user_id`, `location_id`, `phone`, `email`, `website_url`, `enabled`, `categories`, `img_url`, `name`, `description`, `menu_url`, `military_discount`, `firstresponder_discount`, `senior_discount`) VALUES (3, 8, 3, '5035559323', 'lotsoffood@tavernetta.com', 'https://www.tavernettadenver.com/', 1, 'Italian, pasta, pizza', 'https://images.getbento.com/accounts/27fae721261607dfb815cef2b5d79e15/media/images/78500Tav_Fireplace.jpg', 'Tavernetta', 'Upscale, buzzy Italian hot spot from an acclaimed team with an open kitchen & a fireplace lounge.', 'https://www.tavernettadenver.com/menus/', 0, 0, 0);
+INSERT INTO `restaurant` (`id`, `user_id`, `location_id`, `phone`, `email`, `website_url`, `enabled`, `categories`, `img_url`, `name`, `description`, `menu_url`, `military_discount`, `firstresponder_discount`, `senior_discount`) VALUES (4, 9, 4, '3037434415', 'ordersomefood@justbkitchen.com', 'https://justbekitchen.com/', 1, 'American, brunch, comfort', 'https://justbekitchen.com/wp-content/uploads/2019/04/Burrito-2.jpg', 'Just Be Kitchen', 'Breakfast & lunch spot for gluten-free American fare in a cheery, counter-serve environment', 'https://justbekitchen.com/wp-content/uploads/2020/10/JBKMenu_DinnerFallWinter2020-FINAL-with-BLEEDS-AND-WEB.pdf', 1, 1, 1);
+INSERT INTO `restaurant` (`id`, `user_id`, `location_id`, `phone`, `email`, `website_url`, `enabled`, `categories`, `img_url`, `name`, `description`, `menu_url`, `military_discount`, `firstresponder_discount`, `senior_discount`) VALUES (5, 10, 5, '3037434415', 'betchacancook@ultreiadenver.com', 'http://www.ultreiadenver.com/', 1, 'Spanish, Portuguese, rustic', 'http://www.ultreiadenver.com/images/ultreia-121.jpg', 'Ultreia', 'Spanish tapas, Portuguese petiscos and more in a mural-lined, split-level Union Station space', 'http://www.ultreiadenver.com/#menus', 1, 0, 0);
 
 COMMIT;
 
@@ -441,8 +465,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mmdb`;
-INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`, `flagged`) VALUES (1, 4, '2021-04-01 00:00:00', '2021-04-01 00:00:00', '2021-04-05 22:00:00', 'Anybody down for a late night meal at BokBoks? I heard good things', 1, NULL);
-INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`, `flagged`) VALUES (2, 5, '2021-04-01 00:00:00', '2021-04-01 00:00:00', NULL, 'Im craving Korean fried chicken...you guys know the place, hit me up...', NULL, NULL);
+INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`, `flagged`, `enabled`) VALUES (1, 4, '2021-04-01 00:00:00', '2021-04-01 00:00:00', '2021-04-05 22:00:00', 'Anybody down for a late night meal at BokBoks? I heard good things', 1, NULL, NULL);
+INSERT INTO `post` (`id`, `user_id`, `created_date`, `updated_date`, `event_date`, `post_text`, `restaurant_id`, `flagged`, `enabled`) VALUES (2, 5, '2021-04-01 00:00:00', '2021-04-01 00:00:00', NULL, 'Im craving Korean fried chicken...you guys know the place, hit me up...', NULL, NULL, NULL);
 
 COMMIT;
 

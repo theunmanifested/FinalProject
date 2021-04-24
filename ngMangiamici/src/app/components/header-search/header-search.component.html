@@ -7,9 +7,29 @@
           <input type="text" class="form-control" placeholder="Search restaurants by name, category, etc...">
       </div>
       <div class="row">
-          <button class="addwidth margtop15 center btn btn-success" type="submit">Let's eat!</button>
+          <button class="addwidth margtop15 margbottom15 center btn btn-success" (click)="searchActiveToggle()" type="submit">Let's eat!</button>
       </div>
     </form>
+
+    <div *ngIf="getSearchActive()" class="container">
+
+      <div class="row">
+        <div class="col">
+        <div class="card noborder">
+
+          <h4>Search Result 1</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam omnis quod voluptate reiciendis exercitationem?
+          <h4>Search Result 2</h4>Obcaecati tempora mollitia delectus nemo vitae cumque veritatis et sapiente rerum?
+          <h4>Search Result 3</h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          <h4>Search Result 4</h4>Quas vero officia quod perspiciatis a quis laborum veritatis, quam laboriosam aut accusantium fugiat libero officiis accusamus nemo, quisquam et ducimus sed.
+          <h4>Search Result 5</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos debitis ullam incidunt.
+
+        </div>
+        <br>
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 

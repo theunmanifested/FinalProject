@@ -1,0 +1,47 @@
+.map-responsive{
+
+  overflow:hidden;
+
+  padding-bottom:100%;
+
+  position:relative;
+
+  height:0;
+
+}
+
+.map-responsive iframe{
+
+  left:0;
+
+  top:0;
+
+  height:100%;
+
+  width:100%;
+
+  position:absolute;
+
+}
+
+margtop10 {
+  margin-top: 10px;
+}
+padtop10 {
+  padding-top: 10px;
+}
+
+red {
+  color:red;
+}
+
+noborder {
+  border-style: none;
+}
+
+/* .square {
+  background-color: gray;
+  padding-top: 50%;
+  min-width: 40%;
+  max-height: 570px;
+} */

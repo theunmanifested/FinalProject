@@ -28,7 +28,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return restaurantRepo.findByName(name);
 	}
 
-	// FIXME Needing User Repository/Svc/Impl/Ctllr to have full CRUD ops
 	@Override
 	public Restaurant create(String username, Restaurant restaurant) {
 		User user = userRepo.findByUsername(username);
@@ -38,8 +37,8 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public List<Restaurant> showByCat(String cat) {
-		return restaurantRepo.findByCategoriesContainingIgnoreCase(cat);
+	public List<Restaurant> showBySearch(String cat) {
+		return restaurantRepo.findByCategoriesContainingIgnoreCaseOrNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(cat, cat, cat);
 	}
 
 	@Override
