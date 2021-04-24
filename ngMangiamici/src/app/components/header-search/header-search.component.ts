@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Restaurant } from 'src/app/models/restaurant';
@@ -15,7 +16,8 @@ export class HeaderSearchComponent implements OnInit {
   searchResults: Restaurant[] = [];
 
   constructor(
-    private restaurantSvc: RestaurantService
+    private restaurantSvc: RestaurantService,
+    private http: HttpClient
   ) { }
 
 
