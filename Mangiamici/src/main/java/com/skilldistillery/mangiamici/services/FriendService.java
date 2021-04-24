@@ -3,7 +3,7 @@ package com.skilldistillery.mangiamici.services;
 import java.util.List;
 
 import com.skilldistillery.mangiamici.entities.Friend;
-import com.skilldistillery.mangiamici.entities.Review;
+import com.skilldistillery.mangiamici.entities.User;
 
 public interface FriendService {
 
@@ -11,6 +11,8 @@ public interface FriendService {
 	public List<Friend> findAllRequestsByUser(String username);
 
 //    public Friend show(String username, int rId);
+	
+	public List<Friend> findAllFriendsForUser(String username);
 
     public Friend create(String usernameRequester, String usernameRequested);
 

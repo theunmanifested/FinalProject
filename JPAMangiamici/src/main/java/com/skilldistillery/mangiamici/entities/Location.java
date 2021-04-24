@@ -123,7 +123,7 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", user=" + user + ", address=" + address + ", city=" + city + ", state=" + state
+		return "Location [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state
 				+ ", zip=" + zip + ", latitude=" + latitude + ", longitude=" + longitude + ", phone=" + phone
 				+ ", isPublic=" + isPublic + "]";
 	}
