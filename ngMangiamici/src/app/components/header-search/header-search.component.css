@@ -16,3 +16,8 @@
   min-width: 140px;
   max-width: 300px;
 }
+
+.smallpic {
+  max-height: 100px;
+  max-width: 100px;
+}
