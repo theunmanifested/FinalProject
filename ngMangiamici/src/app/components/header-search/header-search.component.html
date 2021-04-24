@@ -4,30 +4,37 @@
     <form>
 
       <div class="row">
-          <input type="text" class="form-control" placeholder="Search restaurants by name, category, etc...">
+          <input type="text" class="form-control" name="term" [(ngModel)]="searchTerm" placeholder="Search restaurants by name, category, etc...">
       </div>
       <div class="row">
-          <button class="addwidth margtop15 margbottom15 center btn btn-success" (click)="searchActiveToggle()" type="submit">Let's eat!</button>
+          <button class="addwidth margtop15 margbottom15 center btn btn-success" (click)="searchActive=true; search(searchTerm)" type="submit">Let's eat!</button>
       </div>
     </form>
 
     <div *ngIf="getSearchActive()" class="container">
 
-      <div class="row">
-        <div class="col">
-        <div class="card noborder">
+      <div class="card">
+        <div *ngFor="let result of searchResults">
 
-          <h4>Search Result 1</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam omnis quod voluptate reiciendis exercitationem?
-          <h4>Search Result 2</h4>Obcaecati tempora mollitia delectus nemo vitae cumque veritatis et sapiente rerum?
-          <h4>Search Result 3</h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          <h4>Search Result 4</h4>Quas vero officia quod perspiciatis a quis laborum veritatis, quam laboriosam aut accusantium fugiat libero officiis accusamus nemo, quisquam et ducimus sed.
-          <h4>Search Result 5</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos debitis ullam incidunt.
+          <div class="row align-items-center padit">
 
-        </div>
-        <br>
+            <div class="col-md-2">
+              <img class="smallpic" src={{result.imgUrl}}>
+            </div>
+
+            <div class="col-md-10">
+              <a [routerLink]="['/restaurants', result.id]"><h5 class="margleft15">{{result.name}}:</h5></a>
+
+              <p class="margleft15">{{result.description}}</p>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
+
+      <br>
 
     </div>
 

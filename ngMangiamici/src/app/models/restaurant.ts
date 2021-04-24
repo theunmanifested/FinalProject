@@ -3,6 +3,7 @@ import { Location } from "./location";
 import { Review } from "./review";
 import { User } from "./user";
 
+
 export class Restaurant {
   id: number;
   user: User;

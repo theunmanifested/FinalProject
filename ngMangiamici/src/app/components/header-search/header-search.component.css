@@ -10,9 +10,21 @@
 .margbottom15 {
   margin-bottom: 15px;
 }
+.margleft15 {
+  margin-left: 15px;
+}
 
 .addwidth {
   width: 50%;
   min-width: 140px;
   max-width: 300px;
+}
+
+.smallpic {
+  max-height: 120px;
+  max-width: 120px;
+}
+
+.padit {
+  padding: 10px;
 }

@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { Restaurant } from 'src/app/models/restaurant';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
@@ -14,7 +16,8 @@ export class HeaderSearchComponent implements OnInit {
   searchResults: Restaurant[] = [];
 
   constructor(
-    private restaurantSvc: RestaurantService
+    private restaurantSvc: RestaurantService,
+    private http: HttpClient
   ) { }
 
 
@@ -26,14 +29,21 @@ export class HeaderSearchComponent implements OnInit {
     if(this.searchActive === true) {
       this.searchActive = false;
     }
-    if(this.searchActive ===false) {
+    else if(this.searchActive ===false) {
       this.searchActive = true;
     }
   }
 
 
-  search() {
-    //this.searchResults = this.restaurantSvc.
+  search(term: string) {
+    this.restaurantSvc.search(term).subscribe(
+      data => {
+        this.searchResults = data;
+      },
+      err => {
+        console.log('Error loading todo list: ' + err);
+      }
+    );
   }
 
   ngOnInit(): void {
