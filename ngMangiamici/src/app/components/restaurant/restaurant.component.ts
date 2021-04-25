@@ -23,7 +23,11 @@ export class RestaurantComponent implements OnInit {
   // 4: update
   // 5: delete
   // 6: friend reviews show up first
+
   reviewsByFriends: Review[] = [];
+  // ^ first stage: This is all the reviews
+  // ^ second stage - just friend reviews;
+
   reviewsByNonFriendsPublic: Review[] = [];
   newReview: Review = new Review();
   editReview: Review = null;
@@ -45,6 +49,8 @@ export class RestaurantComponent implements OnInit {
       this.getRestaurant(restaurantId);
     }
 
+    this.getFriendReviews();
+
   }
 
   getRestaurant(id: string): void {
@@ -54,6 +60,21 @@ export class RestaurantComponent implements OnInit {
         this.restaurant = data;
         console.log(this.restaurant);
 
+      },
+      fail => {
+        console.log(fail);
+      }
+    );
+  }
+
+  // for now this just gets all reviews.
+  getFriendReviews(): void {
+
+    // for now this just gets all reviews.
+
+    this.reviewService.index().subscribe(
+      data => {
+        this.reviewsByFriends = data;
       },
       fail => {
         console.log(fail);
