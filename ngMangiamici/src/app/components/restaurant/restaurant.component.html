@@ -1,22 +1,36 @@
-<div id="restaurant-header" *ngIf="restaurant">
+<div id="restaurant-body">
+  <div id="restaurant-header" *ngIf="restaurant">
 
-  <img [src]="restaurant.imgUrl" >
+    <span><img [src]="restaurant.imgUrl" id="picture"></span>
+    <h3>{{restaurant.name}}</h3>
+    <h5>{{restaurant.location.address}}, {{restaurant.location.city}} {{restaurant.location.state}}</h5>
+    <br>
+    <p>{{restaurant.description}}</p>
+    <p>Call us: {{restaurant.phone}} <span>Email us: {{restaurant.email}}</span> <span>Check out our website: <a href="{{restaurant.websiteUrl}}">{{restaurant.websiteUrl}}</a></span></p>
+  </div>
+
+
+  <div>
+
+  </div>
+
+
+
+
+  <!-- // id: number;
+  // user: User;
+  //location: Location;
+  // reviews: Review[];
+  // phone: string;
+  // email: string;
+  // websiteUrl: string;
+  // imgUrl: string;
+  // name: string;
+  // description: string; -->
+  categories: string;
+  militaryDiscount: boolean;
+  firstresponderDiscount: boolean;
+  seniorDiscount: boolean;
+  menuUrl: string;
+  favoriteRestaurants: Favoriterestaurant[];
 </div>
-
-
-id: number;
-user: User;
-location: Location;
-reviews: Review[];
-phone: string;
-email: string;
-websiteUrl: string;
-categories: string;
-imgUrl: string;
-name: string;
-description: string;
-militaryDiscount: boolean;
-firstresponderDiscount: boolean;
-seniorDiscount: boolean;
-menuUrl: string;
-favoriteRestaurants: Favoriterestaurant[];
