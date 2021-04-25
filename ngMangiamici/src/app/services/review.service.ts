@@ -20,17 +20,17 @@ export class ReviewService {
   ) { }
 
 
-  // methods
-
+  // get all public reviews.
   index(): Observable<Review[]> {
-    return this.http.get<Review[]>(this.url, this.getHttpOptions())
+    return this.http.get<Review[]>(environment.baseUrl + "api/pub/reviews/all")
     .pipe(
       catchError((err:any) => {
          console.log(err);
-         return throwError('Error getting todos');
+         return throwError('Error getting Reviews');
       })
      );
   }
+
   show(reviewId): Observable<Review>{
     return this.http.get<Review>(this.url, this.getHttpOptions())
     .pipe(

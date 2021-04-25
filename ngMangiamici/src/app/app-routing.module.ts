@@ -5,6 +5,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PublicLandingComponent } from './components/public-landing/public-landing.component';
 import { RestaurantDashboardComponent } from './components/restaurant-dashboard/restaurant-dashboard.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'restdash', component: RestaurantDashboardComponent },
   { path: 'restaurants', component: RestaurantComponent},
-  { path: 'restaurants/:id', component: RestaurantComponent },
+  { path: 'restaurants/:id', component: RestaurantComponent},
+  { path: 'users', component: UserProfileComponent},
   { path: '**', component: NotFoundComponent }
 
 ];
@@ -22,4 +24,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {useHash:true})],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

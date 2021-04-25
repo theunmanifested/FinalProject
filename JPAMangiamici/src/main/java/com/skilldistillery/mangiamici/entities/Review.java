@@ -31,6 +31,8 @@ public class Review {
 	@Column(name="review_text")
 	private String reviewText;
 	
+	private Double rating;
+	
 	private Boolean enabled = true;
 	
 	@Column(name = "created_date")
@@ -88,6 +90,37 @@ public class Review {
 
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
+	}
+	
+
+
+	public Double getRating() {
+		return rating;
+	}
+
+
+	public void setRating(Double rating) {
+		this.rating = rating;
+	}
+
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+
+	public Boolean getIsPublic() {
+		return isPublic;
+	}
+
+
+	public void setIsPublic(Boolean isPublic) {
+		this.isPublic = isPublic;
 	}
 
 

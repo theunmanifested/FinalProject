@@ -7,17 +7,70 @@
     <br>
     <p>{{restaurant.description}}</p>
     <p>Call us: {{restaurant.phone}} <span>Email us: {{restaurant.email}}</span> <span>Check out our website: <a href="{{restaurant.websiteUrl}}">{{restaurant.websiteUrl}}</a></span></p>
+    <button (click)="newReview()">Add Review</button>
+  </div>
+  <br><br><br>
+
+  <div *ngIf="newReview">
+
+    <div id="outer-box">
+
+      <div class="row" >
+        <div class="col-sm-2" id="review-base-info">
+          <div id="review-base-info-content">
+            Rating: {{review.rating}}
+          </div>
+        </div>
+        <div class="col-sm-8" id="review-content">
+          {{review.reviewText}}
+        </div>
+        <div class="col-sm-2" id="review-user">
+          <p *ngIf="currentUser">Written by {{currentUser.firstName}} {{currentUser.lastName}}</p>
+          <p *ngIf="currentUser">Written by an anonymous user</p>
+        </div>
+      </div>
+
+    </div>
+    <button (click)='addRun()'>Add Run</button>
+
+  </div>
+
+  <div *ngFor="let review of reviewsByFriends">
+
+    <div id="outer-box">
+
+      <div class="row" >
+        <div class="col-sm-2" id="review-base-info">
+          <div id="review-base-info-content">
+            Rating: {{review.rating}}
+          </div>
+        </div>
+        <div class="col-sm-8" id="review-content">
+          {{review.reviewText}}
+        </div>
+        <div class="col-sm-2" id="review-user">
+          Written by {{review.user.firstName}} {{review.user.lastName}}
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
 
-  <div>
+<!--
+  id: number;
+  user: User;
+  restaurant: Restaurant;
+  reviewText: string;
+  enabled: boolean;
+  isPublic: boolean;
+-->
 
-  </div>
 
-
-
-
-  <!-- // id: number;
+  <!--                    Restaurant:
+    Done:
+    // id: number;
   // user: User;
   //location: Location;
   // reviews: Review[];

@@ -8,15 +8,17 @@ export class Review {
   reviewText: string;
   enabled: boolean;
   isPublic: boolean;
+  rating: number;
 
   constructor(id?: number, user?: User, restaurant?: Restaurant, reviewText?: string,
-              enabled?: boolean, isPublic?: boolean) {
+              enabled?: boolean, isPublic?: boolean, rating?: number) {
 
-  this.id = id;
-  this.user = user;
-  this.restaurant = restaurant;
-  this.reviewText = reviewText;
-  this.enabled = enabled;
-  this.isPublic = isPublic;
-}
+    this.id = id;
+    this.user = user;
+    this.restaurant = restaurant;
+    this.reviewText = reviewText;
+    this.enabled = enabled;
+    this.isPublic = isPublic;
+    this.rating = rating;
+  }
 }
