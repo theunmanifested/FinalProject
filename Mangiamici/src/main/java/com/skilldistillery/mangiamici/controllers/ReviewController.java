@@ -52,11 +52,22 @@ public class ReviewController {
 		}
 		return todos;
 	}
+	
+	@GetMapping("reviews/friends")
+	public List<Review> friendsReviews(HttpServletRequest req, HttpServletResponse res, Principal principal){
+		
+		System.out.println("***************************** controller");
+		 List<Review> r = svc.findFriendsReviews(principal.getName());
+		 
+		 if(r == null) {
+			 res.setStatus(404);
+		 }
+		
+		 return r;
+	}
 
 	@PostMapping("reviews")
 	public Review create(HttpServletRequest req, HttpServletResponse res, Principal principal, @RequestBody Review rev ){
-		
-		
 		
 		rev = svc.create( principal.getName() , rev);
 		
