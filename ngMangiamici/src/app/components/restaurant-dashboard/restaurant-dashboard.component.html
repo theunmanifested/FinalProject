@@ -1,1 +1,193 @@
-<p>restaurant-dashboard works!</p>
+<h4>restaurant-dashboard works! -- Delete Me!<h4>
+
+
+
+
+    <h2>Restaurant Profile</h2>
+
+    <!-- Restaurant profile picture/photo -->
+    <div class="container">
+      <!-- ** image Url used here -- remove placeholder -->
+      <img src="https://cdn.pixabay.com/photo/2015/05/15/14/55/cafe-768771_960_720.jpg" />
+    </div>
+    <br>
+    <!-- Extended material form grid from https://mdbootstrap.com/docs/angular/forms/inputs/-->
+    <!-- Restaurant's Admin/Profile page to input their information -->
+
+
+    <form>
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="text" class="form-control" id="inputRestName" placeholder="Restaurant Name">
+            <label for="inputRestName">Name of Restaurant</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="text" class="form-control" id="inputWebsiteUrl" placeholder="Website Url">
+            <label for="inputWebsiteUrl">Website</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="text" class="form-control" id="inputCategories" placeholder="Types of Food">
+            <label for="inputCategories">Food Categories</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="text" class="form-control" id="inputMenuUrl" placeholder="Menu Url">
+            <label for="inputMenuUrl">Menu</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="email" class="form-control" id="inputEmail4MD" placeholder="Email">
+            <label for="inputEmail4MD">Email</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="text" class="form-control" id="inputPhone" placeholder="Phone Number">
+            <label for="inputPassword4MD">Phone</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+
+          <div class="md-form form-group">
+            <textarea class="md-textarea form-control " rows="3" id="input_text" type="text"
+              placeholder="Tell us about your restaurant" length="120" mdbCharCounter mdbInput></textarea>
+            <label for="input_text">Description</label>
+          </div>
+
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+
+      <!-- Grid row -->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-12">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="text" class="form-control" id="inputAddressMD" placeholder="1234 Main St">
+            <label for="inputAddressMD">Address</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-12">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="text" class="form-control" id="inputAddress2MD" placeholder="Suite, floor, bldg">
+            <label for="inputAddress2MD">Address 2</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="text" class="form-control" id="inputCityMD" placeholder="New York City">
+            <label for="inputCityMD">City</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input mdbInput type="text" class="form-control" id="inputZipMD" placeholder="11206-1117">
+            <label for="inputZipMD">Zip</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-lg">
+
+          <div class="md-form form-group">
+            <h3>Discounts Offerings</h3>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="milDiscount" value="true">
+              <label class="form-check-label" for="milDiscount">Military</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="frDiscount" value="true">
+              <label class="form-check-label" for="frDiscount">First Responders</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="seniorDiscount" value="true">
+              <label class="form-check-label" for="seniorDiscount">Senior</label>
+            </div>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+
+      <br>
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col">
+          <button type="submit" class="btn btn-secondary" color="primary">Submit</button>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </form>
+    <!-- end of Form - Input for Restaurant  -->
+    <br>
+    <br>
+    <br>
+    <br>
