@@ -7,22 +7,23 @@
     <br>
     <p>{{restaurant.description}}</p>
     <p>Call us: {{restaurant.phone}} <span>Email us: {{restaurant.email}}</span> <span>Check out our website: <a href="{{restaurant.websiteUrl}}">{{restaurant.websiteUrl}}</a></span></p>
-    <button (click)="newReview()">Add Review</button>
+    <button (click)="newReviewForm()">Add Review</button>
   </div>
   <br><br><br>
 
+
+  <!-- CREATE new Review -->
   <div *ngIf="newReview">
 
     <div id="outer-box">
-
       <div class="row" >
         <div class="col-sm-2" id="review-base-info">
           <div id="review-base-info-content">
-            Rating: {{review.rating}}
+            Rating: <input class="form-control" type="number" name="rating" [(ngModel)]="newReview.rating">
           </div>
         </div>
         <div class="col-sm-8" id="review-content">
-          {{review.reviewText}}
+          <input class="form-control" type="number" name="re" [(ngModel)]="newReview.reviewText">
         </div>
         <div class="col-sm-2" id="review-user">
           <p *ngIf="currentUser">Written by {{currentUser.firstName}} {{currentUser.lastName}}</p>
@@ -31,10 +32,11 @@
       </div>
 
     </div>
-    <button (click)='addRun()'>Add Run</button>
-
+    <button (click)='true'>Add Review</button>
   </div>
 
+
+  <!-- List Reviews of Friends (if the user is logged in to an account) -->
   <div *ngFor="let review of reviewsByFriends">
 
     <div id="outer-box">

@@ -6,6 +6,8 @@ import { ReviewService } from 'src/app/services/review.service';
 import { Restaurant } from 'src/app/models/restaurant';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-restaurant',
@@ -16,6 +18,7 @@ export class RestaurantComponent implements OnInit {
 
 
   restaurant: Restaurant = null;
+  currentUser: User = null;
 
   //first step -> show restarant
   //second step show some reviews
@@ -36,7 +39,8 @@ export class RestaurantComponent implements OnInit {
   constructor(
     private reviewService: ReviewService,
     private restaurantService: RestaurantService,
-    private currentRoute: ActivatedRoute
+    private currentRoute: ActivatedRoute,
+    private userService: UserService
   ) { }
 
   // to display all the reviews or logically display  public / private reviews
@@ -51,6 +55,19 @@ export class RestaurantComponent implements OnInit {
 
     this.getFriendReviews();
 
+    this.loadUser();
+
+  }
+
+  loadUser(){
+    this.userService.getLoggedInUser().subscribe(
+      data => {
+        this.currentUser = data;
+      },
+      fail => {
+
+      }
+    );
   }
 
   getRestaurant(id: string): void {
