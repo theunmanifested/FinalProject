@@ -19,6 +19,17 @@ export class RestaurantService {
     private authService: AuthService
   ) { }
 
+  show(id: string): Observable<Restaurant> {
+
+    return this.http.get<Restaurant>(environment.baseUrl + "api/pub/restaurants/" + id)
+      .pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError('KABOOM');
+        })
+      );
+  }
+
   search(term: string): Observable<Restaurant[]> {
     return this.http.get<Restaurant[]>(this.url + "bysearch/" + term, this.getHttpOptions()).pipe(
       catchError((err: any) => {
