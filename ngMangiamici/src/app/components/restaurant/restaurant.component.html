@@ -8,23 +8,27 @@
     <p>{{restaurant.description}}</p>
     <p>Call us: {{restaurant.phone}} <span>Email us: {{restaurant.email}}</span> <span>Check out our website: <a href="{{restaurant.websiteUrl}}">{{restaurant.websiteUrl}}</a></span></p>
   </div>
-  <br>
-  <br>
+  <br><br><br>
 
 
   <div *ngFor="let review of reviewsByFriends">
 
-    <div class="row">
-      <div class="col-sm" id="review-base-info">
-        Rating: {{review.rating}}
-      </div>
-      <div class="col-sm" id="review-content">
-        {{review.reviewText}}
-      </div>
-      <div class="col-sm" id="review-user">
-        Written by {{review.user.firstName}} {{review.user.lastName}}
+    <div id="outer-box">
 
+      <div class="row" >
+        <div class="col-sm-2" id="review-base-info">
+          <div id="review-base-info-content">
+            Rating: {{review.rating}}
+          </div>
+        </div>
+        <div class="col-sm-8" id="review-content">
+          {{review.reviewText}}
+        </div>
+        <div class="col-sm-2" id="review-user">
+          Written by {{review.user.firstName}} {{review.user.lastName}}
+        </div>
       </div>
+
     </div>
 
   </div>
