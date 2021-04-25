@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.mangiamici.entities.Review;
 import com.skilldistillery.mangiamici.entities.User;
+import com.skilldistillery.mangiamici.repositories.FriendRepository;
 import com.skilldistillery.mangiamici.repositories.ReviewRepository;
 import com.skilldistillery.mangiamici.repositories.UserRepository;
 
@@ -17,7 +18,10 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewRepository reviewRepo;
 
 	@Autowired
-	UserRepository userRepo;
+	private UserRepository userRepo;
+	
+	@Autowired 
+	private FriendRepository friendRepo;
 
 	@Override
 	public List<Review> findAllEnabledAndPublic() {
@@ -86,5 +90,12 @@ public class ReviewServiceImpl implements ReviewService {
 		toDelete.setEnabled(false);
 		
 		return reviewRepo.saveAndFlush(toDelete);
+	}
+
+	@Override
+	public List<Review> findFriendsReviews(String username) {
+		
+		
+		return reviewRepo.findFriendsReviews(username);
 	}
 }

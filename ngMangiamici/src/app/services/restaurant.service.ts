@@ -6,14 +6,13 @@ import { Restaurant } from '../models/restaurant';
 import { AuthService } from './auth.service';
 import { catchError } from 'rxjs/operators';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class RestaurantService {
 
-  private url = environment.baseUrl + 'api/restaurants/bysearch/';
+  private url = environment.baseUrl + 'api/restaurants/';
 
   constructor(
     private http: HttpClient,
@@ -21,15 +20,13 @@ export class RestaurantService {
   ) { }
 
   search(term: string): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(this.url + term, this.getHttpOptions()).pipe(
+    return this.http.get<Restaurant[]>(this.url + "bysearch/" + term, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('Error in index()' + err);
       })
     );
   }
-
-
 
   private getHttpOptions() {
     // Send credentials as Authorization header (this is spring security convention for basic auth)

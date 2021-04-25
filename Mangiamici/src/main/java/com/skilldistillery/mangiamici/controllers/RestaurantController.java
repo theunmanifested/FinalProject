@@ -3,6 +3,7 @@ package com.skilldistillery.mangiamici.controllers;
 import java.security.Principal;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +28,9 @@ public class RestaurantController {
 
 	@Autowired
 	private RestaurantService restaurantSvc;
+	
+	@Autowired 
+	private EntityManager em;
 
 	// GET all restaurants
 	@GetMapping("restaurants")
@@ -42,6 +46,18 @@ public class RestaurantController {
 			res.setStatus(400);
 		}
 		return restaurant;
+	}
+	
+	@GetMapping(path = "pub/restaurants/{id}")
+	public Restaurant getById(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id) {
+		
+		Restaurant r = em.find(Restaurant.class, id);
+		
+		if (r == null) {
+			res.setStatus(404);
+		}
+		
+		return r;
 	}
 
 	// GET all restaurants based on Category

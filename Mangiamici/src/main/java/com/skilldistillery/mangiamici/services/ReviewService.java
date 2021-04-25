@@ -16,4 +16,6 @@ public interface ReviewService {
     public Review update(String username, int rId, Review review);
 
     public Review destroy(String username, int rId);
+    
+    public List<Review> findFriendsReviews(String username);
 }
