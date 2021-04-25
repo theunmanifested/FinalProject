@@ -1,2 +1,27 @@
-<p>user-profile works!</p>
+<div class="container">
+<div class="card">
 
+  <ul class="list-group list-group-flush">
+
+    <li class="list-group-item text-secondary text-center"><h4>{{currentUser.username}}</h4></li>
+
+    <li class="list-group-item bg-light text-center">
+
+      <div class="card-body">
+        <img src="{{currentUser.imgUrl}}" alt="profile photo">
+        <div class="card-body">
+          <span><h5 class="card-title">Status: {{currentUser.userStatus.name}} <br><hr><button class="btn btn-sm btn-secondary">Change Status</button>
+
+          </h5>
+          </span>
+          <p class="card-text">{{currentUser.aboutMe}}</p>
+
+        </div>
+      </div>
+
+    </li>
+    <li class="list-group-item text-center"><a href="#" class="btn btn-block btn-secondary">Edit Profile</a></li>
+
+  </ul>
+</div>
+</div>

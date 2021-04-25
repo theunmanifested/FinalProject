@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,18 +14,32 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  user: User = new User();
+  currentUser: User = new User();
 
   constructor(
     private restaurantSvc: RestaurantService,
     private http: HttpClient,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) { }
 
 
 
   ngOnInit(): void {
+    this.loadUser();
   }
+
+  loadUser(){
+    this.userService.getLoggedInUser().subscribe(
+      data => {
+        this.currentUser = data;
+      },
+      fail => {
+      }
+    );
+  }
+
+
 
 }
