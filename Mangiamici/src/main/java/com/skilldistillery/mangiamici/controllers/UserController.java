@@ -51,6 +51,18 @@ public class UserController {
 	public User getUser(Principal principal, HttpServletRequest req, HttpServletResponse res) {
 		User user = userSvc.getByUsername(principal.getName());
 		System.out.println(user + " ****************************");
+		
+		if (user == null) {
+			res.setStatus(404);
+		}
+		
+		return user;
+	}
+
+	@GetMapping("users/{username}")
+	public User getByUsername(HttpServletRequest req, HttpServletResponse res, @PathVariable String username) {
+		User user = userSvc.getByUsername(username);
+		
 		if (user == null) {
 			res.setStatus(404);
 		}
