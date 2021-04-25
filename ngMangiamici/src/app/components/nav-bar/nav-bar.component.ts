@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,7 +13,10 @@ export class NavBarComponent implements OnInit {
 
   user: User = new User();
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    ) { }
 
   login() {
     this.authService.login(this.user.username, this.user.password).subscribe(
