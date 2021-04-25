@@ -1,4 +1,22 @@
-<div id="restaurant-header">
+<div id="restaurant-header" *ngIf="restaurant">
 
- REStARant
+  <img [src]="restaurant.imgUrl" >
 </div>
+
+
+id: number;
+user: User;
+location: Location;
+reviews: Review[];
+phone: string;
+email: string;
+websiteUrl: string;
+categories: string;
+imgUrl: string;
+name: string;
+description: string;
+militaryDiscount: boolean;
+firstresponderDiscount: boolean;
+seniorDiscount: boolean;
+menuUrl: string;
+favoriteRestaurants: Favoriterestaurant[];

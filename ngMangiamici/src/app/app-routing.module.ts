@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'home', component: PublicLandingComponent },
   { path: 'about', component: AboutComponent },
   { path: 'restaurants', component: RestaurantComponent},
+  { path: 'restaurants/:id', component: RestaurantComponent },
   { path: '**', component: NotFoundComponent }
 
 ];

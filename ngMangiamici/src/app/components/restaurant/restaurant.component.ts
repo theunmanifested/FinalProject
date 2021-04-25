@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { Review } from 'src/app/models/review';
 import { ReviewService } from 'src/app/services/review.service';
 import { Restaurant } from 'src/app/models/restaurant';
+import { RestaurantService } from 'src/app/services/restaurant.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant',
@@ -28,13 +30,35 @@ export class RestaurantComponent implements OnInit {
   selectedReview = null;
 
   constructor(
-    private reviewService: ReviewService
+    private reviewService: ReviewService,
+    private restaurantService: RestaurantService,
+    private currentRoute: ActivatedRoute
   ) { }
 
   // to display all the reviews or logically display  public / private reviews
   // upon starting this component.
   ngOnInit(): void {
 
+    let restaurantId = this.currentRoute.snapshot.paramMap.get("id");
+    if(restaurantId){
+
+      this.getRestaurant(restaurantId);
+    }
+
+  }
+
+  getRestaurant(id: string): void {
+
+    this.restaurantService.show(id).subscribe(
+      data => {
+        this.restaurant = data;
+        console.log(this.restaurant);
+
+      },
+      fail => {
+        console.log(fail);
+      }
+    );
   }
 
 // // review methods
