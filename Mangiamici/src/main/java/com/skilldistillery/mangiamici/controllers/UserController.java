@@ -47,6 +47,17 @@ public class UserController {
 		return users;
 	}
 	
+	@GetMapping("users/{username}")
+	public User getByUsername(HttpServletRequest req, HttpServletResponse res, @PathVariable String username) {
+		User user = userSvc.getByUsername(username);
+		
+		if (user == null) {
+			res.setStatus(404);
+		}
+		
+		return user;
+	}
+	
 	@PutMapping("user")
 	public User update(@RequestBody User user, Principal principal, HttpServletResponse resp, HttpServletRequest req) {
 		
