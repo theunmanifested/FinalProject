@@ -8,16 +8,41 @@
     <p>{{restaurant.description}}</p>
     <p>Call us: {{restaurant.phone}} <span>Email us: {{restaurant.email}}</span> <span>Check out our website: <a href="{{restaurant.websiteUrl}}">{{restaurant.websiteUrl}}</a></span></p>
   </div>
+  <br>
+  <br>
 
 
-  <div>
+  <div *ngFor="let review of reviewsByFriends">
+
+    <div class="row">
+      <div class="col-sm" id="review-base-info">
+        Rating: {{review.rating}}
+      </div>
+      <div class="col-sm" id="review-content">
+        {{review.reviewText}}
+      </div>
+      <div class="col-sm" id="review-user">
+        Written by {{review.user.firstName}} {{review.user.lastName}}
+
+      </div>
+    </div>
 
   </div>
 
 
+<!--
+  id: number;
+  user: User;
+  restaurant: Restaurant;
+  reviewText: string;
+  enabled: boolean;
+  isPublic: boolean;
+-->
 
 
-  <!-- // id: number;
+  <!--                    Restaurant:
+    Done:
+    // id: number;
   // user: User;
   //location: Location;
   // reviews: Review[];
