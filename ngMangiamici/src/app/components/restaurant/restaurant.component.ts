@@ -154,15 +154,15 @@ submitNewReview(): void {
 //   );
 // }
 
-// deletedTodo(id: number): void {
-//   this.reviewService.destroy(id).subscribe(
-//     data => {
-//       this.reloadAllReviews();
-//     },
-//     err =>  {
-//     console.error('Error: ' + err);
-//     }
-//   );
-// }
+removeReview(id: number): void {
+  this.reviewService.destroy(id).subscribe(
+    data => {
+      this.loadReviews();
+    },
+    err =>  {
+    console.error('Error: ' + err);
+    }
+  );
+}
 
 }

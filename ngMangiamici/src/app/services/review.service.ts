@@ -64,7 +64,7 @@ export class ReviewService {
   }
 
   update(editedReview: Review) {
-   return this.http.put<Review>(`${this.url}/${editedReview.id}`, editedReview, this.getHttpOptions())
+   return this.http.put<Review>(`${this.url}${editedReview.id}`, editedReview, this.getHttpOptions())
    .pipe( catchError((err:any) => {
     console.log(err);
     return throwError('Error updating todo in service');
@@ -73,7 +73,7 @@ export class ReviewService {
   }
 
   destroy(id: number) {
-   return this.http.delete<Review>(`${this.url}/${id}`, this.getHttpOptions())
+   return this.http.delete(`${this.url}${id}`, this.getHttpOptions())
    .pipe(
      catchError((err:any) => {
         console.log(err);
