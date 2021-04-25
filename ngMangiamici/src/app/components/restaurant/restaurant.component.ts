@@ -95,6 +95,11 @@ export class RestaurantComponent implements OnInit {
 //   );
 // }
 
+newReviewForm(){
+  this.newReview = new Review();
+
+}
+
 // addReview(): void {
 //   console.log(this.newReview);
 //   this.reviewService.create(this.newReview).subscribe(
