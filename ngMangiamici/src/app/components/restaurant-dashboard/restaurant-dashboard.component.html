@@ -8,16 +8,18 @@
       <img src="https://cdn.pixabay.com/photo/2015/05/15/14/55/cafe-768771_960_720.jpg" />
     </div>
     <br>
+
+  <h1 *ngIf="currentUser.restaurant">IT is true</h1>
     <!-- Extended material form grid from https://mdbootstrap.com/docs/angular/forms/inputs/-->
     <!-- Restaurant's Admin/Profile page to input their information -->
-    <form>
+    <div *ngIf="!currentUser.restaurant">
       <!-- Grid row -->
       <div class="form-row">
         <!-- Grid column -->
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newRest.name' type="text" class="form-control" id="inputRestName" placeholder="Restaurant Name">
+            <input [(ngModel)]='newRest.name' name="name" type="text" class="form-control" id="inputRestName" placeholder="Restaurant Name">
             <label for="inputRestName">Name of Restaurant</label>
           </div>
         </div>
@@ -25,7 +27,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newRest.websiteUrl' type="text" class="form-control" id="inputWebsiteUrl" placeholder="Website Url">
+            <input [(ngModel)]='newRest.websiteUrl' name="websiteUrl"  type="text" class="form-control" id="inputWebsiteUrl" placeholder="Website Url">
             <label for="inputWebsiteUrl">Website</label>
           </div>
         </div>
@@ -168,12 +170,12 @@
       <div class="form-row">
         <!-- Grid column -->
         <div class="col">
-          <button type="submit" class="btn btn-secondary" color="primary">Submit</button>
+          <button (click)="addRest()" type="submit" class="btn btn-secondary" color="primary">Submit</button>
         </div>
         <!-- Grid column -->
       </div>
       <!-- Grid row -->
-    </form>
+    </div>
     <!-- end of Form - Input for Restaurant  -->
     <br>
     <br>

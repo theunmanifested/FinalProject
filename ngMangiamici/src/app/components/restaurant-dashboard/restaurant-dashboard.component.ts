@@ -29,23 +29,24 @@ export class RestaurantDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUser();
+    console.log(this.currentUser);
   }
 
 // add Restaurant
-  // addRest(): void {
-  //   this.newRest.location = this.newLoc;
-  //   // how to get this user
-  //   this.newRest.user = this.currentUser;
-  //   console.log(this.newRest);
-  //   this.restService.create(this.newRest).subscribe(
-  //     data => {
-  //       // this.reload();
-  //     },
-  //     err => {
-  //       console.log('Error creating todo: ' + err)
-  //     }
-  //   );
-  // }
+  addRest(): void {
+    this.newRest.location = this.newLoc;
+    // how to get this user
+    this.newRest.user = this.currentUser;
+    console.log(this.newRest);
+    this.restService.create(this.newRest).subscribe(
+      data => {
+        this.loadUser();
+      },
+      err => {
+        console.log('Error creating restaurant: ' + err)
+      }
+    );
+  }
 
 
 
@@ -54,6 +55,7 @@ loadUser(){
   this.userService.getLoggedInUser().subscribe(
     data => {
       this.currentUser = data;
+      console.log(this.currentUser);
     },
     fail => {
     }
