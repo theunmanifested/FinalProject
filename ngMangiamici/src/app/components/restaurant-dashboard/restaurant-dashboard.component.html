@@ -1,8 +1,5 @@
 <h4>restaurant-dashboard works! -- Delete Me!<h4>
 
-
-
-
     <h2>Restaurant Profile</h2>
 
     <!-- Restaurant profile picture/photo -->
@@ -13,8 +10,6 @@
     <br>
     <!-- Extended material form grid from https://mdbootstrap.com/docs/angular/forms/inputs/-->
     <!-- Restaurant's Admin/Profile page to input their information -->
-
-
     <form>
       <!-- Grid row -->
       <div class="form-row">
@@ -22,7 +17,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" id="inputRestName" placeholder="Restaurant Name">
+            <input [(ngModel)]='newRest.name' type="text" class="form-control" id="inputRestName" placeholder="Restaurant Name">
             <label for="inputRestName">Name of Restaurant</label>
           </div>
         </div>
@@ -30,7 +25,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" id="inputWebsiteUrl" placeholder="Website Url">
+            <input [(ngModel)]='newRest.websiteUrl' type="text" class="form-control" id="inputWebsiteUrl" placeholder="Website Url">
             <label for="inputWebsiteUrl">Website</label>
           </div>
         </div>
@@ -44,7 +39,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" id="inputCategories" placeholder="Types of Food">
+            <input [(ngModel)]='newRest.websiteUrl' type="text" class="form-control" id="inputCategories" placeholder="Types of Food">
             <label for="inputCategories">Food Categories</label>
           </div>
         </div>
@@ -52,7 +47,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" id="inputMenuUrl" placeholder="Menu Url">
+            <input [(ngModel)]='newRest.menuUrl' type="text" class="form-control" id="inputMenuUrl" placeholder="Menu Url">
             <label for="inputMenuUrl">Menu</label>
           </div>
         </div>
@@ -66,7 +61,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="email" class="form-control" id="inputEmail4MD" placeholder="Email">
+            <input [(ngModel)]='newRest.email' type="email" class="form-control" id="inputEmail4MD" placeholder="Email">
             <label for="inputEmail4MD">Email</label>
           </div>
         </div>
@@ -76,7 +71,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" id="inputPhone" placeholder="Phone Number">
+            <input [(ngModel)]='newRest.phone' type="text" class="form-control" id="inputPhone" placeholder="Phone Number">
             <label for="inputPassword4MD">Phone</label>
           </div>
         </div>
@@ -90,8 +85,8 @@
         <div class="col-md-6">
 
           <div class="md-form form-group">
-            <textarea class="md-textarea form-control " rows="3" id="input_text" type="text"
-              placeholder="Tell us about your restaurant" length="120" mdbCharCounter mdbInput></textarea>
+            <textarea [(ngModel)]='newRest.description' class="md-textarea form-control " rows="3" id="input_text" type="text"
+              placeholder="Tell us about your restaurant" length="120"></textarea>
             <label for="input_text">Description</label>
           </div>
 
@@ -107,18 +102,8 @@
         <div class="col-md-12">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" id="inputAddressMD" placeholder="1234 Main St">
+            <input [(ngModel)]='newLoc.address' type="text" class="form-control" id="inputAddressMD" placeholder="1234 Main St">
             <label for="inputAddressMD">Address</label>
-          </div>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-12">
-          <!-- Material input -->
-          <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" id="inputAddress2MD" placeholder="Suite, floor, bldg">
-            <label for="inputAddress2MD">Address 2</label>
           </div>
         </div>
         <!-- Grid column -->
@@ -131,7 +116,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" id="inputCityMD" placeholder="New York City">
+            <input [(ngModel)]='newLoc.city' type="text" class="form-control" id="inputCityMD" placeholder="New York City">
             <label for="inputCityMD">City</label>
           </div>
         </div>
@@ -141,7 +126,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" id="inputZipMD" placeholder="11206-1117">
+            <input [(ngModel)]='newLoc.zip' type="text" class="form-control" id="inputZipMD" placeholder="11206-1117">
             <label for="inputZipMD">Zip</label>
           </div>
         </div>
@@ -156,15 +141,15 @@
           <div class="md-form form-group">
             <h3>Discounts Offerings</h3>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="milDiscount" value="true">
+              <input [(ngModel)]='newRest.militaryDiscount' class="form-check-input" type="checkbox" id="milDiscount" value="true">
               <label class="form-check-label" for="milDiscount">Military</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="frDiscount" value="true">
+              <input [(ngModel)]='newRest.firstresponderDiscount' class="form-check-input" type="checkbox" id="frDiscount" value="true">
               <label class="form-check-label" for="frDiscount">First Responders</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="seniorDiscount" value="true">
+              <input [(ngModel)]='newRest.seniorDiscount' class="form-check-input" type="checkbox" id="seniorDiscount" value="true">
               <label class="form-check-label" for="seniorDiscount">Senior</label>
             </div>
           </div>
