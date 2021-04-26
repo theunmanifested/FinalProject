@@ -10,17 +10,22 @@
       <div class="card-body">
         <img class="img-fluid" src="{{currentUser.imgUrl}}" alt="profile photo">
         <div class="card-body">
-          <span><h5 class="card-title">Status: {{currentUser.userStatus.name}} <br><hr><button class="btn btn-sm btn-secondary">Change Status</button>
+          <span><h4 class="card-title">Status: {{currentUser.userStatus.name}} <br><br><button class="btn btn-sm btn-secondary">Change Status</button><hr>
 
-          </h5>
+          </h4>
           </span>
           <p class="card-text" *ngIf="! isEditing">{{currentUser.aboutMe}}</p>
-          <input class="form-control" *ngIf="isEditing" name="aboutme" id="aboutme" placeholder="{{currentUser.aboutMe}}" >
+          <textarea rows="3" class="form-control" *ngIf="isEditing" name="aboutme" id="aboutme" [(ngModel)]='currentUser.aboutMe'></textarea>
         </div>
       </div>
 
     </li>
-    <li class="list-group-item text-center"><button class="btn btn-block btn-secondary">Edit Profile</button></li>
+    <li *ngIf="!isEditing" class="list-group-item text-center"><button (click)="toggleIsEditing()" class="btn btn-block btn-secondary">Edit Profile</button></li>
+
+    <li *ngIf="isEditing" class="list-group-item text-center">
+      <button (click)="update(); toggleIsEditing()" class="btn btn-success">Save Changes</button>
+      <button (click)="loadUser(); toggleIsEditing()" class="btn btn-danger">Cancel</button>
+    </li>
 
   </ul>
 </div>
