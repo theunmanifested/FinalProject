@@ -70,7 +70,7 @@ public class UserController {
 		return user;
 	}
 	
-	@PutMapping("user")
+	@PutMapping("users")
 	public User update(@RequestBody User user, Principal principal, HttpServletResponse resp, HttpServletRequest req) {
 		
 		System.out.println("Update **************************************************");

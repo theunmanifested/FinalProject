@@ -14,8 +14,8 @@
 
           </h5>
           </span>
-          <p class="card-text">{{currentUser.aboutMe}}</p>
-
+          <p class="card-text" *ngIf="! isEditing===true">{{currentUser.aboutMe}}</p>
+          <input class="form-control" name="aboutme" id="aboutme">
         </div>
       </div>
 
@@ -24,4 +24,5 @@
 
   </ul>
 </div>
+<br><br>
 </div>
