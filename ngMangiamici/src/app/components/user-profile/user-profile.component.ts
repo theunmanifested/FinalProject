@@ -24,7 +24,16 @@ export class UserProfileComponent implements OnInit {
     private userService: UserService
   ) { }
 
-
+  update(): void {
+    this.userService.updateUser(this.currentUser).subscribe(
+      data => {
+        this.currentUser = data;
+        this.loadUser
+      },
+      fail => {
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.loadUser();

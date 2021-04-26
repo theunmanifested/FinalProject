@@ -36,6 +36,15 @@ export class UserService {
     );
   }
 
+  updateUser(user: User) {
+    return this.http.put<User>(this.url, user, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+      console.log(err);
+      return throwError('Error in index()' + err);
+    })
+    );
+  }
+
   private getHttpOptions() {
     // Send credentials as Authorization header (this is spring security convention for basic auth)
     const credentials = this.authService.getCredentials();
