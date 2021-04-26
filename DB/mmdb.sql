@@ -126,6 +126,7 @@ CREATE TABLE IF NOT EXISTS `restaurant` (
   PRIMARY KEY (`id`),
   INDEX `fk_restaurant_user1_idx` (`user_id` ASC),
   INDEX `fk_restaurant_location1_idx` (`location_id` ASC),
+  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC),
   CONSTRAINT `fk_restaurant_location1`
     FOREIGN KEY (`location_id`)
     REFERENCES `location` (`id`)
