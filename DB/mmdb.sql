@@ -110,7 +110,7 @@ DROP TABLE IF EXISTS `restaurant` ;
 CREATE TABLE IF NOT EXISTS `restaurant` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `user_id` INT(11) NOT NULL,
-  `location_id` INT(11) NOT NULL,
+  `location_id` INT(11) NULL DEFAULT NULL,
   `phone` VARCHAR(45) NULL DEFAULT NULL,
   `email` VARCHAR(100) NULL DEFAULT NULL,
   `website_url` VARCHAR(5000) NULL DEFAULT NULL,
