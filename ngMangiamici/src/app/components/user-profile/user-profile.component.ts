@@ -16,7 +16,13 @@ export class UserProfileComponent implements OnInit {
 
   currentUser: User = new User();
 
+  textHolder: string = '';
+
   isEditing: boolean=false;
+
+  changeAboutMe(): void {
+    this.currentUser.aboutMe = this.textHolder;
+  }
 
   toggleIsEditing(): void {
     if (this.isEditing===true) {
@@ -40,6 +46,7 @@ export class UserProfileComponent implements OnInit {
       data => {
         this.currentUser = data;
         this.loadUser();
+        this.textHolder=this.currentUser.aboutMe;
       },
       fail => {
       }

@@ -1,0 +1,22 @@
+button.btn-success {
+  width: 70%;
+  max-width: 450px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+button.btn-danger {
+  width: 20%;
+  min-width: 80px;
+  max-width: 130px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+button.btn-secondary {
+  max-width: 575px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button.btn-sm {
+  margin-top: -30px;
+}
