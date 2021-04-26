@@ -32,7 +32,7 @@ export class RestaurantComponent implements OnInit {
   // ^ second stage - just friend reviews;
 
   reviewsByNonFriendsPublic: Review[] = [];
-  newReview: Review = new Review();
+  newReview: Review = null;
   editReview: Review = null;
   selectedReview = null;
 
@@ -53,8 +53,7 @@ export class RestaurantComponent implements OnInit {
       this.getRestaurant(restaurantId);
     }
 
-    this.getFriendReviews();
-
+    this.loadReviews();
     this.loadUser();
 
   }
@@ -65,7 +64,7 @@ export class RestaurantComponent implements OnInit {
         this.currentUser = data;
       },
       fail => {
-
+          console.log(fail);
       }
     );
   }
@@ -84,6 +83,12 @@ export class RestaurantComponent implements OnInit {
     );
   }
 
+
+  loadReviews(){
+    this.getFriendReviews();
+    this.getNonFriendPublicReviews();
+  }
+
   // for now this just gets all reviews.
   getFriendReviews(): void {
 
@@ -99,6 +104,9 @@ export class RestaurantComponent implements OnInit {
     );
   }
 
+  getNonFriendPublicReviews() {
+
+  }
 // // review methods
 // displayReview(review) {
 //   this.selectedReview  = review;
@@ -114,21 +122,22 @@ export class RestaurantComponent implements OnInit {
 
 newReviewForm(){
   this.newReview = new Review();
-
+  console.log(this.newReview)
 }
 
-// addReview(): void {
-//   console.log(this.newReview);
-//   this.reviewService.create(this.newReview).subscribe(
-//     data => {
-//       this.reloadAllReviews();
-//     },
-//     err => {
-//       console.log('Error creating review: ' + err)
-//     }
-//   );
-//   this.newReview = new Review();
-// }
+submitNewReview(): void {
+
+  this.reviewService.create(this.newReview, this.restaurant, this.currentUser).subscribe(
+    data => {
+      this.loadReviews();
+      this.newReview = null;
+    },
+    err => {
+      console.log('Error creating review: ' + err)
+    }
+  );
+  this.newReview = new Review();
+}
 
 // updateReview(editedReview: Review, displayReview = true): void {
 //   this.reviewService.update(editedReview).subscribe(
@@ -145,15 +154,15 @@ newReviewForm(){
 //   );
 // }
 
-// deletedTodo(id: number): void {
-//   this.reviewService.destroy(id).subscribe(
-//     data => {
-//       this.reloadAllReviews();
-//     },
-//     err =>  {
-//     console.error('Error: ' + err);
-//     }
-//   );
-// }
+removeReview(id: number): void {
+  this.reviewService.destroy(id).subscribe(
+    data => {
+      this.loadReviews();
+    },
+    err =>  {
+    console.error('Error: ' + err);
+    }
+  );
+}
 
 }
