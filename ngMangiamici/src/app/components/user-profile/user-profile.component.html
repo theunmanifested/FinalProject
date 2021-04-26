@@ -14,13 +14,13 @@
 
           </h5>
           </span>
-          <p class="card-text" *ngIf="! isEditing===true">{{currentUser.aboutMe}}</p>
-          <input class="form-control" name="aboutme" id="aboutme" >
+          <p class="card-text" *ngIf="! isEditing">{{currentUser.aboutMe}}</p>
+          <input class="form-control" *ngIf="isEditing" name="aboutme" id="aboutme" placeholder="{{currentUser.aboutMe}}" >
         </div>
       </div>
 
     </li>
-    <li class="list-group-item text-center"><a href="#" class="btn btn-block btn-secondary">Edit Profile</a></li>
+    <li class="list-group-item text-center"><button class="btn btn-block btn-secondary">Edit Profile</button></li>
 
   </ul>
 </div>
