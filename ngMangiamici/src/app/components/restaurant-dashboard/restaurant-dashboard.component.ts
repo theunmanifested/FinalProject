@@ -34,7 +34,7 @@ export class RestaurantDashboardComponent implements OnInit {
 
 // add Restaurant
   addRest(): void {
-    this.newRest.location = this.newLoc;
+    // this.newRest.location = this.newLoc;
     // how to get this user
     this.newRest.user = this.currentUser;
     console.log(this.newRest);

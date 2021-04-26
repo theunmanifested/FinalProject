@@ -187,7 +187,7 @@ public class Restaurant {
 
 	@Override
 	public String toString() {
-		return "Restaurant [id=" + id + ", user=" + user + ", location=" + location + ", phone=" + phone + ", email="
+		return "Restaurant [id=" + id + ", location=" + location + ", phone=" + phone + ", email="
 				+ email + ", websiteUrl=" + websiteUrl + ", enabled=" + enabled + ", categories=" + categories
 				+ ", imgUrl=" + imgUrl + ", name=" + name + ", description=" + description + ", menuUrl=" + menuUrl
 				+ "]";
