@@ -7,13 +7,13 @@ import { User } from "./user";
 export class Restaurant {
   id: number;
   user: User;
-  location: Location; // **
+  location: Location;
   reviews: Review[];
   phone: string;
   email: string;
   websiteUrl: string;
   categories: string;
-  imgUrl: string;  // **
+  imgUrl: string;
   name: string;
   description: string;
   militaryDiscount: boolean;
