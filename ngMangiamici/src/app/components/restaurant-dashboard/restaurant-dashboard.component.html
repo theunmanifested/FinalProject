@@ -83,13 +83,19 @@
       <div class="form-row">
         <!-- Grid column -->
         <div class="col-md-6">
-
           <div class="md-form form-group">
             <textarea [(ngModel)]='newRest.description' class="md-textarea form-control " rows="3" id="input_text" type="text"
               placeholder="Tell us about your restaurant" length="120"></textarea>
             <label for="input_text">Description</label>
           </div>
-
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input [(ngModel)]='newRest.imgUrl' type="text" class="form-control" id="inputImgUrl" placeholder="Img Url">
+            <label for="inputImgUrl">Photo</label>
+          </div>
         </div>
         <!-- Grid column -->
       </div>
@@ -157,10 +163,7 @@
         <!-- Grid column -->
       </div>
       <!-- Grid row -->
-
-
       <br>
-
       <!-- Grid row -->
       <div class="form-row">
         <!-- Grid column -->
