@@ -35,24 +35,45 @@
     <button (click)='submitNewReview()'>Add Review</button>
   </div>
 
+  <!-- UPDATE new Review -->
+  <div *ngIf="editReview">
+
+    <div id="outer-box">
+      <div class="row">
+        <div class="col-sm-2" id="review-base-info">
+          <div id="review-base-info-content">
+            Rating: <input class="form-control" type="number" name="rating" value="{{editReview.rating}}" [(ngModel)]="editReview.rating">
+          </div>
+        </div>
+        <div class="col-sm-8" id="review-content">
+          <input class="form-control" type="text" name="reviewText" value="{{editReview.reviewText}}" [(ngModel)]="editReview.reviewText">
+        </div>
+        <div class="col-sm-2" id="review-user">
+          <p >Written by {{currentUser.firstName}} {{currentUser.lastName}}</p>
+        </div>
+      </div>
+
+    </div>
+    <button class="btn btn-outline-dark" (click)='editReview = null'>Save changes</button>
+  </div>
 
   <!-- List Reviews of Friends (if the user is logged in to an account) -->
   <div *ngFor="let review of reviewsByFriends">
 
     <div id="outer-box">
-
-      <div class="row" >
-        <div class="col-sm-2" id="review-base-info">
+       <div class="row" > <!-- style="border: 1px solid red "  -->
+        <div class="col-sm-3" id="review-base-info">
           <div id="review-base-info-content">
             Rating: {{review.rating}}
           </div>
         </div>
-        <div class="col-sm-8" id="review-content">
+        <div class="col-sm-6" id="review-content">
           {{review.reviewText}}
         </div>
-        <div class="col-sm-2" id="review-user">
+        <div class="col-sm-3" id="review-user">
           Written by {{review.user.firstName}} {{review.user.lastName}}
-          <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="deleteRunBtn" (click)="removeReview(review.id)">X</button>
+          <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="updateReviewBtn" (click)="editReviewForm(review)">△</button>
+          <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="deleteReviewBtn" (click)="removeReview(review.id)">X</button>
         </div>
       </div>
 
