@@ -5,6 +5,8 @@ import { AuthService } from './auth.service';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Review } from '../models/review';
+import { Restaurant } from '../models/restaurant';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -39,31 +41,39 @@ export class ReviewService {
          return throwError('Error getting reviews');
       })
      );
- }
+  }
 
-  create(newReview: Review) {
-    // FIXME not too sure if reviewText should be manipulated here
-    newReview.reviewText = '';
-    // newReview.  -- Add the remaining fields needed/wanted to create/add a new review
-    return this.http.post<Review>(this.url, newReview, this.getHttpOptions())
-    .pipe(
-      catchError((err:any) => {
+  create(item: Review, restaurant: Restaurant, user: User): Observable<Review> {
+
+    console.log("create review service ");
+
+    // set default values
+    item.restaurant = restaurant;
+    item.enabled = true;
+    item.isPublic = true;
+
+
+    console.log("Tears in the rain : " + JSON.stringify(item));
+
+    return this.http.post<Review>(environment.baseUrl + "api/reviews/", item, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
         console.log(err);
-        return throwError('Error creating review');
+        return throwError('KaBOOM');
       })
     );
   }
 
   update(editedReview: Review) {
-   return this.http.put<Review>(`${this.url}/${editedReview.id}`, editedReview, this.getHttpOptions())
+   return this.http.put<Review>(`${this.url}${editedReview.id}`, editedReview, this.getHttpOptions())
    .pipe( catchError((err:any) => {
     console.log(err);
     return throwError('Error updating todo in service');
    })
    );
   }
+
   destroy(id: number) {
-   return this.http.delete<Review>(`${this.url}/${id}`, this.getHttpOptions())
+   return this.http.delete(`${this.url}${id}`, this.getHttpOptions())
    .pipe(
      catchError((err:any) => {
         console.log(err);

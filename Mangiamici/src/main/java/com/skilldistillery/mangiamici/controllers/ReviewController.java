@@ -69,6 +69,8 @@ public class ReviewController {
 	@PostMapping("reviews")
 	public Review create(HttpServletRequest req, HttpServletResponse res, Principal principal, @RequestBody Review rev ){
 		
+		System.out.println(principal.getName() + "   " + rev);
+		
 		rev = svc.create( principal.getName() , rev);
 		
 		if (rev != null) {
