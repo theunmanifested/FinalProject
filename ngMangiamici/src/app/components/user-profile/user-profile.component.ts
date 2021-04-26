@@ -16,6 +16,17 @@ export class UserProfileComponent implements OnInit {
 
   currentUser: User = new User();
 
+  isEditing: boolean=false;
+
+  toggleIsEditing(): void {
+    if (this.isEditing===true) {
+      this.isEditing=false;
+    }
+    else {
+      this.isEditing=true;
+    }
+  }
+
   constructor(
     private restaurantSvc: RestaurantService,
     private http: HttpClient,
@@ -28,7 +39,7 @@ export class UserProfileComponent implements OnInit {
     this.userService.updateUser(this.currentUser).subscribe(
       data => {
         this.currentUser = data;
-        this.loadUser
+        this.loadUser();
       },
       fail => {
       }
