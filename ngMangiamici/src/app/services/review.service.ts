@@ -64,12 +64,12 @@ export class ReviewService {
   }
 
   update(editedReview: Review) {
-   return this.http.put<Review>(`${this.url}${editedReview.id}`, editedReview, this.getHttpOptions())
-   .pipe( catchError((err:any) => {
-    console.log(err);
-    return throwError('Error updating todo in service');
-   })
-   );
+     return this.http.put<Review>(`${this.url}${editedReview.id}`, editedReview, this.getHttpOptions())
+       .pipe( catchError((err:any) => {
+        console.log(err);
+        return throwError('Error updating todo in service');
+       })
+     );
   }
 
   destroy(id: number) {

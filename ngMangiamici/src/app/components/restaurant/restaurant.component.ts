@@ -139,20 +139,21 @@ submitNewReview(): void {
   this.newReview = new Review();
 }
 
-// updateReview(editedReview: Review, displayReview = true): void {
-//   this.reviewService.update(editedReview).subscribe(
-//     data => {
-//       if(displayReview) {
-//         this.selectedReview = editedReview;
-//       }
-//       this.editReview = null;
-//       this.reloadAllReviews();
-//     },
-//     err => {
-//       console.log('Error updating todo: ' + err);
-//     }
-//   );
-// }
+editReviewForm(rev : Review){
+  this.editReview = rev;
+}
+
+updateReview(editedReview: Review): void {
+  this.reviewService.update(editedReview).subscribe(
+    data => {
+      this.editReview = null;
+      this.loadReviews();
+    },
+    err => {
+      console.log('Error updating todo: ' + err);
+    }
+  );
+}
 
 removeReview(id: number): void {
   this.reviewService.destroy(id).subscribe(
