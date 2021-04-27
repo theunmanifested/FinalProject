@@ -16,6 +16,6 @@ public interface LocationService {
 	
 	Location update(String username, int locationId, Location location);
 	
-//	boolean destroy(String username, int locationId);
+	boolean destroy(String username, int locationId);
 	
 }
