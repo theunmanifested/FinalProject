@@ -64,6 +64,24 @@
     <button class="btn btn-outline-dark" (click)='editReview = null'>Save changes</button>
   </div>
 
+  <!-- List User's review images as well as Friend's review images (if the user is logged in to an account) -->
+  <div class="container-fluid" id="friendsPics">
+    <span *ngFor="let review of reviewsByFriends">
+      <div *ngIf="review.img">
+        <img [src]="review.img" id="picture" class="img-fluid">
+      </div>
+    </span>
+  </div>
+
+   <!-- List all other images-->
+   <div class="container-fluid" id="friendsPics">
+    <span *ngFor="let review of reviewsByNonFriendsPublic">
+      <div *ngIf="review.img">
+        <img [src]="review.img" id="picture" class="img-fluid">
+      </div>
+    </span>
+  </div>
+
   <!-- List User's reviews as well as Reviews of Friends (if the user is logged in to an account) -->
   <div *ngFor="let review of reviewsByFriends">
 
@@ -72,7 +90,7 @@
         <div class="col-sm-3" id="review-base-info">
           <div id="review-base-info-content">
             Rating: {{review.rating}} <br>
-           Written on {{review.createdDate | date}}
+            Written on {{review.createdDate | date}}
             <!-- Updated on {{}} --> -->
 
           </div>

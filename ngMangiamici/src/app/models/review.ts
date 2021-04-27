@@ -24,7 +24,6 @@ export class Review {
     this.enabled = enabled;
     this.isPublic = isPublic;
     this.rating = rating;
-
     this.createdDate = createDate;
     this.updateDate = updateDate;
     this.enabled = enabled;
