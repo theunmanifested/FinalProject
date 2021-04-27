@@ -7,12 +7,14 @@ import { RestaurantDashboardComponent } from './components/restaurant-dashboard/
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FriendsComponent } from './components/friends/friends.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
 
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: PublicLandingComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
   { path: 'restdash', component: RestaurantDashboardComponent },
   { path: 'restaurants', component: RestaurantComponent},
   { path: 'restaurants/:id', component: RestaurantComponent},
