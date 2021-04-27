@@ -18,4 +18,8 @@ public interface ReviewService {
     public Review destroy(String username, int rId);
     
     public List<Review> findFriendsReviews(String username);
+    
+    public List<Review> findFriendsReviewsforRestaurant(String username, Integer restaurantId);
+    
+    public List<Review> findNonFriendsReviewsforRestaurant(String username, Integer rId);
 }

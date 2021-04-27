@@ -98,4 +98,18 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return reviewRepo.findFriendsReviews(username);
 	}
+
+	@Override
+	public List<Review> findFriendsReviewsforRestaurant(String username, Integer restaurantId) {
+		
+		return reviewRepo.findFriendsReviewsforRestaurant(username, restaurantId);
+	}
+
+	@Override
+	public List<Review> findNonFriendsReviewsforRestaurant(String username, Integer rId) {
+		
+		return reviewRepo.findNonFriendsReviewsforRestaurantZ(username, rId);
+	}
+	
+	
 }

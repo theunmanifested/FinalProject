@@ -33,6 +33,27 @@ export class ReviewService {
      );
   }
 
+    // get all friend reviews.
+    indexFriends(): Observable<Review[]> {
+      return this.http.get<Review[]>(this.url + "friends", this.getHttpOptions())
+      .pipe(
+        catchError((err:any) => {
+           console.log(err);
+           return throwError('Error getting Reviews');
+        })
+       );
+    }
+
+    indexNonFriendsPublic(restaurantId: number): Observable<Review[]>{
+      return this.http.get<Review[]>(this.url + "otherPublic/" + restaurantId, this.getHttpOptions())
+      .pipe(
+        catchError((err:any) => {
+           console.log(err);
+           return throwError('Error getting Reviews');
+        })
+       );
+    }
+
   show(reviewId): Observable<Review>{
     return this.http.get<Review>(this.url, this.getHttpOptions())
     .pipe(

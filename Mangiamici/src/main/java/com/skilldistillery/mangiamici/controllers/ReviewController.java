@@ -53,11 +53,37 @@ public class ReviewController {
 		return todos;
 	}
 	
+	// get friend reviews
 	@GetMapping("reviews/friends")
 	public List<Review> friendsReviews(HttpServletRequest req, HttpServletResponse res, Principal principal){
 		
-		System.out.println("***************************** controller");
 		 List<Review> r = svc.findFriendsReviews(principal.getName());
+		 
+		 if(r == null) {
+			 res.setStatus(404);
+		 }
+		
+		 return r;
+	}
+	
+	// get friend reviews for a given restaurant
+	@GetMapping("reviews/friends/{rId}")
+	public List<Review> friendsReviewsforRestaurant(@PathVariable Integer rId, HttpServletRequest req, HttpServletResponse res, Principal principal){
+		
+		 List<Review> r = svc.findFriendsReviewsforRestaurant(principal.getName(), rId);
+		 
+		 if(r == null) {
+			 res.setStatus(404);
+		 }
+		
+		 return r;
+	}
+	
+	//get all non friend public reviews for a given restaurant
+	@GetMapping("reviews/otherPublic/{rId}")
+	public List<Review> notFriendPublicReviews(@PathVariable Integer rId, HttpServletRequest req, HttpServletResponse res, Principal principal){
+		
+		 List<Review> r = svc.findNonFriendsReviewsforRestaurant(principal.getName(), rId);
 		 
 		 if(r == null) {
 			 res.setStatus(404);
