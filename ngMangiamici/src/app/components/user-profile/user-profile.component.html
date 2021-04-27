@@ -37,6 +37,7 @@
 
     </li>
     <li *ngIf="!isEditing" class="list-group-item text-center"><button (click)="toggleIsEditing()" class="btn btn-block btn-secondary">Edit Profile</button></li>
+    <li *ngIf="!currentUser.restaurant" class="list-group-item text-center"><button (click)="goToRestProf()" class="btn btn-block btn-secondary">Add Restaurant</button></li>
 
     <li *ngIf="isEditing" class="list-group-item text-center">
       <button (click)="update(); toggleIsEditing()" class="btn btn-success">Save Changes</button>
