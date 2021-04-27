@@ -13,6 +13,9 @@
         <li *ngIf="loggedIn() && hasRestfunc()" class="nav-item active">
           <a class="nav-link" [routerLink]="['/restdash']">My Restaurant<span class="sr-only">(current)</span></a>
         </li>
+        <li *ngIf="loggedIn()" class="nav-item active">
+          <a class="nav-link" [routerLink]="['/friends']">Friends<span class="sr-only">(current)</span></a>
+        </li>
         <!-- Restaurant owners only -->
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/about']">About<span class="sr-only">(current)</span></a>
