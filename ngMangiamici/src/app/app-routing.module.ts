@@ -6,6 +6,7 @@ import { PublicLandingComponent } from './components/public-landing/public-landi
 import { RestaurantDashboardComponent } from './components/restaurant-dashboard/restaurant-dashboard.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { FriendsComponent } from './components/friends/friends.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'restaurants', component: RestaurantComponent},
   { path: 'restaurants/:id', component: RestaurantComponent},
   { path: 'users', component: UserProfileComponent},
+  { path: 'friends', component: FriendsComponent},
   { path: '**', component: NotFoundComponent }
 
 ];
