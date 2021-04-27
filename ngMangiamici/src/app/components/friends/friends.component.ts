@@ -57,6 +57,7 @@ export class FriendsComponent implements OnInit {
     this.userService.getLoggedInUser().subscribe(
       data => {
         this.currentUser = data;
+
       },
       fail => {
       }
