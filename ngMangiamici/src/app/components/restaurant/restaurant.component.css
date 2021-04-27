@@ -56,16 +56,16 @@
 
 #friendsPics {
 
-  overflow-x: auto; /* Hide horizontal scrollbar */
-  overflow-y: hidden; /* Add vertical scrollbar */
-  height: 15vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+
 }
 
 #otherPics {
 
-  overflow-x: auto; /* Hide horizontal scrollbar */
-  overflow-y: hidden; /* Add vertical scrollbar */
-  height: 15vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+
 }
 
 .img {
