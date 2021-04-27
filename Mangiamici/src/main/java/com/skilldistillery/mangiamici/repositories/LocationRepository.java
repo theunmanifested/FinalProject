@@ -6,4 +6,5 @@ import com.skilldistillery.mangiamici.entities.Location;
 
 public interface LocationRepository extends JpaRepository<Location, Integer> {
 
+	Location findByUser_UsernameAndId(String username, Integer locationId);
 }
