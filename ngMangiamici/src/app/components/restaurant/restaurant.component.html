@@ -76,6 +76,7 @@
         <div class="col-sm-1">
           <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="updateReviewBtn" (click)="editReviewForm(review)">△</button>
           <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="deleteReviewBtn" (click)="removeReview(review.id)">X</button>
+          <p *ngIf="(currentUser && (currentUser.username !== review.user.username)) " class="btn btn-outline-dark" id="" > friend</p>
         </div>
       </div>
 
