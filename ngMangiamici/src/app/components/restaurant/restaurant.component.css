@@ -58,10 +58,25 @@
 
   overflow-x: auto; /* Hide horizontal scrollbar */
   overflow-y: hidden; /* Add vertical scrollbar */
+  height: 15vh;
 }
 
 #otherPics {
 
   overflow-x: auto; /* Hide horizontal scrollbar */
   overflow-y: hidden; /* Add vertical scrollbar */
+  height: 15vh;
 }
+
+.img {
+  width: 20%;
+  height: auto;
+}
+
+.bottomright {
+  position: relative;
+  margin-bottom: -10%;
+  right: 20%;
+  font-size: 18px;
+}
+

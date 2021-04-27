@@ -68,7 +68,7 @@
   <div class="container-fluid" id="friendsPics">
     <span *ngFor="let review of reviewsByFriends">
       <div *ngIf="review.img">
-        <img [src]="review.img" id="picture" class="img-fluid">
+        <img [src]="review.img" class="mm-img" id="picture" class="img-fluid">
       </div>
     </span>
   </div>
@@ -76,9 +76,9 @@
    <!-- List all other images-->
    <div class="container-fluid" id="friendsPics">
     <span *ngFor="let review of reviewsByNonFriendsPublic">
-      <div *ngIf="review.img">
-        <img [src]="review.img" id="picture" class="img-fluid">
-      </div>
+      <span *ngIf="review.img">
+        <img [src]="review.img" class="mm-img" class="img-fluid">
+      </span>
     </span>
   </div>
 
@@ -92,7 +92,6 @@
             Rating: {{review.rating}} <br>
             Written on {{review.createdDate | date}}
             <!-- Updated on {{}} --> -->
-
           </div>
         </div>
         <div class="col-sm-6" id="review-content">
