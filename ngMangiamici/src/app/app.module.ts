@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HeaderSearchComponent } from './components/header-search/header-search.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { FriendsComponent } from './components/friends/friends.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     RestaurantComponent,
     RegisterComponent,
     RestaurantDashboardComponent,
-    HeaderSearchComponent
+    HeaderSearchComponent,
+    FriendsComponent
   ],
   imports: [
     BrowserModule,
