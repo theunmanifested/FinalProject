@@ -34,8 +34,8 @@ export class ReviewService {
   }
 
     // get all friend reviews.
-    indexFriends(): Observable<Review[]> {
-      return this.http.get<Review[]>(this.url + "friends", this.getHttpOptions())
+    indexFriends(rId: number): Observable<Review[]> {
+      return this.http.get<Review[]>(this.url + "friends/" + rId, this.getHttpOptions())
       .pipe(
         catchError((err:any) => {
            console.log(err);

@@ -59,6 +59,7 @@ export class RestaurantComponent implements OnInit {
     this.userService.getLoggedInUser().subscribe(
       data => {
         this.currentUser = data;
+        this.loadReviews();
       },
       fail => {
           console.log(fail);
@@ -70,10 +71,9 @@ export class RestaurantComponent implements OnInit {
 
     this.restaurantService.show(id).subscribe(
       data => {
-
+        this.loadUser();
         this.restaurant = data;
         console.log(this.restaurant);
-        this.loadReviews();
       },
       fail => {
         console.log(fail);
@@ -83,13 +83,17 @@ export class RestaurantComponent implements OnInit {
 
 
   loadReviews(){
-    this.getFriendReviews();
-    this.getNonFriendPublicReviews();
+    if(this.currentUser){
+      this.getFriendReviews();
+      this.getNonFriendPublicReviews();
+    } else{
+      // this.getPublicReviewsFromRestaurant(rId);
+    }
   }
 
   getFriendReviews(): void {
 
-    this.reviewService.indexFriends().subscribe(
+    this.reviewService.indexFriends(this.restaurant.id).subscribe(
       data => {
         this.reviewsByFriends = data;
       },
