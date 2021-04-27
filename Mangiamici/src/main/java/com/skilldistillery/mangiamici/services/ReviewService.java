@@ -22,4 +22,7 @@ public interface ReviewService {
     public List<Review> findFriendsReviewsforRestaurant(String username, Integer restaurantId);
     
     public List<Review> findNonFriendsReviewsforRestaurant(String username, Integer rId);
+    
+    public List<Review> adminFindReviewForRestaurant( Integer rId);
+	public List<Review> findAllPublicForRestaurant(Integer rId);
 }

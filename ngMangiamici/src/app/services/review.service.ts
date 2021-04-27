@@ -33,6 +33,30 @@ export class ReviewService {
      );
   }
 
+   // get all public reviews for a given restaurant
+  indexRestaurantXReviews(rId): Observable<Review[]> {
+    return this.http.get<Review[]>(environment.baseUrl + "api/pub/reviews/" + rId)
+    .pipe(
+      catchError((err:any) => {
+         console.log(err);
+         return throwError('Error getting Reviews');
+      })
+     );
+  }
+
+
+   // get all reviews.
+  adminIndex(rId: number): Observable<Review[]> {
+
+    return this.http.get<Review[]>(environment.baseUrl + "api/review/" + rId + "/admin", this.getHttpOptions())
+    .pipe(
+      catchError((err:any) => {
+         console.log(err);
+         return throwError('Error getting Reviews');
+      })
+     );
+  }
+
     // get all friend reviews.
     indexFriends(rId: number): Observable<Review[]> {
       return this.http.get<Review[]>(this.url + "friends/" + rId, this.getHttpOptions())
