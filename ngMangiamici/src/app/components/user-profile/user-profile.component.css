@@ -20,3 +20,12 @@ button.btn-secondary {
 button.btn-sm {
   margin-top: -30px;
 }
+
+select {
+  text-align-last: center;
+  text-align: center;
+}
+
+p {
+  font-size: large;
+}
