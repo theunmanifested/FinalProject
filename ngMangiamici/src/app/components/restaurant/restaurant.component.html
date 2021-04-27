@@ -64,9 +64,9 @@
        <div class="row" > <!-- style="border: 1px solid red "  -->
         <div class="col-sm-3" id="review-base-info">
           <div id="review-base-info-content">
-            Rating: {{review.rating}}<br>
-            <!-- Written on {{review.createDate}}
-            Updated on {{}} -->
+            Rating: {{review.rating}} <br>
+           Written on {{review.createdDate | date}}
+            <!-- Updated on {{}} --> -->
 
           </div>
         </div>
@@ -94,7 +94,8 @@
        <div class="row" > <!-- style="border: 1px solid red "  -->
         <div class="col-sm-3" id="review-base-info">
           <div id="review-base-info-content">
-            Rating: {{review.rating}}
+            Rating: {{review.rating}} <br>
+            Written on {{review.createdDate | date }}
           </div>
         </div>
         <div class="col-sm-6" id="review-content">
