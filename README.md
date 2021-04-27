@@ -2,7 +2,6 @@
 
 ---
 By **Sapphire Bronco** 🔷 🐴 
-
 ---
 
 [![Java](https://img.shields.io/badge/Java%20SE-JDK%208-red)]()
@@ -16,12 +15,14 @@ This full stack application lets users us our friend-based restaurant review pla
 
 
 ### Main Tools:
-* Java REST backend
-* Angularfrontend
+* Java REST - backend
+* Angular JS Frameworks - frontend
 * MySQL database
 
 ### Technology:
 * Spring Boot
+* Hibernate
+* Gradle
 * JPA
 * AWS EC2 Amazon Linux OS
 
