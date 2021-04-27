@@ -38,35 +38,35 @@ public class LocationServiceImpl implements LocationService {
 		return location;	
 	}
 
-	@Override
-	public Location update(String username, int locationId, Location location) {
-		Location managed = locationRepo.findByUser_UsernameAndId(username, locationId);
-		System.out.println("I am managed ............. " + managed);
-		if(managed != null) {
-			managed.setUser(location.getUser());
-			managed.setAddress(location.getAddress());
-			managed.setCity(location.getCity());
-			managed.setState(location.getState());
-			managed.setZip(location.getZip());
-			managed.setLatitude(location.getLatitude());
-			managed.setLongitude(location.getLongitude());
-			managed.setPhone(location.getPhone());
-			managed.setPublic(location.isPublic());
-			locationRepo.saveAndFlush(managed);
-			return managed;
-		}
-		return null;
-	}
-
-	@Override
-	public boolean destroy(String username, int locationId) {
-		boolean deleted = false;
-		Location loc = locationRepo.findByUser_UsernameAndId(username, locationId);
-		if (loc != null) {
-			locationRepo.delete(loc);
-			deleted = true;
-		}
-		return deleted;
-	}
+//	@Override
+//	public Location update(String username, int locationId, Location location) {
+//		Location managed = locationRepo.findByUser_UsernameAndId(username, locationId);
+//		System.out.println("I am managed ............. " + managed);
+//		if(managed != null) {
+//			managed.setUser(location.getUser());
+//			managed.setAddress(location.getAddress());
+//			managed.setCity(location.getCity());
+//			managed.setState(location.getState());
+//			managed.setZip(location.getZip());
+//			managed.setLatitude(location.getLatitude());
+//			managed.setLongitude(location.getLongitude());
+//			managed.setPhone(location.getPhone());
+//			managed.setPublic(location.isPublic());
+//			locationRepo.saveAndFlush(managed);
+//			return managed;
+//		}
+//		return null;
+//	}
+//
+//	@Override
+//	public boolean destroy(String username, int locationId) {
+//		boolean deleted = false;
+//		Location loc = locationRepo.findByUser_UsernameAndId(username, locationId);
+//		if (loc != null) {
+//			locationRepo.delete(loc);
+//			deleted = true;
+//		}
+//		return deleted;
+//	}
 //	
 }

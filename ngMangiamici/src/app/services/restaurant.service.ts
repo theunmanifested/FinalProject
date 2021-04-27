@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 
 export class RestaurantService {
 
-  private url = environment.baseUrl + 'api/restaurants/';
+  private url = environment.baseUrl + 'api/restaurants';
 
   constructor(
     private http: HttpClient,

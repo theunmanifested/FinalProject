@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.mangiamici.entities.Location;
-import com.skilldistillery.mangiamici.entities.Post;
 import com.skilldistillery.mangiamici.services.LocationService;
 
 @CrossOrigin({ "*", "http://localhost:4290" })
@@ -51,24 +50,24 @@ public class LocationController {
 		return location;
 	}
 	
-	@PutMapping("locations/{locationId}")
-	public Location update(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int locationId, @RequestBody Location location) {
-		location = locationSvc.update(principal.getName(), locationId, location); 
-		if (location == null) {
-			res.setStatus(400);
-		}
-		return location;
-	}
-	
-//  DELETE restaurants/{restaurantId}
-	@DeleteMapping("locations/{locationId}")
-	public void destroy(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int locationId) {
-		if(locationSvc.destroy(principal.getName(),locationId)) {
-			res.setStatus(204);
-		} else {
-			res.setStatus(404);
-		}
-		
-	}
+//	@PutMapping("locations/{locationId}")
+//	public Location update(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int locationId, @RequestBody Location location) {
+//		location = locationSvc.update(principal.getName(), locationId, location); 
+//		if (location == null) {
+//			res.setStatus(400);
+//		}
+//		return location;
+//	}
+//	
+////  DELETE restaurants/{restaurantId}
+//	@DeleteMapping("locations/{locationId}")
+//	public void destroy(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int locationId) {
+//		if(locationSvc.destroy(principal.getName(),locationId)) {
+//			res.setStatus(204);
+//		} else {
+//			res.setStatus(404);
+//		}
+//		
+//	}
 
 }
