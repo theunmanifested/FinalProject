@@ -33,6 +33,10 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  goToRestProf(): void{
+  this.router.navigateByUrl("restdash");
+  }
+
   constructor(
     private restaurantSvc: RestaurantService,
     private http: HttpClient,
