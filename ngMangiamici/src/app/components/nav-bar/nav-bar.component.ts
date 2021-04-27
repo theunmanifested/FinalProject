@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class NavBarComponent implements OnInit {
 
   user: User = new User();
   loggedUser: User = new User();
+  doesIt: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -47,21 +48,27 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadUser();
   }
 
   loadUser(){
     this.userService.getLoggedInUser().subscribe(
       data => {
         this.loggedUser = data;
-        console.log(this.loggedUser);
+        // console.log(this.loggedUser);
       },
       fail => {
       }
     );
+    // if (this.loggedUser.restaurant) {
+    //   this.doesIt = true;
+    // } else {
+    //   this.doesIt = false;
+    // }
   }
 
-  hasRest(){
-    this.loadUser();
+  hasRestfunc(){
+    // this.loadUser();
     if (this.loggedUser.restaurant) {
       return true;
     } else {

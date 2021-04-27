@@ -7,18 +7,18 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li *ngIf="loggedIn()" class="nav-item active">
-          <a class="nav-link" href="#/users">My Profile<span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/users']">My Profile<span class="sr-only">(current)</span></a>
         </li>
         <!-- Restaurant owners only -->
-        <li *ngIf="loggedIn() && hasRest()" class="nav-item active">
-          <a class="nav-link" href="#/restdash">My Restaurant<span class="sr-only">(current)</span></a>
+        <li *ngIf="loggedIn() && hasRestfunc()" class="nav-item active">
+          <a class="nav-link" [routerLink]="['/restdash']">My Restaurant<span class="sr-only">(current)</span></a>
         </li>
         <!-- Restaurant owners only -->
         <li class="nav-item active">
-          <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/about']">About<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">Contact <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/contact']">Contact<span class="sr-only">(current)</span></a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
