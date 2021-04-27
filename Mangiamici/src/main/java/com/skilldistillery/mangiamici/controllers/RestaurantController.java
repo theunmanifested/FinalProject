@@ -28,8 +28,8 @@ public class RestaurantController {
 
 	@Autowired
 	private RestaurantService restaurantSvc;
-	
-	@Autowired 
+
+	@Autowired
 	private EntityManager em;
 
 	// GET all restaurants
@@ -47,32 +47,43 @@ public class RestaurantController {
 		}
 		return restaurant;
 	}
-	
+
 	@GetMapping(path = "pub/restaurants/{id}")
 	public Restaurant getById(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id) {
-		
+
 		Restaurant r = em.find(Restaurant.class, id);
-		
+
 		if (r == null) {
 			res.setStatus(404);
 		}
-		
+
 		return r;
 	}
 
-	// GET all restaurants based on Category
+	// GET all restaurants by category, name, description
 	@GetMapping(path = "restaurants/bysearch/{cat}")
 	public List<Restaurant> showBySearch(HttpServletRequest req, HttpServletResponse res, @PathVariable String cat) {
-		List<Restaurant> restaurants = restaurantSvc.showBySearch(cat);		
-			if (restaurants == null) {
-				res.setStatus(400);
-			} else {
-				res.setStatus(200);
-			}		
+		List<Restaurant> restaurants = restaurantSvc.showBySearch(cat);
+		if (restaurants == null) {
+			res.setStatus(400);
+		} else {
+			res.setStatus(200);
+		}
 		return restaurants;
 	}
-	
-	
+
+	// GET all restaurants by category, name, description
+	@GetMapping(path = "pub/restaurants/bysearch/{cat}")
+	public List<Restaurant> showBySearchPublic(HttpServletRequest req, HttpServletResponse res,
+			@PathVariable String cat) {
+		List<Restaurant> restaurants = restaurantSvc.showBySearch(cat);
+		if (restaurants == null) {
+			res.setStatus(400);
+		} else {
+			res.setStatus(200);
+		}
+		return restaurants;
+	}
 
 	// POST restaurants
 	@PostMapping("restaurants")
@@ -86,11 +97,12 @@ public class RestaurantController {
 		}
 		return restaurant;
 	}
-	
+
 //  PUT restaurants/{restaurantId}
 	@PutMapping("restaurants/{restaurantId}")
-	public Restaurant update(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int restaurantId, @RequestBody Restaurant restaurant) {
-		restaurant = restaurantSvc.update(principal.getName(), restaurantId, restaurant); 
+	public Restaurant update(HttpServletRequest req, HttpServletResponse res, Principal principal,
+			@PathVariable int restaurantId, @RequestBody Restaurant restaurant) {
+		restaurant = restaurantSvc.update(principal.getName(), restaurantId, restaurant);
 		if (restaurant == null) {
 			res.setStatus(400);
 		}
@@ -99,13 +111,14 @@ public class RestaurantController {
 
 //  DELETE restaurants/{restaurantId}
 	@DeleteMapping("restaurants/{restaurantId}")
-	public void destroy(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int restaurantId) {
-		if(restaurantSvc.destroy(principal.getName(),restaurantId)) {
+	public void destroy(HttpServletRequest req, HttpServletResponse res, Principal principal,
+			@PathVariable int restaurantId) {
+		if (restaurantSvc.destroy(principal.getName(), restaurantId)) {
 			res.setStatus(204);
 		} else {
 			res.setStatus(404);
 		}
-		
+
 	}
-	
+
 }
