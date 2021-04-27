@@ -1,7 +1,7 @@
 <div id="restaurant-body">
   <div id="restaurant-header" *ngIf="restaurant">
 
-    <span><img [src]="restaurant.imgUrl" id="picture"></span>
+    <span><img [src]="restaurant.imgUrl" id="picture" class="img-fluid"></span>
     <h3>{{restaurant.name}}</h3>
     <h5>{{restaurant.location.address}}, {{restaurant.location.city}} {{restaurant.location.state}}</h5>
     <br>
@@ -67,6 +67,7 @@
             Rating: {{review.rating}}<br>
             <!-- Written on {{review.createDate}}
             Updated on {{}} -->
+
           </div>
         </div>
         <div class="col-sm-6" id="review-content">
@@ -77,8 +78,8 @@
         </div>
         <div class="col-sm-1">
           <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="updateReviewBtn" (click)="editReviewForm(review)">△</button>
-          <button *ngIf="(currentUser && currentUser.username === review.user.username) || currentUser.role === 'admin' " class="btn btn-outline-dark" id="deleteReviewBtn" (click)="removeReview(review.id)">X</button>
-          <p *ngIf="(currentUser && (currentUser.username !== review.user.username)) " class="btn btn-outline-dark" id="" > friend</p>
+          <button *ngIf="(currentUser && currentUser.username === review.user.username) || ( currentUser && currentUser.role === 'admin') " class="btn btn-outline-dark" id="deleteReviewBtn" (click)="removeReview(review.id)">X</button>
+          <p *ngIf="(currentUser && (currentUser.username !== review.user.username)) " class="btn btn-outline-dark" >friends</p>
         </div>
       </div>
 
@@ -101,6 +102,7 @@
         </div>
         <div class="col-sm-3" id="review-user">
           Written by {{review.user.firstName}} {{review.user.lastName}}
+          <button *ngIf="(currentUser && currentUser.username === review.user.username) || ( currentUser && currentUser.role === 'admin') " class="btn btn-outline-dark" id="deleteReviewBtn" (click)="removeReview(review.id)">X</button>
         </div>
       </div>
 
@@ -109,32 +111,4 @@
   </div>
 
 
-<!--
-  id: number;
-  user: User;
-  restaurant: Restaurant;
-  reviewText: string;
-  enabled: boolean;
-  isPublic: boolean;
--->
-
-
-  <!--                    Restaurant:
-    Done:
-    // id: number;
-  // user: User;
-  //location: Location;
-  // reviews: Review[];
-  // phone: string;
-  // email: string;
-  // websiteUrl: string;
-  // imgUrl: string;
-  // name: string;
-  // description: string; -->
-  categories: string;
-  militaryDiscount: boolean;
-  firstresponderDiscount: boolean;
-  seniorDiscount: boolean;
-  menuUrl: string;
-  favoriteRestaurants: Favoriterestaurant[];
 </div>

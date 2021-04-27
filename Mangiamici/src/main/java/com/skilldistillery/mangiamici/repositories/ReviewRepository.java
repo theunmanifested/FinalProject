@@ -14,12 +14,13 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	public List<Review> findByEnabledTrueAndUser_Username(String name);
 	public Review findByUser_UsernameAndIdAndEnabledTrue(String username, int rId);
 	
-	@Query("select r from Review r inner join Friend u on (r.user = u.user) or (r.user = u.otherUser) where ((r.user = u.user) or (r.user = u.otherUser)) and ((u.user.username = :username) or (u.otherUser.username = :username))")
+	@Query("select r from Review r inner join Friend u on (r.user = u.user) or (r.user = u.otherUser) where ((r.user = u.user) or (r.user = u.otherUser)) and ((u.user.username = :username) or (u.otherUser.username = :username)) and r.enabled = true")
 	public List<Review> findFriendsReviews(@Param("username") String username);
 	
-	@Query("select r from Review r inner join Friend u on (r.user = u.user) or (r.user = u.otherUser) where ((r.user = u.user) or (r.user = u.otherUser)) and ((u.user.username = :username) or (u.otherUser.username = :username)) and (r.restaurant.id = :rId)")
+	@Query("select r from Review r inner join Friend u on (r.user = u.user) or (r.user = u.otherUser) where ((r.user = u.user) or (r.user = u.otherUser)) and ((u.user.username = :username) or (u.otherUser.username = :username)) and (r.restaurant.id = :rId) and r.enabled = true")
 	public List<Review> findFriendsReviewsforRestaurant(@Param("username") String username, @Param("rId") Integer restaurantId);
 	
+	//not in use
 	@Query("    select r from Review r "
 			+ " left join r.user u left join u.friends f"
 			+ " where ((u.username != :username) "
@@ -28,12 +29,12 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	public List<Review> findNonFriendsReviewsforRestaurantX(@Param("username") String username, @Param("rId") Integer restaurantId);
 	
 	
-	
+	//not in use
 	@Query("select r from Review r left "
 			+ " join Friend u on (r.user = u.user) or (r.user = u.otherUser) "
 			+ " where (((u.user.username != :username) or (u.user is null)) "
 			+ " and ((u.otherUser.username != :username) or (u.otherUser is null))) "
-			+ " and (r.restaurant.id = :rId)")
+			+ " and (r.restaurant.id = :rId) ")
 	public List<Review> findNonFriendsReviewsforRestaurant(@Param("username") String username, @Param("rId") Integer restaurantId);
 	
 	
@@ -56,9 +57,10 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 			+ "    u.username != :username"
 			+ "        AND (f.other_user_id IS NULL "
 			+ "        OR other_user.username != :username)"
-			+ "        AND restaurant_id = :rId" , 	
+			+ "        AND restaurant_id = :rId"
+			+ " AND r.enabled = true" , 	
 			nativeQuery = true)
 	public List<Review> findNonFriendsReviewsforRestaurantZ(@Param("username") String username, @Param("rId") Integer restaurantId);
 	
-	
+	public List<Review> findByRestaurant_IdAndEnabledTrue(Integer rId);
 }
