@@ -43,3 +43,13 @@
   right: 2.6em;
   margin-top: -1em;
 }
+
+#uploadImagesDiv {
+  position: fixed;
+  bottom: 40vh;
+  right: 55vh;
+  width: 300px;
+  height: 30vh;
+  width: 30vh;
+  padding: 5%;
+}

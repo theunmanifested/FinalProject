@@ -7,7 +7,7 @@
     <br>
     <p>{{restaurant.description}}</p>
     <p>Call us: {{restaurant.phone}} <span>Email us: {{restaurant.email}}</span> <span>Check out our website: <a href="{{restaurant.websiteUrl}}">{{restaurant.websiteUrl}}</a></span></p>
-    <button class="btn-outline-dark" (click)="newReviewForm()">Add Review</button> <span *ngIf="restaurant.seniorDiscount"> ✔ Senior Discount</span> <span *ngIf="restaurant.militaryDiscount"> ✔ Military Discount</span> <span *ngIf="restaurant.firstresponderDiscount"> ✔ First Responder Discount</span>
+    <button (click)="newReviewForm()" class="btn btn-outline-dark" >Add Review</button> <span *ngIf="restaurant.seniorDiscount"> ✔ Senior Discount</span> <span *ngIf="restaurant.militaryDiscount"> ✔ Military Discount</span> <span *ngIf="restaurant.firstresponderDiscount"> ✔ First Responder Discount</span>
   </div>
   <br><br><br>
 
@@ -24,15 +24,22 @@
         </div>
         <div class="col-sm-8" id="review-content">
           <input class="form-control" type="text" name="reviewText" [(ngModel)]="newReview.reviewText">
+          <button *ngIf="!imgDiv" (click)='uploadImages()' class="btn btn-outline-dark" >add images</button>
+
         </div>
         <div class="col-sm-2" id="review-user">
           <p *ngIf="currentUser">Written by {{currentUser.firstName}} {{currentUser.lastName}}</p>
           <p *ngIf="!currentUser">Written by an anonymous user</p>
         </div>
       </div>
-
     </div>
-    <button (click)='submitNewReview()'>Add Review</button>
+    <button (click)='submitNewReview()' class="btn btn-outline-dark">Add Review</button>
+  </div>
+
+  <div *ngIf="imgDiv" class="card" id="uploadImagesDiv">
+    Upload images:
+    <input class="form-control" type="text" name="reviewText" [(ngModel)]="newReview.img">
+    <button (click)='uploadImages()' class="btn btn-outline-dark" >Finish</button>
   </div>
 
   <!-- UPDATE new Review -->
