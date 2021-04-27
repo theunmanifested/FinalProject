@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,9 +13,11 @@ import { HttpClient } from '@angular/common/http';
 export class NavBarComponent implements OnInit {
 
   user: User = new User();
+  loggedUser: User = new User();
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private router: Router,
     ) { }
 
@@ -46,4 +49,23 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  loadUser(){
+    this.userService.getLoggedInUser().subscribe(
+      data => {
+        this.loggedUser = data;
+        console.log(this.loggedUser);
+      },
+      fail => {
+      }
+    );
+  }
+
+  hasRest(){
+    this.loadUser();
+    if (this.loggedUser.restaurant) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

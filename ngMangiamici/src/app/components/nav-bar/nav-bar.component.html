@@ -9,6 +9,11 @@
         <li *ngIf="loggedIn()" class="nav-item active">
           <a class="nav-link" href="#/users">My Profile<span class="sr-only">(current)</span></a>
         </li>
+        <!-- Restaurant owners only -->
+        <li *ngIf="loggedIn() && hasRest()" class="nav-item active">
+          <a class="nav-link" href="#/restdash">My Restaurant<span class="sr-only">(current)</span></a>
+        </li>
+        <!-- Restaurant owners only -->
         <li class="nav-item active">
           <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
         </li>
