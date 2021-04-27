@@ -110,6 +110,18 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return reviewRepo.findNonFriendsReviewsforRestaurantZ(username, rId);
 	}
+
+	@Override
+	public List<Review> adminFindReviewForRestaurant(Integer rId) {
+		
+		return reviewRepo.findByRestaurant_IdAndEnabledTrue(rId);
+	}
+
+	@Override
+	public List<Review> findAllPublicForRestaurant(Integer rId) {
+		
+		return reviewRepo.findByRestaurant_IdAndEnabledTrue(rId);
+	}
 	
 	
 }

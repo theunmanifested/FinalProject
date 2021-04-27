@@ -8,6 +8,7 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -39,7 +40,8 @@ export class RestaurantComponent implements OnInit {
     private reviewService: ReviewService,
     private restaurantService: RestaurantService,
     private currentRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
   ) { }
 
   // to display all the reviews or logically display  public / private reviews
@@ -56,23 +58,28 @@ export class RestaurantComponent implements OnInit {
   }
 
   loadUser(){
-    this.userService.getLoggedInUser().subscribe(
-      data => {
-        this.currentUser = data;
-        this.loadReviews();
-      },
-      fail => {
-          console.log(fail);
-      }
-    );
+
+    if(this.authService.checkLogin()){
+      this.userService.getLoggedInUser().subscribe(
+        data => {
+          this.currentUser = data;
+          this.loadReviews();
+        },
+        fail => {
+            console.log(fail);
+        }
+      );
+    } else{
+      this.loadReviews();
+    }
   }
 
   loadPage(id: string): void {   // load the restaurant, then load the appropriate reviews
 
     this.restaurantService.show(id).subscribe(
       data => {
-        this.loadUser();
         this.restaurant = data;
+        this.loadUser();
         console.log(this.restaurant);
       },
       fail => {
@@ -84,11 +91,47 @@ export class RestaurantComponent implements OnInit {
 
   loadReviews(){
     if(this.currentUser){
-      this.getFriendReviews();
-      this.getNonFriendPublicReviews();
-    } else{
-      // this.getPublicReviewsFromRestaurant(rId);
+
+      if(this.currentUser.role === "admin") {
+        this.getAllEnabledReviews();
+      } else{
+        this.getFriendReviews();
+        this.getNonFriendPublicReviews();
+      }
+    } else {
+
+      // no user in session
+      this.getPublicReviewsFromRestaurant();
     }
+  }
+
+  public getPublicReviewsFromRestaurant(){
+    this.reviewService.indexRestaurantXReviews(this.restaurant.id).subscribe(
+      data => {
+        this.reviewsByNonFriendsPublic = data;
+        console.log("public reviews : ");
+        console.log(data);
+
+      },
+      fail => {
+        console.log(fail);
+      }
+    );
+  }
+
+  getAllEnabledReviews(){
+    this.reviewService.adminIndex(this.restaurant.id).subscribe(
+      data => {
+        this.reviewsByFriends = data;
+        console.log("friend reviews : ");
+        console.log(data);
+
+      },
+      fail => {
+        console.log(fail);
+      }
+    );
+
   }
 
   getFriendReviews(): void {
@@ -96,6 +139,9 @@ export class RestaurantComponent implements OnInit {
     this.reviewService.indexFriends(this.restaurant.id).subscribe(
       data => {
         this.reviewsByFriends = data;
+        console.log("friend reviews : ");
+  console.log(data);
+
       },
       fail => {
         console.log(fail);
@@ -108,7 +154,7 @@ export class RestaurantComponent implements OnInit {
     this.reviewService.indexNonFriendsPublic(this.restaurant.id).subscribe(
       data => {
         this.reviewsByNonFriendsPublic = data;
-        console.log(data);
+        console.log("friend reviews " + data);
 
       },
       fail => {
