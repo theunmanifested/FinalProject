@@ -30,21 +30,19 @@ export class RestaurantService {
       );
   }
 
-  create(restaurant: Restaurant) {
+
 // // restaurant dashboard continue
-  // create(newTodo: Todo) {
-  //   newTodo.completed = false;
-  //   newTodo.description = '';
-  //   return this.http.post<Todo>(this.url, newTodo, this.getHttpOptions())
-  //   .pipe(
-  //     catchError((err:any) => {
-  //       console.log(err);
-  //       return throwError('Error creating todo');
-  //     })
-  //   );
-  // }
-  return restaurant;
+  create(newRest: Restaurant) {
+    return this.http.post<Restaurant>(this.url, newRest, this.getHttpOptions())
+    .pipe(
+      catchError((err:any) => {
+        console.log(err);
+        return throwError('Error creating restaurant');
+      })
+    );
   }
+
+
 
 
   search(term: string): Observable<Restaurant[]> {

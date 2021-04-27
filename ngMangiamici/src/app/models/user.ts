@@ -1,3 +1,4 @@
+import { Restaurant } from "./restaurant";
 import { UserStatus } from "./user-status";
 
 export class User {
@@ -12,12 +13,13 @@ export class User {
   imgUrl: string;
   promoOpt: boolean;
   aboutMe: string;
+  restaurant: Restaurant;
   userStatus: UserStatus;
 
 
   constructor (id?: number, username?: string, password?: string, role?: string,
               firstName?: string, lastName?: string, imgUrl?: string, promoOpt?: boolean,
-              aboutMe?: string, userStatus?: UserStatus) {
+              aboutMe?: string, restaurant?: Restaurant, userStatus?: UserStatus) {
     this.id = id;
     this.password = password;
     this.username = username;
@@ -27,6 +29,7 @@ export class User {
     this.imgUrl = imgUrl;
     this.promoOpt = promoOpt;
     this.aboutMe = aboutMe;
+    this.restaurant = restaurant;
     this.userStatus = userStatus;
   }
 

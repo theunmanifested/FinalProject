@@ -62,6 +62,9 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Post> posts;
+	
+	@OneToOne(mappedBy = "user")
+	private Restaurant restaurant;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
@@ -233,6 +236,14 @@ public class User {
 		this.friends = friends;
 	}
 
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -260,8 +271,11 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", location=" + location + ", password=" + password
 				+ ", enabled=" + enabled + ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", imgUrl=" + imgUrl + ", promoOpt="
-				+ promoOpt + ", aboutMe=" + aboutMe + ", userStatus=" + userStatus + "]";
+				+ promoOpt + ", aboutMe=" + aboutMe + ", userStatus=" + userStatus + ", posts=" + posts
+				+ ", restaurant=" + restaurant + ", reviewComments=" + reviewComments + "]";
 	}
+
+
 
 	
 }

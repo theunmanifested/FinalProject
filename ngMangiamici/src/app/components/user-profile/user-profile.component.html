@@ -3,24 +3,45 @@
 
   <ul class="list-group list-group-flush">
 
-    <li class="list-group-item text-secondary text-center"><h4>{{currentUser.username}}</h4></li>
+    <li class="list-group-item text-secondary text-center"><h2>@{{currentUser.username}}</h2></li>
 
     <li class="list-group-item bg-light text-center">
 
       <div class="card-body">
         <img class="img-fluid" src="{{currentUser.imgUrl}}" alt="profile photo">
         <div class="card-body">
-          <span><h5 class="card-title">Status: {{currentUser.userStatus.name}} <br><hr><button class="btn btn-sm btn-secondary">Change Status</button>
 
-          </h5>
-          </span>
-          <p class="card-text" *ngIf="! isEditing===true">{{currentUser.aboutMe}}</p>
-          <input class="form-control" name="aboutme" id="aboutme">
+          <div class="row justify-content-center align-items-center">
+            <h4>Status:&nbsp;</h4>
+
+          <select [(ngModel)]='currentUser.userStatus.id' (change)="update()" class="form-control-lg text-center" name="userstatus" id="statusselect">
+            <option value="1">Hungry</option>
+            <option value="2">Stuffed</option>
+            <option value="3">Looking for something quick</option>
+            <option value="4">In the mood for fine dining</option>
+            <option value="5">Hunting for something new</option>
+          </select>
+        </div><hr><br>
+          <!-- <span><h4 class="card-title">Status: {{currentUser.userStatus.name}}
+            <br>
+            <br>
+            <button class="btn btn-sm btn-secondary">Change Status</button>
+            <hr>
+            </h4>
+          </span> -->
+
+          <p class="card-text larg" *ngIf="! isEditing">{{currentUser.aboutMe}}</p>
+          <textarea rows="3" class="form-control" *ngIf="isEditing" name="aboutme" id="aboutme" [(ngModel)]='currentUser.aboutMe'></textarea>
         </div>
       </div>
 
     </li>
-    <li class="list-group-item text-center"><a href="#" class="btn btn-block btn-secondary">Edit Profile</a></li>
+    <li *ngIf="!isEditing" class="list-group-item text-center"><button (click)="toggleIsEditing()" class="btn btn-block btn-secondary">Edit Profile</button></li>
+
+    <li *ngIf="isEditing" class="list-group-item text-center">
+      <button (click)="update(); toggleIsEditing()" class="btn btn-success">Save Changes</button>
+      <button (click)="loadUser(); toggleIsEditing()" class="btn btn-danger">Cancel</button>
+    </li>
 
   </ul>
 </div>
