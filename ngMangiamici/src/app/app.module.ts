@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderSearchComponent } from './components/header-search/header-search.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { FriendsComponent } from './components/friends/friends.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FriendsComponent } from './components/friends/friends.component';
     RegisterComponent,
     RestaurantDashboardComponent,
     HeaderSearchComponent,
-    FriendsComponent
+    FriendsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

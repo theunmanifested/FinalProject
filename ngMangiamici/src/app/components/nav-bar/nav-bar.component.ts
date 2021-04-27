@@ -26,7 +26,7 @@ export class NavBarComponent implements OnInit {
     this.authService.login(this.user.username, this.user.password).subscribe(
       data => {
         console.log('Logged in');
-
+        this.loadUser();
         this.router.navigateByUrl('/home')
       },
       err => {
@@ -55,20 +55,13 @@ export class NavBarComponent implements OnInit {
     this.userService.getLoggedInUser().subscribe(
       data => {
         this.loggedUser = data;
-        // console.log(this.loggedUser);
       },
       fail => {
       }
     );
-    // if (this.loggedUser.restaurant) {
-    //   this.doesIt = true;
-    // } else {
-    //   this.doesIt = false;
-    // }
   }
 
   hasRestfunc(){
-    // this.loadUser();
     if (this.loggedUser.restaurant) {
       return true;
     } else {
