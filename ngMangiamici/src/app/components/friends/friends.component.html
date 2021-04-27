@@ -1,11 +1,27 @@
-<p>friends works!</p>
+<div class="container">
 
-<ul>
+  <br>
+  <h2 class="text-center border rounded">Your Friends:</h2>
 
-  <li *ngFor="let friend of friendlist">
+  <div class="container border rounded">
+    <h3 *ngIf="friendlist.length===0">No friends yet! Fill out the friend request form with any @username</h3>
+
+    <div class="row" *ngFor="let friend of friendlist">
+      <div class="col-4">
+        <img *ngIf="boolNotSameUser(friend.user)" class="img-fluid shrinkheight" src="{{friend.user.imgUrl}}" alt="profile photo">
+        <img *ngIf="boolNotSameUser(friend.otherUser)" class="img-fluid shrinkheight" src="{{friend.otherUser.imgUrl}}" alt="profile photo">
+
+      </div>
+      <div class="col align-self-center">
+        <a href=""><h2 *ngIf="boolNotSameUser(friend.user)">@{{friend.user.username}}</h2></a>
+        <a href=""><h2 *ngIf="boolNotSameUser(friend.otherUser)">@{{friend.otherUser.username}}</h2></a>
+        <h6 *ngIf="boolNotSameUser(friend.user)">Status: {{friend.user.userStatus.name}}</h6>
+        <h6 *ngIf="boolNotSameUser(friend.otherUser)">Status: {{friend.otherUser.userStatus.name}}</h6>
+
+      </div>
+    </div>
 
 
 
-  </li>
-
-</ul>
+  </div>
+</div>

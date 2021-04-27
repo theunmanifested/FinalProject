@@ -28,6 +28,15 @@ export class FriendsComponent implements OnInit {
     private friendService: FriendService
   ) { }
 
+  boolNotSameUser(user: User): boolean {
+    if (this.currentUser.id !== user.id) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   ngOnInit(): void {
     this.loadUser();
     this.getFriends();
