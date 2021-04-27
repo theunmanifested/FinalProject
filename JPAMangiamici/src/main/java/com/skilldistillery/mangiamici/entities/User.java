@@ -272,8 +272,7 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", location=" + location + ", password=" + password
 				+ ", enabled=" + enabled + ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", imgUrl=" + imgUrl + ", promoOpt="
-				+ promoOpt + ", aboutMe=" + aboutMe + ", userStatus=" + userStatus + ", posts=" + posts
-				+ ", restaurant=" + restaurant + ", reviewComments=" + reviewComments + "]";
+				+ promoOpt + ", aboutMe=" + aboutMe + ", userStatus=" + userStatus + "]";
 	}
 
 
