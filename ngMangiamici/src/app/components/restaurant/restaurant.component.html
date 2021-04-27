@@ -67,9 +67,9 @@
   <!-- List User's review images as well as Friend's review images (if the user is logged in to an account) -->
   <div class="container-fluid" id="friendsPics">
     <span *ngFor="let review of reviewsByFriends">
-      <div *ngIf="review.img">
+      <span *ngIf="review.img">
         <img [src]="review.img" class="mm-img" id="picture" class="img-fluid">
-      </div>
+      </span>
     </span>
   </div>
 
