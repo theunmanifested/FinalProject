@@ -42,7 +42,15 @@ export class RestaurantService {
     );
   }
 
+  destroy(id: number) {
+    return this.http.delete<Restaurant>(`${this.url}/${id}`, this.getHttpOptions())
 
+    .pipe(
+      catchError((err:any) => {
+         console.log(err);
+         return throwError('Error deleting restaurant in service');
+      }));
+ }
 
 
   search(term: string): Observable<Restaurant[]> {

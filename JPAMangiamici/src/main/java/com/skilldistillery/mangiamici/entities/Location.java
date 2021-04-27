@@ -89,21 +89,7 @@ public class Location {
 		this.zip = zip;
 	}
 
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
+	
 
 	public String getPhone() {
 		return phone;
@@ -121,12 +107,42 @@ public class Location {
 		this.isPublic = isPublic;
 	}
 
+	public Boolean getIsPublic() {
+		return isPublic;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public void setIsPublic(Boolean isPublic) {
+		this.isPublic = isPublic;
+	}
+
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state
+		return "Location [id=" + id + ", user=" + user + ", address=" + address + ", city=" + city + ", state=" + state
 				+ ", zip=" + zip + ", latitude=" + latitude + ", longitude=" + longitude + ", phone=" + phone
 				+ ", isPublic=" + isPublic + "]";
 	}
+
+
+
+	
+
+	
 
 
 

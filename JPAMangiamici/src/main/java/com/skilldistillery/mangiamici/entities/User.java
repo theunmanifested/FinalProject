@@ -62,6 +62,7 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Post> posts;
+
 	
 	@OneToOne(mappedBy = "user")
 	private Restaurant restaurant;

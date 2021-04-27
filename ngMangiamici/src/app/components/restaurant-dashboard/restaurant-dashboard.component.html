@@ -8,18 +8,209 @@
       <img src="https://cdn.pixabay.com/photo/2015/05/15/14/55/cafe-768771_960_720.jpg" />
     </div>
     <br>
+    <!-- ................... -->
+    <div *ngIf="currentUser.restaurant">
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="form-group">
+            <label for="inputRestName">Name of Restaurant</label>
+            <p>{{currentUser.restaurant.name}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <label for="inputWebsiteUrl">Website</label>
+            <p>{{currentUser.restaurant.websiteUrl}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
 
-  <h1 *ngIf="currentUser.restaurant">IT is true</h1>
-    <!-- Extended material form grid from https://mdbootstrap.com/docs/angular/forms/inputs/-->
-    <!-- Restaurant's Admin/Profile page to input their information -->
-    <div *ngIf="!currentUser.restaurant">
       <!-- Grid row -->
       <div class="form-row">
         <!-- Grid column -->
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newRest.name' name="name" type="text" class="form-control" id="inputRestName" placeholder="Restaurant Name">
+            <label for="inputCategories">Food Categories</label>
+            <p>{{currentUser.restaurant.categories}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <label for="inputMenuUrl">Menu</label>
+            <p>{{currentUser.restaurant.menuUrl}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <label for="inputEmail4MD">Email</label>
+            <p>{{currentUser.restaurant.email}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <label for="inputPassword4MD">Phone</label>
+            <p>{{currentUser.restaurant.phone}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <div class="md-form form-group">
+            <label for="input_text">Description</label>
+            <p>{{currentUser.restaurant.description}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <label for="inputImgUrl">Photo</label>
+            <p>{{currentUser.restaurant.imgUrl}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-12">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <label for="inputAddressMD">Address</label>
+            <p>{{currentUser.restaurant.location.address}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-4">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <label for="inputCityMD">City</label>
+            <p>{{currentUser.restaurant.location.city}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-4">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <label for="inputStateMD">State</label>
+            <p>{{currentUser.restaurant.location.state}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-4">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <label for="inputZipMD">Zip</label>
+            <p>{{currentUser.restaurant.location.zip}}</p>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-lg">
+
+          <div class="md-form form-group">
+            <h3>Discounts Offerings</h3>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" for="milDiscount">Military</label>
+              <p>{{currentUser.restaurant.militaryDiscount}}</p>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" for="frDiscount">First Responders</label>
+              <p>{{currentUser.restaurant.firstresponderDiscount}}</p>
+
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" for="seniorDiscount">Senior</label>
+              <p>{{currentUser.restaurant.seniorDiscount}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+      <br>
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col">
+          <button (click)="addRest()" type="submit" class="btn btn-secondary" color="primary">Edit - not working
+            yet</button>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+      <br>
+      <!-- Delete Button -->
+      <!-- Grid row -->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col">
+          <button (click)='deleteRest(currentUser.restaurant.id)' class="btn btn-warning">Delete</button>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- end of display- Input for Restaurant  -->
+
+
+    <!-- ................... -->
+
+    <!-- form for Restaurant's Admin/Profile page to input their information -->
+    <form *ngIf="!currentUser.restaurant">
+      <h2>Please fill out this form</h2>
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input [(ngModel)]='newRest.name' name="name" type="text" class="form-control" id="inputRestName"
+              placeholder="Restaurant Name">
             <label for="inputRestName">Name of Restaurant</label>
           </div>
         </div>
@@ -27,7 +218,8 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newRest.websiteUrl' name="websiteUrl"  type="text" class="form-control" id="inputWebsiteUrl" placeholder="Website Url">
+            <input [(ngModel)]='newRest.websiteUrl' name="websiteUrl" type="text" class="form-control"
+              id="inputWebsiteUrl" placeholder="Website Url">
             <label for="inputWebsiteUrl">Website</label>
           </div>
         </div>
@@ -41,7 +233,8 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newRest.websiteUrl' type="text" class="form-control" id="inputCategories" placeholder="Types of Food">
+            <input [(ngModel)]='newRest.categories' name="categories" type="text" class="form-control"
+              id="inputCategories" placeholder="Types of Food">
             <label for="inputCategories">Food Categories</label>
           </div>
         </div>
@@ -49,7 +242,8 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newRest.menuUrl' type="text" class="form-control" id="inputMenuUrl" placeholder="Menu Url">
+            <input [(ngModel)]='newRest.menuUrl' name="menuUrl" type="text" class="form-control" id="inputMenuUrl"
+              placeholder="Menu Url">
             <label for="inputMenuUrl">Menu</label>
           </div>
         </div>
@@ -63,7 +257,8 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newRest.email' type="email" class="form-control" id="inputEmail4MD" placeholder="Email">
+            <input [(ngModel)]='newRest.email' name="email" type="email" class="form-control" id="inputEmail4MD"
+              placeholder="Email">
             <label for="inputEmail4MD">Email</label>
           </div>
         </div>
@@ -73,7 +268,8 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newRest.phone' type="text" class="form-control" id="inputPhone" placeholder="Phone Number">
+            <input [(ngModel)]='newRest.phone' name="phone" type="text" class="form-control" id="inputPhone"
+              placeholder="Phone Number">
             <label for="inputPassword4MD">Phone</label>
           </div>
         </div>
@@ -86,8 +282,8 @@
         <!-- Grid column -->
         <div class="col-md-6">
           <div class="md-form form-group">
-            <textarea [(ngModel)]='newRest.description' class="md-textarea form-control " rows="3" id="input_text" type="text"
-              placeholder="Tell us about your restaurant" length="120"></textarea>
+            <textarea [(ngModel)]='newRest.description' name="description" class="md-textarea form-control " rows="3"
+              id="input_text" type="text" placeholder="Tell us about your restaurant" length="120"></textarea>
             <label for="input_text">Description</label>
           </div>
         </div>
@@ -95,7 +291,8 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newRest.imgUrl' type="text" class="form-control" id="inputImgUrl" placeholder="Img Url">
+            <input [(ngModel)]='newRest.imgUrl' name="imgUrl" type="text" class="form-control" id="inputImgUrl"
+              placeholder="Img Url">
             <label for="inputImgUrl">Photo</label>
           </div>
         </div>
@@ -110,7 +307,8 @@
         <div class="col-md-12">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newLoc.address' type="text" class="form-control" id="inputAddressMD" placeholder="1234 Main St">
+            <input [(ngModel)]='newLoc.address' name="address" type="text" class="form-control" id="inputAddressMD"
+              placeholder="Restaurant's Address">
             <label for="inputAddressMD">Address</label>
           </div>
         </div>
@@ -121,26 +319,38 @@
       <!-- Grid row -->
       <div class="form-row">
         <!-- Grid column -->
-        <div class="col-md-6">
+        <div class="col-md-4">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newLoc.city' type="text" class="form-control" id="inputCityMD" placeholder="New York City">
+            <input [(ngModel)]='newLoc.city' name="city" type="text" class="form-control" id="inputCityMD"
+              placeholder="City">
             <label for="inputCityMD">City</label>
           </div>
         </div>
         <!-- Grid column -->
-
         <!-- Grid column -->
-        <div class="col-md-6">
+        <div class="col-md-4">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input [(ngModel)]='newLoc.zip' type="text" class="form-control" id="inputZipMD" placeholder="11206-1117">
+            <input [(ngModel)]='newLoc.state' name="state" type="text" class="form-control" id="inputStateMD"
+              placeholder="State">
+            <label for="inputStateMD">State</label>
+          </div>
+        </div>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-4">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <input [(ngModel)]='newLoc.zip' name="zip" type="text" class="form-control" id="inputZipMD"
+              placeholder="Zip Code">
             <label for="inputZipMD">Zip</label>
           </div>
         </div>
         <!-- Grid column -->
       </div>
       <!-- Grid row -->
+
       <!-- Grid row -->
       <div class="form-row">
         <!-- Grid column -->
@@ -149,15 +359,18 @@
           <div class="md-form form-group">
             <h3>Discounts Offerings</h3>
             <div class="form-check form-check-inline">
-              <input [(ngModel)]='newRest.militaryDiscount' class="form-check-input" type="checkbox" id="milDiscount" value="true">
+              <input [(ngModel)]='newRest.militaryDiscount' name="militaryDiscount" class="form-check-input"
+                type="checkbox" id="milDiscount" value="true">
               <label class="form-check-label" for="milDiscount">Military</label>
             </div>
             <div class="form-check form-check-inline">
-              <input [(ngModel)]='newRest.firstresponderDiscount' class="form-check-input" type="checkbox" id="frDiscount" value="true">
+              <input [(ngModel)]='newRest.firstresponderDiscount' name="firstresponderDiscount" class="form-check-input"
+                type="checkbox" id="frDiscount" value="true">
               <label class="form-check-label" for="frDiscount">First Responders</label>
             </div>
             <div class="form-check form-check-inline">
-              <input [(ngModel)]='newRest.seniorDiscount' class="form-check-input" type="checkbox" id="seniorDiscount" value="true">
+              <input [(ngModel)]='newRest.seniorDiscount' name="seniorDiscount" class="form-check-input" type="checkbox"
+                id="seniorDiscount" value="true">
               <label class="form-check-label" for="seniorDiscount">Senior</label>
             </div>
           </div>
@@ -175,8 +388,12 @@
         <!-- Grid column -->
       </div>
       <!-- Grid row -->
-    </div>
+    </form>
     <!-- end of Form - Input for Restaurant  -->
+
+
+
+
     <br>
     <br>
     <br>

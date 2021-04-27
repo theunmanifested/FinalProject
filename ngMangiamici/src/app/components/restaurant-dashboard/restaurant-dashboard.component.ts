@@ -19,6 +19,12 @@ export class RestaurantDashboardComponent implements OnInit {
   newLoc: Location = new Location();
   currentUser: User = new User();
 
+  // address: string;
+  // city: string;
+  // zip: string;
+
+
+
   constructor(
     private authService: AuthService,
     private http: HttpClient,
@@ -29,14 +35,18 @@ export class RestaurantDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUser();
-    console.log(this.currentUser);
   }
 
 // add Restaurant
   addRest(): void {
-    this.newRest.location = this.newLoc;
-    // how to get this user
-    this.newRest.user = this.currentUser;
+    // Object.assign(this.newLoc, this.newRest.location);
+    console.log("xxxxxxxxxxxxxxxxxxxxxxxx");
+    console.log(this.newRest);
+    console.log(this.newLoc);
+    // this.address = this.newLoc.address;
+    // this.newRest.location.address = this.address;
+    // this.newRest.user = this.currentUser;
+    // this.newRest.location = this.newLoc;
     console.log(this.newRest);
     this.restService.create(this.newRest).subscribe(
       data => {
@@ -48,7 +58,16 @@ export class RestaurantDashboardComponent implements OnInit {
     );
   }
 
-
+  deleteRest(id: number): void {
+    this.restService.destroy(id).subscribe(
+      data => {
+        this.loadUser();
+      },
+      err =>  {
+      console.error('Error: ' + err);
+      }
+    );
+  }
 
 // Get user from whomever is logged in .. see user.service.ts
 loadUser(){
