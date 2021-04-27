@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Location {
 
@@ -16,6 +18,7 @@ public class Location {
 
 	// FIXME check corresponding User entity/table or if Even Needed
 //	@OneToOne/@JoinColumn(name=location_id)
+	@JsonIgnore
 	@OneToOne(mappedBy = "location")
 	private User user;
 
@@ -133,7 +136,7 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state
+		return "Location [id=" + id +  ", address=" + address + ", city=" + city + ", state=" + state
 				+ ", zip=" + zip + ", latitude=" + latitude + ", longitude=" + longitude + ", phone=" + phone
 				+ ", isPublic=" + isPublic + "]";
 	}

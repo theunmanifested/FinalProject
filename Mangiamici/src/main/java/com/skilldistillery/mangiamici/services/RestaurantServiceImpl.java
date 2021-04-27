@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.mangiamici.entities.Restaurant;
 import com.skilldistillery.mangiamici.entities.User;
+import com.skilldistillery.mangiamici.repositories.LocationRepository;
 import com.skilldistillery.mangiamici.repositories.RestaurantRepository;
 import com.skilldistillery.mangiamici.repositories.UserRepository;
 
@@ -17,6 +18,8 @@ public class RestaurantServiceImpl implements RestaurantService {
 	private RestaurantRepository restaurantRepo;
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private LocationRepository locationRepo;
 
 	@Override
 	public List<Restaurant> index() {		
@@ -32,6 +35,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public Restaurant create(String username, Restaurant restaurant) {
 		User user = userRepo.findByUsername(username);
 		restaurant.setUser(user);
+		locationRepo.saveAndFlush(restaurant.getLocation());
 		restaurant = restaurantRepo.saveAndFlush(restaurant);
 		return restaurant;
 	}

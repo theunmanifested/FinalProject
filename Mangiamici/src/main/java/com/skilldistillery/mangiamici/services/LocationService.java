@@ -14,8 +14,8 @@ public interface LocationService {
 	
 	Location create(String username, Location location);
 	
-	Location update(String username, int locationId, Location location);
-	
-	boolean destroy(String username, int locationId);
+//	Location update(String username, int locationId, Location location);
+//	
+//	boolean destroy(String username, int locationId);
 	
 }

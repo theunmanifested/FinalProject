@@ -19,12 +19,6 @@ export class RestaurantDashboardComponent implements OnInit {
   newLoc: Location = new Location();
   currentUser: User = new User();
 
-  // address: string;
-  // city: string;
-  // zip: string;
-
-
-
   constructor(
     private authService: AuthService,
     private http: HttpClient,
@@ -43,10 +37,7 @@ export class RestaurantDashboardComponent implements OnInit {
     console.log("xxxxxxxxxxxxxxxxxxxxxxxx");
     console.log(this.newRest);
     console.log(this.newLoc);
-    // this.address = this.newLoc.address;
-    // this.newRest.location.address = this.address;
-    // this.newRest.user = this.currentUser;
-    // this.newRest.location = this.newLoc;
+    this.newRest.location = this.newLoc;
     console.log(this.newRest);
     this.restService.create(this.newRest).subscribe(
       data => {
