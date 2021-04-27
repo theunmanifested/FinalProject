@@ -91,6 +91,19 @@ public class ReviewController {
 		
 		 return r;
 	}
+	
+	//get all public and enabled reviews for a given restaurant
+	@GetMapping("pub/reviews/{rId}")
+	public List<Review> publicReviewsForRestaurant(@PathVariable Integer rId, HttpServletRequest req, HttpServletResponse res){
+		
+		 List<Review> r = svc.findAllPublicForRestaurant(rId);
+		 
+		 if(r == null) {
+			 res.setStatus(404);
+		 }
+		
+		 return r;
+	}
 
 	@PostMapping("reviews")
 	public Review create(HttpServletRequest req, HttpServletResponse res, Principal principal, @RequestBody Review rev ){
@@ -136,6 +149,19 @@ public class ReviewController {
 		else {
 			resp.setStatus(404);
 		}
+	}
+	
+	//for admin
+	@GetMapping("review/{rId}/admin")
+	public List<Review> findEnabledRestaurant(@PathVariable Integer rId, HttpServletResponse resp, HttpServletRequest req){
+		
+		List<Review> r = svc.adminFindReviewForRestaurant(rId);
+		
+		if(r == null) {
+			 resp.setStatus(404);
+		}
+		
+		return r;
 	}
 	
 }
