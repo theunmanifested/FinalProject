@@ -54,7 +54,7 @@ export class RestaurantService {
 
 
   search(term: string): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(this.url + "bysearch/" + term, this.getHttpOptions()).pipe(
+    return this.http.get<Restaurant[]>(environment.baseUrl + "api/pub/restaurants/bysearch/" + term).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('Error in index()' + err);
