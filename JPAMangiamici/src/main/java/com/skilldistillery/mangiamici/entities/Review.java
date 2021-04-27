@@ -46,6 +46,9 @@ public class Review {
     @Column(name="is_public")
     private Boolean isPublic = true;
 
+    @Column(name= "img_url")
+    private String img;
+    
     
     // no-arg Constructor
 	public Review() {
@@ -53,12 +56,23 @@ public class Review {
 	}
 
 
+	public String getImg() {
+		System.out.println("GET image ****************************************");
+		return img;
+	}
+
+	public void setImg(String img) {
+		System.out.println("SET image ****************************************");
+		this.img = img;
+	}
+
 	public int getId() {
 		return id;
 	}
 
 
 	public void setId(int id) {
+		System.out.println("SET id ****************************************");
 		this.id = id;
 	}
 

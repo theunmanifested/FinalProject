@@ -11,10 +11,11 @@ export class Review {
   rating: number;
   createdDate: string;
   updateDate: string;
+  img: string;
 
 
   constructor(id?: number, user?: User, restaurant?: Restaurant, reviewText?: string,
-              enabled?: boolean, isPublic?: boolean, rating?: number, createDate?: string, updateDate?: string) {
+              enabled?: boolean, isPublic?: boolean, rating?: number, createDate?: string, updateDate?: string, img?: string) {
 
     this.id = id;
     this.user = user;
@@ -23,9 +24,9 @@ export class Review {
     this.enabled = enabled;
     this.isPublic = isPublic;
     this.rating = rating;
-
     this.createdDate = createDate;
     this.updateDate = updateDate;
     this.enabled = enabled;
+    this.img = img;
   }
 }

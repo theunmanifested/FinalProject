@@ -43,3 +43,40 @@
   right: 2.6em;
   margin-top: -1em;
 }
+
+#uploadImagesDiv {
+  position: fixed;
+  bottom: 40vh;
+  right: 55vh;
+  width: 300px;
+  height: 30vh;
+  width: 30vh;
+  padding: 5%;
+}
+
+#friendsPics {
+
+  overflow-x: auto; /* Hide horizontal scrollbar */
+  overflow-y: hidden; /* Add vertical scrollbar */
+  height: 15vh;
+}
+
+#otherPics {
+
+  overflow-x: auto; /* Hide horizontal scrollbar */
+  overflow-y: hidden; /* Add vertical scrollbar */
+  height: 15vh;
+}
+
+.img {
+  width: 20%;
+  height: auto;
+}
+
+.bottomright {
+  position: relative;
+  margin-bottom: -10%;
+  right: 20%;
+  font-size: 18px;
+}
+

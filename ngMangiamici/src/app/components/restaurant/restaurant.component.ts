@@ -20,6 +20,7 @@ export class RestaurantComponent implements OnInit {
 
   restaurant: Restaurant = null;
   currentUser: User = null;
+  imgDiv = false;
 
 
 
@@ -219,6 +220,10 @@ removeReview(id: number): void {
     console.error('Error: ' + err);
     }
   );
+}
+
+uploadImages(){
+  this.imgDiv = !this.imgDiv;
 }
 
 }
