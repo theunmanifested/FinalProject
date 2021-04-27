@@ -20,12 +20,11 @@ export class RestaurantComponent implements OnInit {
   restaurant: Restaurant = null;
   currentUser: User = null;
 
-  //first step -> show restarant
-  //second step show some reviews
-  // 3: Create
-  // 4: update
-  // 5: delete
+
+
   // 6: friend reviews show up first
+  // 7: non friend reviews show up next
+  // 8: do some quick refining on th queries for the corner cases
 
   reviewsByFriends: Review[] = [];
   // ^ first stage: This is all the reviews
@@ -50,10 +49,8 @@ export class RestaurantComponent implements OnInit {
     let restaurantId = this.currentRoute.snapshot.paramMap.get("id");
     if(restaurantId){
 
-      this.getRestaurant(restaurantId);
+      this.loadPage(restaurantId);
     }
-
-    this.loadReviews();
     this.loadUser();
 
   }
@@ -62,6 +59,7 @@ export class RestaurantComponent implements OnInit {
     this.userService.getLoggedInUser().subscribe(
       data => {
         this.currentUser = data;
+        this.loadReviews();
       },
       fail => {
           console.log(fail);
@@ -69,13 +67,13 @@ export class RestaurantComponent implements OnInit {
     );
   }
 
-  getRestaurant(id: string): void {
+  loadPage(id: string): void {   // load the restaurant, then load the appropriate reviews
 
     this.restaurantService.show(id).subscribe(
       data => {
+        this.loadUser();
         this.restaurant = data;
         console.log(this.restaurant);
-
       },
       fail => {
         console.log(fail);
@@ -85,16 +83,17 @@ export class RestaurantComponent implements OnInit {
 
 
   loadReviews(){
-    this.getFriendReviews();
-    this.getNonFriendPublicReviews();
+    if(this.currentUser){
+      this.getFriendReviews();
+      this.getNonFriendPublicReviews();
+    } else{
+      // this.getPublicReviewsFromRestaurant(rId);
+    }
   }
 
-  // for now this just gets all reviews.
   getFriendReviews(): void {
 
-    // for now this just gets all reviews.
-
-    this.reviewService.index().subscribe(
+    this.reviewService.indexFriends(this.restaurant.id).subscribe(
       data => {
         this.reviewsByFriends = data;
       },
@@ -106,6 +105,16 @@ export class RestaurantComponent implements OnInit {
 
   getNonFriendPublicReviews() {
 
+    this.reviewService.indexNonFriendsPublic(this.restaurant.id).subscribe(
+      data => {
+        this.reviewsByNonFriendsPublic = data;
+        console.log(data);
+
+      },
+      fail => {
+        console.log(fail);
+      }
+    );
   }
 // // review methods
 // displayReview(review) {

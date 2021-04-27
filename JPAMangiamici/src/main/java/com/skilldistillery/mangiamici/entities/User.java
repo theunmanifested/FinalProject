@@ -71,6 +71,18 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<ReviewComment> reviewComments;
 	
+	// friend requests [this] sent
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<Friend> friends;
+	
+//	// friend requests [this] accepted
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "otherUser")
+//	private List<Friend> moreFriends;
+//	
+	
+	
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "user")
 //	private List<UserBadge> userBadges;
@@ -214,6 +226,15 @@ public class User {
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
+	}
+	
+
+	public List<Friend> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(List<Friend> friends) {
+		this.friends = friends;
 	}
 
 	public Restaurant getRestaurant() {

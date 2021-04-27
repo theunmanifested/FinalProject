@@ -7,7 +7,7 @@
     <br>
     <p>{{restaurant.description}}</p>
     <p>Call us: {{restaurant.phone}} <span>Email us: {{restaurant.email}}</span> <span>Check out our website: <a href="{{restaurant.websiteUrl}}">{{restaurant.websiteUrl}}</a></span></p>
-    <button (click)="newReviewForm()">Add Review</button>
+    <button class="btn-outline-dark" (click)="newReviewForm()">Add Review</button> <span *ngIf="restaurant.seniorDiscount"> ✔ Senior Discount</span> <span *ngIf="restaurant.militaryDiscount"> ✔ Military Discount</span> <span *ngIf="restaurant.firstresponderDiscount"> ✔ First Responder Discount</span>
   </div>
   <br><br><br>
 
@@ -57,8 +57,37 @@
     <button class="btn btn-outline-dark" (click)='editReview = null'>Save changes</button>
   </div>
 
-  <!-- List Reviews of Friends (if the user is logged in to an account) -->
+  <!-- List User's reviews as well as Reviews of Friends (if the user is logged in to an account) -->
   <div *ngFor="let review of reviewsByFriends">
+
+    <div id="outer-box">
+       <div class="row" > <!-- style="border: 1px solid red "  -->
+        <div class="col-sm-3" id="review-base-info">
+          <div id="review-base-info-content">
+            Rating: {{review.rating}}<br>
+            <!-- Written on {{review.createDate}}
+            Updated on {{}} -->
+          </div>
+        </div>
+        <div class="col-sm-6" id="review-content">
+          {{review.reviewText}}
+        </div>
+        <div class="col-sm-2" id="review-user">
+          Written by {{review.user.firstName}} {{review.user.lastName}}
+        </div>
+        <div class="col-sm-1">
+          <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="updateReviewBtn" (click)="editReviewForm(review)">△</button>
+          <button *ngIf="(currentUser && currentUser.username === review.user.username) || currentUser.role === 'admin' " class="btn btn-outline-dark" id="deleteReviewBtn" (click)="removeReview(review.id)">X</button>
+          <p *ngIf="(currentUser && (currentUser.username !== review.user.username)) " class="btn btn-outline-dark" id="" > friend</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- List all public reviews  { not written by a friend assuming user is logged in to an account }-->
+  <div *ngFor="let review of reviewsByNonFriendsPublic">
 
     <div id="outer-box">
        <div class="row" > <!-- style="border: 1px solid red "  -->
@@ -72,8 +101,6 @@
         </div>
         <div class="col-sm-3" id="review-user">
           Written by {{review.user.firstName}} {{review.user.lastName}}
-          <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="updateReviewBtn" (click)="editReviewForm(review)">△</button>
-          <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="deleteReviewBtn" (click)="removeReview(review.id)">X</button>
         </div>
       </div>
 
