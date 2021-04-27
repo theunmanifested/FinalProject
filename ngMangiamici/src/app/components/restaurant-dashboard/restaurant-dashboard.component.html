@@ -152,18 +152,18 @@
 
           <div class="md-form form-group">
             <h3>Discounts Offerings</h3>
-            <div class="form-check form-check-inline">
+            <div *ngIf="currentUser.restaurant.militaryDiscount" class="form-check ">
               <label class="form-check-label" for="milDiscount">Military</label>
-              <p>{{currentUser.restaurant.militaryDiscount}}</p>
+              <!-- <p>{{currentUser.restaurant.militaryDiscount}}</p> -->
             </div>
-            <div class="form-check form-check-inline">
+            <div *ngIf="currentUser.restaurant.firstresponderDiscount" class="form-check ">
               <label class="form-check-label" for="frDiscount">First Responders</label>
-              <p>{{currentUser.restaurant.firstresponderDiscount}}</p>
+              <!-- <p>{{currentUser.restaurant.firstresponderDiscount}}</p> -->
 
             </div>
-            <div class="form-check form-check-inline">
+            <div *ngIf="currentUser.restaurant.seniorDiscount" class="form-check ">
               <label class="form-check-label" for="seniorDiscount">Senior</label>
-              <p>{{currentUser.restaurant.seniorDiscount}}</p>
+              <!-- <p>{{currentUser.restaurant.seniorDiscount}}</p> -->
             </div>
           </div>
         </div>
@@ -360,17 +360,17 @@
             <h3>Discounts Offerings</h3>
             <div class="form-check form-check-inline">
               <input [(ngModel)]='newRest.militaryDiscount' name="militaryDiscount" class="form-check-input"
-                type="checkbox" id="milDiscount" value="true">
+                type="checkbox" id="milDiscount" >
               <label class="form-check-label" for="milDiscount">Military</label>
             </div>
             <div class="form-check form-check-inline">
               <input [(ngModel)]='newRest.firstresponderDiscount' name="firstresponderDiscount" class="form-check-input"
-                type="checkbox" id="frDiscount" value="true">
+                type="checkbox" id="frDiscount" >
               <label class="form-check-label" for="frDiscount">First Responders</label>
             </div>
             <div class="form-check form-check-inline">
               <input [(ngModel)]='newRest.seniorDiscount' name="seniorDiscount" class="form-check-input" type="checkbox"
-                id="seniorDiscount" value="true">
+                id="seniorDiscount" >
               <label class="form-check-label" for="seniorDiscount">Senior</label>
             </div>
           </div>

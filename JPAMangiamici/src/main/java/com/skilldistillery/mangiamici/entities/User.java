@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class User {
@@ -63,7 +64,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Post> posts;
 
-	
+	@JsonIgnoreProperties("user")
 	@OneToOne(mappedBy = "user")
 	private Restaurant restaurant;
 
@@ -272,9 +273,10 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", location=" + location + ", password=" + password
 				+ ", enabled=" + enabled + ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", imgUrl=" + imgUrl + ", promoOpt="
-				+ promoOpt + ", aboutMe=" + aboutMe + ", userStatus=" + userStatus + "]";
+				+ promoOpt + ", aboutMe=" + aboutMe + "]";
 	}
 
+	
 
 
 	

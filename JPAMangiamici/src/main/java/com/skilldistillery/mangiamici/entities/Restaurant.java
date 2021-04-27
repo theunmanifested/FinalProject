@@ -186,13 +186,44 @@ public class Restaurant {
 	
 	
 
+	public Boolean getMilitaryDiscount() {
+		return militaryDiscount;
+	}
+
+	public void setMilitaryDiscount(Boolean militaryDiscount) {
+		this.militaryDiscount = militaryDiscount;
+	}
+
+	public Boolean getFirstresponderDiscount() {
+		return firstresponderDiscount;
+	}
+
+	public void setFirstresponderDiscount(Boolean firstresponderDiscount) {
+		this.firstresponderDiscount = firstresponderDiscount;
+	}
+
+	public Boolean getSeniorDiscount() {
+		return seniorDiscount;
+	}
+
+	public void setSeniorDiscount(Boolean seniorDiscount) {
+		this.seniorDiscount = seniorDiscount;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
 	@Override
 	public String toString() {
-		return "Restaurant [id=" + id + ", location=" + location + ", phone=" + phone + ", email="
+		return "Restaurant [id=" + id + ", user=" + user + ", location=" + location + ", phone=" + phone + ", email="
 				+ email + ", websiteUrl=" + websiteUrl + ", enabled=" + enabled + ", categories=" + categories
-				+ ", imgUrl=" + imgUrl + ", name=" + name + ", description=" + description + ", menuUrl=" + menuUrl
-				+ "]";
+				+ ", imgUrl=" + imgUrl + ", name=" + name + ", description=" + description + ", militaryDiscount="
+				+ militaryDiscount + ", firstresponderDiscount=" + firstresponderDiscount + ", seniorDiscount="
+				+ seniorDiscount + ", menuUrl=" + menuUrl + "]";
 	}
+
+	
 	
 	
 }
