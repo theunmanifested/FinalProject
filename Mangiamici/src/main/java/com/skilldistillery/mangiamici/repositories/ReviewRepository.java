@@ -20,6 +20,12 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	@Query("select r from Review r inner join Friend u on (r.user = u.user) or (r.user = u.otherUser) where ((r.user = u.user) or (r.user = u.otherUser)) and ((u.user.username = :username) or (u.otherUser.username = :username)) and (r.restaurant.id = :rId) and r.enabled = true")
 	public List<Review> findFriendsReviewsforRestaurant(@Param("username") String username, @Param("rId") Integer restaurantId);
 	
+	
+	public List<Review> findByEnabledTrueAndRestaurant_IdOrEnabledTrueAndUser_UsernameOrUser_Friends_OtherUser_Username(Integer rId, String username, String username2);
+	
+	
+	public List<Review> findDistinctByEnabledTrueAndRestaurant_IdAndUser_UsernameOrEnabledTrueAndRestaurant_IdAndUser_Friends_OtherUser_Username(Integer rId, String username, Integer rId2, String username2);
+	
 	//not in use
 	@Query("    select r from Review r "
 			+ " left join r.user u left join u.friends f"

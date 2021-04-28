@@ -118,19 +118,18 @@
       </div>
     </div>
   </div>
-
    <!-- List all other images-->
-   <div class="container-fluid image_bar" id="friendsPics">
+   <div class="image_bar" id="friendsPics"> <!-- class="container-fluid image_bar"  -->
     <div *ngFor="let review of reviewsByNonFriendsPublic" >
       <div *ngIf="review.img" class="review_thumbnail">
-        <img [src]="review.img" class="img-fluid">
+        <img [src]="review.img" class="reviewImg"> <!-- class="img-fluid" -->
         <div class="image_caption">{{review.user.username}}</div>
       </div>
     </div>
   </div>
 
   <!-- List User's reviews as well as Reviews of Friends (if the user is logged in to an account) -->
-  <div *ngFor="let review of reviewsByFriends">
+  <div *ngFor="let review of reviewsByFriends" style="background: lightskyblue">
 
     <div id="outer-box">
        <div class="row" > <!-- style="border: 1px solid red "  -->
