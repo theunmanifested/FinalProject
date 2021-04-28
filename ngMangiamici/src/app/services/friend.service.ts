@@ -45,6 +45,15 @@ export class FriendService {
     })
     );
   }
+//INCOMPLETE*************************
+  getPendingFriends(user: User): Observable<Friend[]> {
+    return this.http.get<Friend[]>(this.url + 'requests/', this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+      console.log(err);
+      return throwError('Error in index()' + err);
+    })
+    );
+  }
 
   private getHttpOptions() {
     // Send credentials as Authorization header (this is spring security convention for basic auth)
