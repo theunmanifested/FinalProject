@@ -55,6 +55,7 @@ export class FriendService {
     );
   }
 
+
   acceptFriendRequest(username: string): Observable<Friend[]> {
     let acceptUrl = this.url + username;
     console.log("PATH : " + acceptUrl);
