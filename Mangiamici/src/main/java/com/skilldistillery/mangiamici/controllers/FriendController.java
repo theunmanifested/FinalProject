@@ -38,7 +38,7 @@ public class FriendController {
 	 * The authorized /principal user is the requester. The @pathVarible username
 	 * corresponds to the requested user.
 	 */
-	@PostMapping("friend/{username}")
+	@PostMapping("friends/{username}")
 	public Friend sendFriendRequest(@PathVariable String username, HttpServletRequest req, HttpServletResponse res,
 			Principal principal) {
 
@@ -81,7 +81,7 @@ public class FriendController {
 	 * for being the requester / requested in order to grab the friendship from the
 	 * database.
 	 */
-	@DeleteMapping("friend/{username}")
+	@DeleteMapping("friends/{username}")
 	public void delete(@PathVariable String username, Principal principal, HttpServletResponse resp) {
 
 		if (friendSvc.destroy(principal.getName(), username) != null) {
