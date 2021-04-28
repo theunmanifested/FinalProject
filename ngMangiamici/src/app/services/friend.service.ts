@@ -45,9 +45,24 @@ export class FriendService {
     })
     );
   }
-//INCOMPLETE*************************
-  getPendingFriends(user: User): Observable<Friend[]> {
+
+  getPendingFriends(): Observable<Friend[]> {
     return this.http.get<Friend[]>(this.url + 'requests/', this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+      console.log(err);
+      return throwError('Error in index()' + err);
+    })
+    );
+  }
+
+  acceptFriendRequest(username: string): Observable<Friend[]> {
+    let acceptUrl = this.url + username;
+    console.log("PATH : " + acceptUrl);
+
+    console.log(username + " and  " + this.authService.getCredentials());
+
+
+    return this.http.put<Friend[]>(acceptUrl, {}, this.getHttpOptions()).pipe(
       catchError((err: any) => {
       console.log(err);
       return throwError('Error in index()' + err);

@@ -61,9 +61,11 @@ public class FriendController {
 	 * for being the requester / requested in order to grab the friendship from the
 	 * database.
 	 */
-	@PutMapping("friend/{username}")
+	@PutMapping("friends/{username}")
 	public Friend update(@PathVariable String username, Principal principal, HttpServletResponse resp,
 			HttpServletRequest req) {
+		
+		System.out.println("Update!*****************************************************");
 
 		Friend friend = friendSvc.accept(principal.getName(), username);
 		if (friend == null) {
