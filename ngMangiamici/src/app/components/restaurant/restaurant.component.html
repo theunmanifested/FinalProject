@@ -113,7 +113,7 @@
   <div class="container-fluid image_bar" id="friendsPics">
     <div *ngFor="let review of reviewsByFriends">
       <div *ngIf="review.img" class="review_thumbnail">
-        <img class="reviewImg" [src]="review.img" class="mm-img" id="picture" class="img-fluid">
+        <img class="reviewImg" [src]="review.img" class="mm-img"  class="img-fluid">
         <div class="image_caption">{{review.user.username}}</div>
       </div>
     </div>
@@ -123,7 +123,7 @@
    <div class="container-fluid image_bar" id="friendsPics">
     <div *ngFor="let review of reviewsByNonFriendsPublic" >
       <div *ngIf="review.img" class="review_thumbnail">
-        <img [src]="review.img" id="reviewImg" class="img-fluid">
+        <img [src]="review.img" class="img-fluid">
         <div class="image_caption">{{review.user.username}}</div>
       </div>
     </div>
