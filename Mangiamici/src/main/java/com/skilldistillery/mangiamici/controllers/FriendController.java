@@ -92,7 +92,7 @@ public class FriendController {
 	/*
 	 * Get all not accepted friend requests.  In this case the requests SENT to the user.
 	 */
-	@GetMapping("friend/requests")
+	@GetMapping("friends/requests")
 	public List<Friend> getRequests(Principal principal, HttpServletResponse resp) {
 
 		List<Friend> requests = friendSvc.getFriendRequests(principal.getName());
