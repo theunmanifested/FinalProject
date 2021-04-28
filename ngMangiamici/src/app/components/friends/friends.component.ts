@@ -18,7 +18,8 @@ export class FriendsComponent implements OnInit {
   currentUser: User = new User();
 
   friendlist: Friend[]=[];
-  pendingFriendsList: Friend[]=[];
+  //NEW************************
+  pendingFriendList: Friend[]=[];
 
   constructor(
     private restaurantSvc: RestaurantService,
@@ -44,6 +45,16 @@ export class FriendsComponent implements OnInit {
   }
 
   getFriends(): void {
+    this.friendService.getFriends(this.currentUser).subscribe(
+      data => {
+        this.friendlist = data;
+      },
+      fail => {
+      }
+    );
+  }
+  //INCOMPLETE**************************************
+  getPendingFriends(): void {
     this.friendService.getFriends(this.currentUser).subscribe(
       data => {
         this.friendlist = data;
