@@ -19,4 +19,5 @@ public interface FriendService {
     public Friend accept(String usernameRequested, String usernameRequester);
 
     public Friend destroy(String username, String usernameOtherSide); // param1 is the one who is deleting the "friend relationship."
+	public List<Friend> getFriendRequests(String name);
 }

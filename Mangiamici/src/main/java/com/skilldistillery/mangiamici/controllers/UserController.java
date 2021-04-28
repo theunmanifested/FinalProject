@@ -39,7 +39,7 @@ public class UserController {
 	@GetMapping("pub/users")
 	public List<User> index(HttpServletRequest req, HttpServletResponse res) {
 		List<User> users = userSvc.index();
-		System.out.println(users + " ****************************");
+		
 		if (users == null) {
 			res.setStatus(404);
 		}
@@ -50,7 +50,6 @@ public class UserController {
 	@GetMapping("users")
 	public User getUser(Principal principal, HttpServletRequest req, HttpServletResponse res) {
 		User user = userSvc.getByUsername(principal.getName());
-		System.out.println(user + " ****************************");
 		
 		if (user == null) {
 			res.setStatus(404);
