@@ -44,6 +44,19 @@ export class FriendsComponent implements OnInit {
     //getFriends() used to be here...
   }
 
+  loadUser(){
+    this.userService.getLoggedInUser().subscribe(
+      data => {
+        this.currentUser = data;
+        //getFriends() moved to here
+        this.getFriends();
+        this.getPendingFriends();
+      },
+      fail => {
+      }
+    );
+  }
+
   getFriends(): void {
     this.friendService.getFriends(this.currentUser).subscribe(
       data => {
@@ -53,27 +66,46 @@ export class FriendsComponent implements OnInit {
       }
     );
   }
-  //INCOMPLETE**************************************
+
+
   getPendingFriends(): void {
-    this.friendService.getFriends(this.currentUser).subscribe(
+    this.friendService.getPendingFriends().subscribe(
       data => {
-        this.friendlist = data;
+        this.pendingFriendList = data;
       },
       fail => {
       }
     );
   }
 
-  loadUser(){
-    this.userService.getLoggedInUser().subscribe(
-      data => {
-        this.currentUser = data;
-        //getFriends() moved to here
-        this.getFriends();
-      },
-      fail => {
-      }
-    );
+  approveRequest(username1 :string, username2: string) {
+
+    if(username1 === this.currentUser.username){
+
+      this.friendService.acceptFriendRequest(username2).subscribe(
+        data => {
+          this.getFriends();
+          this.getPendingFriends();
+        },
+        fail => {
+          console.log(fail);
+
+        }
+      );
+    } else{
+      this.friendService.acceptFriendRequest(username1).subscribe(
+        data => {
+          this.getFriends();
+          this.getPendingFriends();
+        },
+        fail => {
+          console.log(fail);
+
+        }
+      );
+
+    }
+
   }
 
 }

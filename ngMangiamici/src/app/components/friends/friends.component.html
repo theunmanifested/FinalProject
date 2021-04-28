@@ -25,8 +25,8 @@
         <div class="col align-self-center">
           <a href=""><h2 *ngIf="boolNotSameUser(friend.user) && friend.approved==false">@{{friend.user.username}}</h2></a>
           <a href=""><h2 *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false">@{{friend.otherUser.username}}</h2></a>
-          <button *ngIf="boolNotSameUser(friend.user) && friend.approved==false">Approve</button>
-          <button *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false" (click)="friend.delete()">Ignore</button>
+          <button *ngIf="boolNotSameUser(friend.user) && friend.approved==false" (click)="approveRequest(friend.user.username, friend.otherUser.username)">Approve</button>
+          <button *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false" (click)="true">Ignore</button>
 
         </div>
       </div>

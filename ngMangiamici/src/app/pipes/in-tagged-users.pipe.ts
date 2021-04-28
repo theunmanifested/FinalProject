@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class InTaggedUsersPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(user: string, tagged: string): unknown {
+
+    return tagged.includes(user);
   }
 
 }
