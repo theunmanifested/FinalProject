@@ -141,7 +141,7 @@ export class RestaurantComponent implements OnInit {
       data => {
         this.reviewsByFriends = data;
         console.log("friend reviews : ");
-  console.log(data);
+        console.log(data);
 
       },
       fail => {
@@ -224,6 +224,11 @@ removeReview(id: number): void {
 
 uploadImages(){
   this.imgDiv = !this.imgDiv;
+}
+
+userTagged(username: string, tagged: string){
+  console.log(tagged.includes(username));
+  return tagged.includes(username);
 }
 
 }

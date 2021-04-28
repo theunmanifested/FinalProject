@@ -80,3 +80,15 @@
   font-size: 18px;
 }
 
+.mid-on-top {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid black;
+}
+
+#bottom-no-border {
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+}
+
