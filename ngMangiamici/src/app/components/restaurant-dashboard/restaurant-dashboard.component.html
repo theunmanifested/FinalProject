@@ -1,22 +1,25 @@
-<h4>restaurant-dashboard works! -- Delete Me!<h4>
 
-    <h2>Restaurant Profile</h2>
 
-    <!-- Restaurant profile picture/photo -->
-    <div class="container">
-      <!-- ** image Url used here -- remove placeholder -->
-      <img src="https://cdn.pixabay.com/photo/2015/05/15/14/55/cafe-768771_960_720.jpg" />
+        <div *ngIf="currentUser.restaurant" class="container text-center border rounded">
+      <h2>Restaurant Profile</h2>
     </div>
     <br>
+    <div *ngIf="currentUser.restaurant" class="container border rounded">
+      <!-- ** image Url used here -- remove placeholder -->
+      <div class="row text-center">
+      <img class="img img-fluid center" src="https://cdn.pixabay.com/photo/2015/05/15/14/55/cafe-768771_960_720.jpg" />
+      </div>
+    <!-- </div> -->
+    <br>
     <!-- ................... -->
-    <div *ngIf="currentUser.restaurant">
+    <!-- <div *ngIf="currentUser.restaurant"></div> -->
       <!-- Grid row -->
       <div class="form-row">
         <!-- Grid column -->
         <div class="col-md-6">
           <!-- Material input -->
           <div class="form-group">
-            <label for="inputRestName">Name of Restaurant</label>
+            <label class="font-weight-bold" for="inputRestName">Name of Restaurant</label>
             <p>{{currentUser.restaurant.name}}</p>
           </div>
         </div>
@@ -24,7 +27,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputWebsiteUrl">Website</label>
+            <label class="font-weight-bold" for="inputWebsiteUrl">Website</label>
             <p>{{currentUser.restaurant.websiteUrl}}</p>
           </div>
         </div>
@@ -38,7 +41,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputCategories">Food Categories</label>
+            <label class="font-weight-bold" class="font-weight-bold" for="inputCategories">Food Categories</label>
             <p>{{currentUser.restaurant.categories}}</p>
           </div>
         </div>
@@ -46,7 +49,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputMenuUrl">Menu</label>
+            <label class="font-weight-bold" class="font-weight-bold" for="inputMenuUrl">Menu</label>
             <p>{{currentUser.restaurant.menuUrl}}</p>
           </div>
         </div>
@@ -60,7 +63,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputEmail4MD">Email</label>
+            <label class="font-weight-bold" for="inputEmail4MD">Email</label>
             <p>{{currentUser.restaurant.email}}</p>
           </div>
         </div>
@@ -70,7 +73,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputPassword4MD">Phone</label>
+            <label class="font-weight-bold" for="inputPassword4MD">Phone</label>
             <p>{{currentUser.restaurant.phone}}</p>
           </div>
         </div>
@@ -83,7 +86,7 @@
         <!-- Grid column -->
         <div class="col-md-6">
           <div class="md-form form-group">
-            <label for="input_text">Description</label>
+            <label class="font-weight-bold" for="input_text">Description</label>
             <p>{{currentUser.restaurant.description}}</p>
           </div>
         </div>
@@ -91,7 +94,7 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputImgUrl">Photo</label>
+            <label class="font-weight-bold" for="inputImgUrl">Photo</label>
             <p>{{currentUser.restaurant.imgUrl}}</p>
           </div>
         </div>
@@ -105,7 +108,7 @@
         <div class="col-md-12">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputAddressMD">Address</label>
+            <label class="font-weight-bold" for="inputAddressMD">Address</label>
             <p>{{currentUser.restaurant.location.address}}</p>
           </div>
         </div>
@@ -119,7 +122,7 @@
         <div class="col-md-4">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputCityMD">City</label>
+            <label class="font-weight-bold" for="inputCityMD">City</label>
             <p>{{currentUser.restaurant.location.city}}</p>
           </div>
         </div>
@@ -128,7 +131,7 @@
         <div class="col-md-4">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputStateMD">State</label>
+            <label class="font-weight-bold" for="inputStateMD">State</label>
             <p>{{currentUser.restaurant.location.state}}</p>
           </div>
         </div>
@@ -137,7 +140,7 @@
         <div class="col-md-4">
           <!-- Material input -->
           <div class="md-form form-group">
-            <label for="inputZipMD">Zip</label>
+            <label class="font-weight-bold" for="inputZipMD">Zip</label>
             <p>{{currentUser.restaurant.location.zip}}</p>
           </div>
         </div>
@@ -153,16 +156,16 @@
           <div class="md-form form-group">
             <h3>Discounts Offerings</h3>
             <div *ngIf="currentUser.restaurant.militaryDiscount" class="form-check ">
-              <label class="form-check-label" for="milDiscount">Military</label>
+              <label class="form-check-label" for="milDiscount">&#8226; Military</label>
               <!-- <p>{{currentUser.restaurant.militaryDiscount}}</p> -->
             </div>
             <div *ngIf="currentUser.restaurant.firstresponderDiscount" class="form-check ">
-              <label class="form-check-label" for="frDiscount">First Responders</label>
+              <label class="form-check-label" for="frDiscount">&#8226; First Responders</label>
               <!-- <p>{{currentUser.restaurant.firstresponderDiscount}}</p> -->
 
             </div>
             <div *ngIf="currentUser.restaurant.seniorDiscount" class="form-check ">
-              <label class="form-check-label" for="seniorDiscount">Senior</label>
+              <label class="form-check-label" for="seniorDiscount">&#8226; Senior</label>
               <!-- <p>{{currentUser.restaurant.seniorDiscount}}</p> -->
             </div>
           </div>
@@ -174,24 +177,23 @@
       <!-- Grid row -->
       <div class="form-row">
         <!-- Grid column -->
-        <div class="col">
-          <button (click)="addRest()" type="submit" class="btn btn-secondary" color="primary">Edit - not working
-            yet</button>
-        </div>
+
+          <button (click)="addRest()" type="submit" class="btn btn-secondary center" color="primary">Edit Details</button>
+
         <!-- Grid column -->
       </div>
       <!-- Grid row -->
 
-      <br>
       <!-- Delete Button -->
       <!-- Grid row -->
       <div class="row">
         <!-- Grid column -->
-        <div class="col">
-          <button (click)='deleteRest(currentUser.restaurant.id)' class="btn btn-warning">Delete</button>
-        </div>
+
+          <button (click)='deleteRest(currentUser.restaurant.id)' class="btn btn-warning center margtop15">Delete</button>
+
         <!-- Grid column -->
       </div>
+      <br>
       <!-- Grid row -->
 
     </div>

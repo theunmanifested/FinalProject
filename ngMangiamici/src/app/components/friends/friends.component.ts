@@ -21,6 +21,8 @@ export class FriendsComponent implements OnInit {
   //NEW************************
   pendingFriendList: Friend[]=[];
 
+  usernameHolder: string = '';
+
   constructor(
     private restaurantSvc: RestaurantService,
     private http: HttpClient,
@@ -29,6 +31,7 @@ export class FriendsComponent implements OnInit {
     private userService: UserService,
     private friendService: FriendService
   ) { }
+
 
   boolNotSameUser(user: User): boolean {
     if (this.currentUser.id !== user.id) {
