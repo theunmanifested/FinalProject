@@ -18,6 +18,7 @@ export class FriendsComponent implements OnInit {
   currentUser: User = new User();
 
   friendlist: Friend[]=[];
+  pendingFriendsList: Friend[]=[];
 
   constructor(
     private restaurantSvc: RestaurantService,
@@ -39,14 +40,13 @@ export class FriendsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUser();
-    this.getFriends();
+    //getFriends() used to be here...
   }
 
   getFriends(): void {
     this.friendService.getFriends(this.currentUser).subscribe(
       data => {
         this.friendlist = data;
-        this.loadUser();
       },
       fail => {
       }
@@ -57,7 +57,8 @@ export class FriendsComponent implements OnInit {
     this.userService.getLoggedInUser().subscribe(
       data => {
         this.currentUser = data;
-
+        //getFriends() moved to here
+        this.getFriends();
       },
       fail => {
       }
