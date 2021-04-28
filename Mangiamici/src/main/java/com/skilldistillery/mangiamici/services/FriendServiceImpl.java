@@ -81,7 +81,6 @@ public class FriendServiceImpl implements FriendService {
 
 		Friend toDelete = friendRepo.findByUser_UsernameAndOtherUser_Username(usernameRequester, usernameRequested);
 
-		System.out.println("Check point 1 *********** " + toDelete + " **********************************************************************************************************************************");
 		if (toDelete == null) {
 			
 			// then check for the inverse relationship.

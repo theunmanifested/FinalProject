@@ -19,17 +19,6 @@ public interface FriendRepository extends JpaRepository<Friend, FriendId> {
 	
 	public Friend findByUser_UsernameAndOtherUser_Username(String requester, String requested);
 	
-//	@Query("    select CASE WHEN f.user.username = :user"
-//			+ " THEN f.otheruser "
-//			+ " ELSE f.user "
-//			+ " END "
-//			+ " from friend f "
-//			+ " where ( f.user.username = :user or f.otheruser.username = :user ) "
-//			+ " AND f.accepted = true "
-//			+ " ORDER BY f.dateApproved")
-//	public List<User> findUserFriends(@Param("user") String username);
-	
-	
 	// get all friendships where both users are enabled and the friendship is accepted 
 	@Query("select f from Friend f left join User u on f.user = u left join User o on f.otherUser = o where (f.approved = true) and (u.enabled = true) and (o.enabled = true)")
 	public List<Friend> queryAllActiveFriendships();

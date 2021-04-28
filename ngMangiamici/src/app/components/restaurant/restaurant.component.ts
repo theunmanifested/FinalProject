@@ -91,6 +91,9 @@ export class RestaurantComponent implements OnInit {
 
 
   loadReviews(){
+
+    console.log("LOAD REVIEWS");
+
     if(this.currentUser){
 
       if(this.currentUser.role === "admin") {
@@ -185,6 +188,8 @@ submitNewReview(): void {
 
   this.reviewService.create(this.newReview, this.restaurant, this.currentUser).subscribe(
     data => {
+      console.log("NEW REVIEW CREATED");
+
       this.loadReviews();
       this.newReview = null;
     },

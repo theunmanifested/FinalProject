@@ -109,6 +109,8 @@
     <button class="btn btn-outline-dark" (click)='editReview = null'>Save changes</button>
   </div>
 
+  <!-- REVIEW IMAGE FUNCTIONS COMMENTED OUT BELOW -->
+
   <!-- List User's review images as well as Friend's review images (if the user is logged in to an account) -->
   <!-- <div class="container-fluid image_bar" id="friendsPics">
     <div *ngFor="let review of reviewsByFriends">
@@ -121,16 +123,21 @@
 
    <!-- List all other images-->
    <!-- <div class="container-fluid image_bar" id="friendsPics">
-    <div *ngFor="let review of reviewsByNonFriendsPublic" >
-      <div *ngIf="review.img" class="review_thumbnail">
-        <img [src]="review.img" class="img-fluid">
-        <div class="image_caption">{{review.user.username}}</div>
+  </div>-->
+   <!-- List all other images-->
+
+<!-- class="container-fluid image_bar"  -->
+   <!-- <div class="image_bar" id="friendsPics">
+      <div *ngFor="let review of reviewsByNonFriendsPublic" >
+        <div *ngIf="review.img" class="review_thumbnail">
+          <img [src]="review.img" class="reviewImg">
+          <div class="image_caption">{{review.user.username}}</div>
+        </div>
       </div>
-    </div>
-  </div> -->
+    </div> -->
 
   <!-- List User's reviews as well as Reviews of Friends (if the user is logged in to an account) -->
-  <div *ngFor="let review of reviewsByFriends">
+  <div *ngFor="let review of reviewsByFriends" style="background: lightskyblue">
 
     <div id="outer-box">
        <div class="row" > <!-- style="border: 1px solid red "  -->

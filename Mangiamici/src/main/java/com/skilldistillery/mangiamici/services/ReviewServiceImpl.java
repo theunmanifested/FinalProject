@@ -102,7 +102,8 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<Review> findFriendsReviewsforRestaurant(String username, Integer restaurantId) {
 		
-		return reviewRepo.findFriendsReviewsforRestaurant(username, restaurantId);
+//		return reviewRepo.findFriendsReviewsforRestaurant(username, restaurantId);
+		return reviewRepo.findDistinctByEnabledTrueAndRestaurant_IdAndUser_UsernameOrEnabledTrueAndRestaurant_IdAndUser_Friends_OtherUser_Username(restaurantId, username, restaurantId, username);
 	}
 
 	@Override
