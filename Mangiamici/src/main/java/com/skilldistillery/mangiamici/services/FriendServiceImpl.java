@@ -102,4 +102,10 @@ public class FriendServiceImpl implements FriendService {
 		
 		return friendRepo.queryActiveFriendshipsForUser(username);
 	}
+
+	@Override
+	public List<Friend> getFriendRequests(String name) {
+		
+		return friendRepo.findByApprovedFalseAndOtherUser_UsernameAndUser_EnabledTrueAndOtherUser_EnabledTrue(name);
+	}
 }

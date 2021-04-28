@@ -40,4 +40,13 @@ public interface FriendRepository extends JpaRepository<Friend, FriendId> {
 		+ " where (f.approved = true) and (u.enabled = true) and (o.enabled = true) "
 		+ " and (f.user.username = :username or f.otherUser.username = :username) ")
 	public List<Friend> queryActiveFriendshipsForUser(@Param("username") String username);
+
+	public List<Friend> findByApprovedFalseAndOtherUser_UsernameAndUser_EnabledTrueAndOtherUser_EnabledTrue(String username);
+	
 }
+
+
+
+
+
+
