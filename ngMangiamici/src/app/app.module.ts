@@ -22,6 +22,7 @@ import { HeaderSearchComponent } from './components/header-search/header-search.
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { InTaggedUsersPipe } from './pipes/in-tagged-users.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ContactComponent } from './components/contact/contact.component';
     RestaurantDashboardComponent,
     HeaderSearchComponent,
     FriendsComponent,
-    ContactComponent
+    ContactComponent,
+    InTaggedUsersPipe
   ],
   imports: [
     BrowserModule,

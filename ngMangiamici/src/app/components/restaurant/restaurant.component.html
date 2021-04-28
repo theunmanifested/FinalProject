@@ -23,10 +23,55 @@
           </div>
         </div>
         <div class="col-sm-8" id="review-content">
-          <input class="form-control" type="text" name="reviewText" [(ngModel)]="newReview.reviewText">
-          <button *ngIf="!imgDiv" (click)='uploadImages()' class="btn btn-outline-dark" >add images</button>
+
+          <div class="mid-on-top">
+            <input class="form-control" type="text" name="reviewText" placeholder="Review content" [(ngModel)]="newReview.reviewText">
+          </div>
+
+          <div class="mid-on-top">
+            <span> <button *ngIf="!imgDiv" (click)='uploadImages()' class="btn btn-outline-dark mid-on-top" >add images</button> </span>
+          </div>
+          <div class="mid-on-top">
+            <p>Visibility</p>
+            <span style="position: relative">
+
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" checked [(ngModel)]="newReview.isPublic">
+                <label class="form-check-label" for="exampleRadios1">
+                  Public
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="false" [(ngModel)]="newReview.isPublic">
+                <label class="form-check-label" for="exampleRadios2">
+                  Friends only
+                </label>
+              </div>
+
+          </span>
+
+
+
+
+          </div>
+
+          <!-- <div>
+            Tag members of the group <input class="form-control" type="text" name="taggedUsers" placeholder="JohnAppleseed RutgerHauer sushi4lyf" [(ngModel)]="newReview.taggedUsers">
+          </div> -->
+
+          <div class="input-group mb-3" id="bottom-no-border">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">Tag members of the group </span>
+            </div>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="taggedUsers" placeholder="JohnAppleseed RutgerHauer sushi4lyf" [(ngModel)]="newReview.taggedUsers">
+          </div>
+
+
+
 
         </div>
+
         <div class="col-sm-2" id="review-user">
           <p *ngIf="currentUser">Written by {{currentUser.firstName}} {{currentUser.lastName}}</p>
           <p *ngIf="!currentUser">Written by an anonymous user</p>
@@ -87,24 +132,24 @@
 
     <div id="outer-box">
        <div class="row" > <!-- style="border: 1px solid red "  -->
-        <div class="col-sm-3" id="review-base-info">
-          <div id="review-base-info-content">
-            Rating: {{review.rating}} <br>
-            Written on {{review.createdDate | date}}
-            <!-- Updated on {{}} --> -->
-          </div>
-        </div>
-        <div class="col-sm-6" id="review-content">
-          {{review.reviewText}}
-        </div>
-        <div class="col-sm-2" id="review-user">
-          Written by {{review.user.firstName}} {{review.user.lastName}}
-        </div>
-        <div class="col-sm-1">
-          <button *ngIf="currentUser && currentUser.username === review.user.username" class="btn btn-outline-dark" id="updateReviewBtn" (click)="editReviewForm(review)">△</button>
-          <button *ngIf="(currentUser && currentUser.username === review.user.username) || ( currentUser && currentUser.role === 'admin') " class="btn btn-outline-dark" id="deleteReviewBtn" (click)="removeReview(review.id)">X</button>
-          <p *ngIf="(currentUser && (currentUser.username !== review.user.username)) " class="btn btn-outline-dark" >friends</p>
-        </div>
+            <div class="col-sm-3" id="review-base-info">
+              <div id="review-base-info-content">
+                Rating: {{review.rating}} <br> X
+                <!-- Written on {{review.createdDate | date}} -->
+                <!-- Updated on {{}} -->
+              </div>
+            </div>
+            <div class="col-sm-6" id="review-content">
+              {{review.reviewText}}
+            </div>
+            <div class="col-sm-2" id="review-user">
+              Written by {{review.user.firstName}} {{review.user.lastName}}
+            </div>
+            <div class="col-sm-1">
+              <button *ngIf="(currentUser && currentUser.username === review.user.username) || ( currentUser && review.taggedUsers && userTagged(currentUser.username, review.taggedUsers))" class="btn btn-outline-dark" id="updateReviewBtn" (click)="editReviewForm(review)">△</button>
+              <button *ngIf="(currentUser && currentUser.username === review.user.username) || ( currentUser && currentUser.role === 'admin') " class="btn btn-outline-dark" id="deleteReviewBtn" (click)="removeReview(review.id)">X</button>
+              <p *ngIf="(currentUser && (currentUser.username !== review.user.username)) " class="btn btn-outline-dark" >friends</p>
+            </div>
       </div>
 
     </div>

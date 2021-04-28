@@ -49,20 +49,33 @@ public class Review {
     @Column(name= "img_url")
     private String img;
     
+    @Column(name="tagged_users")
+    private String taggedUsers;
+    
     
     // no-arg Constructor
 	public Review() {
 		super();
 	}
+	
+
+	public String getTaggedUsers() {
+		return taggedUsers;
+	}
+
+
+	public void setTaggedUsers(String taggedUsers) {
+		this.taggedUsers = taggedUsers;
+	}
 
 
 	public String getImg() {
-		System.out.println("GET image ****************************************");
+		
 		return img;
 	}
 
 	public void setImg(String img) {
-		System.out.println("SET image ****************************************");
+		
 		this.img = img;
 	}
 
@@ -70,9 +83,8 @@ public class Review {
 		return id;
 	}
 
-
 	public void setId(int id) {
-		System.out.println("SET id ****************************************");
+		
 		this.id = id;
 	}
 
