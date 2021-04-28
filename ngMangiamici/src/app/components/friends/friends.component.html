@@ -16,7 +16,7 @@
     <h2 class="text-center border rounded">Pending Friend Requests:</h2>
 
     <div class="container border rounded">
-      <div class="row" *ngFor="let friend of pendingFriendList">
+      <div class="row padit" *ngFor="let friend of pendingFriendList">
         <div class="col-4 d-flex">
           <img *ngIf="boolNotSameUser(friend.user) && friend.approved==false" class="img-fluid shrinkheight" src="{{friend.user.imgUrl}}" alt="profile photo">
           <img *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false" class="img-fluid shrinkheight" src="{{friend.otherUser.imgUrl}}" alt="profile photo">
@@ -25,9 +25,12 @@
         <div class="col align-self-center">
           <a href=""><h2 *ngIf="boolNotSameUser(friend.user) && friend.approved==false">@{{friend.user.username}}</h2></a>
           <a href=""><h2 *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false">@{{friend.otherUser.username}}</h2></a>
-          <button *ngIf="boolNotSameUser(friend.user) && friend.approved==false" (click)="approveRequest(friend.user.username, friend.otherUser.username)">Approve</button>
-          <button *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false" (click)="true">Ignore</button>
-
+        </div>
+        <div class="col-2 align-self-center">
+          <button class="btn btn-sm btn-success" *ngIf="boolNotSameUser(friend.user) && friend.approved==false" (click)="approveRequest(friend.user.username, friend.otherUser.username)">Approve</button>
+          <button class="btn btn-sm btn-success" *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false" (click)="approveRequest(friend.user.username, friend.otherUser.username)">Approve</button>
+          <button class="btn btn-sm btn-danger" *ngIf="boolNotSameUser(friend.user) && friend.approved==false" (click)="true">Ignore</button>
+          <button class="btn btn-sm btn-danger" *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false" (click)="true">Ignore</button>
         </div>
       </div>
     </div>
@@ -40,7 +43,7 @@
   <div class="container border rounded">
     <h3 class="text-center" *ngIf="friendlist.length===0">No friends yet! Fill out the friend request form with any @username</h3>
 
-    <div class="row" *ngFor="let friend of friendlist">
+    <div class="row padit" *ngFor="let friend of friendlist">
       <div class="col-4 d-flex">
         <img *ngIf="boolNotSameUser(friend.user)" class="img-fluid shrinkheight center" src="{{friend.user.imgUrl}}" alt="profile photo">
         <img *ngIf="boolNotSameUser(friend.otherUser)" class="img-fluid shrinkheight center" src="{{friend.otherUser.imgUrl}}" alt="profile photo">
