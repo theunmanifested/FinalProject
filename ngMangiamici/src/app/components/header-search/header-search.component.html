@@ -4,7 +4,7 @@
     <form>
 
       <div class="row">
-          <input type="text" class="form-control" name="term" [(ngModel)]="searchTerm" placeholder="Search restaurants by name, category, etc...">
+          <input type="text" class="form-control" name="term" [(ngModel)]="searchTerm" placeholder="Search restaurants by name, category, etc... or type 'a' for all">
       </div>
       <div class="row">
           <button class="addwidth margtop15 margbottom15 center btn btn-success" (click)="searchActive=true; search(searchTerm)" type="submit">Let's eat!</button>

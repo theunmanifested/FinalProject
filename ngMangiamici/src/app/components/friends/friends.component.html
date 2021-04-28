@@ -1,10 +1,44 @@
 <div class="container">
 
+  <div class="container-fluid">
+
+    <form>
+
+      <div class="row">
+          <input type="text" class="form-control center halfwidth" name="term" placeholder="@Username of friend to add">
+      </div>
+      <div class="row">
+          <button class="addwidth margtop15 margbottom15 center btn btn-success" type="submit">Send friend request</button>
+      </div>
+    </form>
+
+    <br>
+    <h2 class="text-center border rounded">Pending Friend Requests:</h2>
+
+    <div class="container border rounded">
+      <div class="row" *ngFor="let friend of friendlist">
+        <div class="col-4">
+          <img *ngIf="boolNotSameUser(friend.user) && friend.approved==false" class="img-fluid shrinkheight" src="{{friend.user.imgUrl}}" alt="profile photo">
+          <img *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false" class="img-fluid shrinkheight" src="{{friend.otherUser.imgUrl}}" alt="profile photo">
+
+        </div>
+        <div class="col align-self-center">
+          <a href=""><h2 *ngIf="boolNotSameUser(friend.user) && friend.approved==false">@{{friend.user.username}}</h2></a>
+          <a href=""><h2 *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false">@{{friend.otherUser.username}}</h2></a>
+          <button *ngIf="boolNotSameUser(friend.user) && friend.approved==false">Approve</button>
+          <button *ngIf="boolNotSameUser(friend.otherUser) && friend.approved==false" (click)="friend.delete()">Ignore</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <br>
   <h2 class="text-center border rounded">Your Friends:</h2>
 
   <div class="container border rounded">
-    <h3 *ngIf="friendlist.length===0">No friends yet! Fill out the friend request form with any @username</h3>
+    <h3 class="text-center" *ngIf="friendlist.length===0">No friends yet! Fill out the friend request form with any @username</h3>
 
     <div class="row" *ngFor="let friend of friendlist">
       <div class="col-4">

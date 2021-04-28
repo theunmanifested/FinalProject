@@ -2,3 +2,39 @@
   max-height: 150px!important;
 }
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.margtop15 {
+  margin-top: 15px;
+}
+
+.margbottom15 {
+  margin-bottom: 15px;
+}
+.margleft15 {
+  margin-left: 15px;
+}
+
+.addwidth {
+  width: 30%;
+  min-width: 230px;
+  max-width: 300px;
+}
+
+.halfwidth {
+  width: 50%;
+  min-width: 230px;
+  max-width: 400px;
+}
+
+.smallpic {
+  max-height: 120px;
+  max-width: 120px;
+}
+
+.padit {
+  padding: 10px;
+}
